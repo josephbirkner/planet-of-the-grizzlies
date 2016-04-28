@@ -22,7 +22,7 @@ def game_ended():
     connected_player = 0
 
     test_lines = board[0:]
-    # add columns, vertauschung der x und y werte
+    # add columns, vertauschung des x und y
     for x in range(0, width):
         test_lines.append([])
         for y in range(0, height):
