@@ -8,8 +8,7 @@ players = [input("Player "+str(i)+", please enter your name: ") for i in range(2
 
 print("Hello",players[0],"and",players[1],", fight!")
 
-# erstellung des spielfeldes
-# das board ist vertikal orientiert
+# erstellung des spielfeldes, während das board vertikal orientiert ist
 for y in range(height):
     board.append([])
     for x in range(width):
@@ -31,8 +30,7 @@ def game_ended():
     connected_player = 0
 
     test_lines = board[0:]
-    # add columns
-    # drehung des boards um 90 grad
+    # add columns, drehung des boards um 90 grad
     for x in range(0, width):
         test_lines.append([])
         for y in range(0, height):
@@ -85,8 +83,10 @@ while not game_ended():
             continue
     col -= 1
     row = 0
+    # solange der boden nicht erreicht wird und er sich in der luft befindet
     while (row+1) < height and board[row+1][col] == "_":
         row += 1
+    # der zelle wird der zugehörige chip zugeordnet
     board[row][col] = chips[current_player]
     # alternation zwischen 0 und 1
     current_player = 1 - current_player
