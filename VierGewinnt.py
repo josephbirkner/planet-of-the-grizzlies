@@ -31,7 +31,6 @@ def game_ended():
         test_lines.append([])
         for y in range(0, height):
             test_lines[-1].append(test_lines[y][x])
-    
 
     for line in test_lines:
         for chip in line:
@@ -67,7 +66,6 @@ while not game_ended():
     while col < 0:
         try:
             col = int(input("Enter column: "))
-            print(board[0][col])
             if col not in range(1, width+1):
                 col = -1
             elif board[0][col-1] != "_":
