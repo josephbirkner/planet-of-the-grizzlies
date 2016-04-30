@@ -2,7 +2,7 @@ board = []
 width = 7
 height = 6
 min_connected_for_win = 4
-players = [input("Player "+str(i)+", please enter your name: ") for i in range(2)]
+players = [input("Player "+str(i+1)+", please enter your name: ") for i in range(2)]
 current_player = 0
 chips = ["X", "O"]
 
@@ -33,7 +33,7 @@ def game_ended():
         test_lines.append([]) # new top down diagonal
         j = 0
         while top_down[1] + j < height and top_down[0] + j < width:
-            test_lines[-2].append(board[top_down[1] + j][top_down[0] + j])
+            test_lines[-1].append(board[top_down[1] + j][top_down[0] + j])
             j += 1
         test_lines.append([]) # new bottom up diagonal
         j = 0
@@ -48,7 +48,7 @@ def game_ended():
         test_lines.append([]) # new top down diagonal
         j = 0
         while top_down[1] + j < height and top_down[0] + j < width:
-            test_lines[-2].append(board[top_down[1] + j][top_down[0] + j])
+            test_lines[-1].append(board[top_down[1] + j][top_down[0] + j])
             j += 1
         test_lines.append([]) # new bottom up diagonal
         j = 0
@@ -82,7 +82,9 @@ def game_ended():
 
     if result:
         print_board()
+        print("\n***************************")
         print(players[connected_player]+", YOU WON!")
+        print("***************************")
     return result
 
 print("Hello",players[0],"and",players[1],", fight!")
@@ -95,8 +97,9 @@ for y in range(height):
 
 # main loop
 while not game_ended():
+    print("=" * (width * 4))
     print_board()
-    print("Player",players[current_player],", your move!")
+    print("\nPlayer",players[current_player],", your move!")
 
     # selection of column
     col = -1
