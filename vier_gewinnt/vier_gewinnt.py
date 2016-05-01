@@ -33,7 +33,7 @@ def game_ended():
         test_lines.append([]) # new top down diagonal, links entlang
         j = 0
         while top_down[1] + j < height and top_down[0] + j < width:
-            # das board ist vertikal orientiert
+            # y läuft entlang des boards, welches vertikal orientiert ist
             test_lines[-1].append(board[top_down[1] + j][top_down[0] + j])
             j += 1
         test_lines.append([]) # new bottom up diagonal, links entlang
@@ -63,14 +63,14 @@ def game_ended():
     connected_count = 0
     connected_player = 0
 
-    # durchlauf der hintereinanderliegenden
+    # durchlauf der zusammengefügten test_lines
     for line in test_lines:
         for chip in line:
             # in der luft
             if chip == "_":
                 connected_count = 0
                 continue
-            # den zwei spielern gehören zwei chips
+            # zuweisung des indexes
             chip_player = chips.index(chip)
             if connected_count == 0 or connected_player != chip_player:
                 connected_count = 1
