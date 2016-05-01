@@ -1,0 +1,17 @@
+PlanetOfTheGrizzlies
+
+- Action
+Die Figuren kämpfen mit den Händen und den Füßen
+Diesbezüglich existieren sequentielle Kombinationen
+Möglich ist das Abfeuern einer Waffe
+
+- Rollenspiel
+Der Spieler bewegt sich frei nach vorne und nach hinten
+Die Gegner lassen Rüstungen und Waffen fallen
+Diese sind in einem Inventar einsichtbar
+
+- Adventure
+Der Spieler schlüpft in die Rolle eines Grizzlies
+Die Gegner gehören der humanoiden Spezies an
+Die Betätigung eines versteckten Schalters öffnet eine Tür
+Eine Abfolge von Aktionen lässt eine Truhe sich öffnen
