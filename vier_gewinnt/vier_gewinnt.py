@@ -59,12 +59,11 @@ def game_ended():
             test_lines[-1].append(board[bottom_up[1] - j][bottom_up[0] + j])
             j += 1
 
-    # count of successively placed chips
-    connected_count = 0
-    connected_player = 0
-
     # durchlauf der zusammengefügten test_lines
     for line in test_lines:
+        # count of successively placed chips
+        connected_count = 0
+        connected_player = 0
         for chip in line:
             # in der luft
             if chip == "_":
@@ -98,6 +97,15 @@ for y in range(height):
     board.append([])
     for x in range(width):
         board[-1].append("_")
+
+board = [
+    ["_", "_", "_", "_", "_", "_", "_"],
+    ["_", "_", "_", "_", "_", "_", "_"],
+    ["_", "_", "_", "_", "_", "_", "O"],
+    ["_", "_", "_", "_", "_", "_", "X"],
+    ["_", "_", "O", "_", "X", "X", "X"],
+    ["X", "O", "X", "X", "O", "O", "O"]
+]
 
 # main loop
 while not game_ended():
