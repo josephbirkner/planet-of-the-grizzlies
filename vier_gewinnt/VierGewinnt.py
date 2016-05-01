@@ -70,6 +70,7 @@ def game_ended():
             if chip == "_":
                 connected_count = 0
                 continue
+            # den zwei spielern gehören zwei chips
             chip_player = chips.index(chip)
             if connected_count == 0 or connected_player != chip_player:
                 connected_count = 1
