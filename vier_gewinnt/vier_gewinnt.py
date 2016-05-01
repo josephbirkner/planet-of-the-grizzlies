@@ -98,15 +98,6 @@ for y in range(height):
     for x in range(width):
         board[-1].append("_")
 
-board = [
-    ["_", "_", "_", "_", "_", "_", "_"],
-    ["_", "_", "_", "_", "_", "_", "_"],
-    ["_", "_", "_", "_", "_", "_", "O"],
-    ["_", "_", "_", "_", "_", "_", "X"],
-    ["_", "_", "O", "_", "X", "X", "X"],
-    ["X", "O", "X", "X", "O", "O", "O"]
-]
-
 # main loop
 while not game_ended():
     print("=" * (width * 4))
