@@ -30,27 +30,30 @@ def game_ended():
     top_down = [0, 0]
     bottom_up = [0, height-1]
     for i in range(0, height):
-        test_lines.append([]) # new top down diagonal
+        test_lines.append([]) # new top down diagonal, links entlang
         j = 0
         while top_down[1] + j < height and top_down[0] + j < width:
+            # das board ist vertikal orientiert
             test_lines[-1].append(board[top_down[1] + j][top_down[0] + j])
             j += 1
-        test_lines.append([]) # new bottom up diagonal
+        test_lines.append([]) # new bottom up diagonal, links entlang
         j = 0
         while bottom_up[1] - j >= 0 and bottom_up[0] + j < width:
             test_lines[-1].append(board[bottom_up[1] - j][bottom_up[0] + j])
             j += 1
         top_down[1] += 1
         bottom_up[1] -= 1
+    top_down = [0, 0]
+    bottom_up = [0, height-1]
     for i in range(0, width-1):
         top_down[0] += 1
         bottom_up[0] += 1
-        test_lines.append([]) # new top down diagonal
+        test_lines.append([]) # new top down diagonal, oben entlang
         j = 0
         while top_down[1] + j < height and top_down[0] + j < width:
             test_lines[-1].append(board[top_down[1] + j][top_down[0] + j])
             j += 1
-        test_lines.append([]) # new bottom up diagonal
+        test_lines.append([]) # new bottom up diagonal, unten entlang
         j = 0
         while bottom_up[1] - j >= 0 and bottom_up[0] + j < width:
             test_lines[-1].append(board[bottom_up[1] - j][bottom_up[0] + j])
