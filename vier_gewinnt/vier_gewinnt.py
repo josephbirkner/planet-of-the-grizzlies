@@ -6,6 +6,7 @@ players = [input("Player "+str(i+1)+", please enter your name: ") for i in range
 current_player = 0
 chips = ["X", "O"]
 
+
 def print_board():
     # die erste zeile
     print(" ".join([str(x) for x in range(1, width+1)]))
@@ -13,6 +14,7 @@ def print_board():
     for line in board:
         # join fügt das zwischen den elementen ein
         print("|".join(line))
+
 
 # vier gewinnt
 def game_ended():
@@ -48,22 +50,24 @@ def game_ended():
     for i in range(0, width-1):
         top_down[0] += 1
         bottom_up[0] += 1
-        test_lines.append([]) # new top down diagonal, oben entlang
+        test_lines.append([])  # new top down diagonal, oben entlang
         j = 0
         while top_down[1] + j < height and top_down[0] + j < width:
             test_lines[-1].append(board[top_down[1] + j][top_down[0] + j])
             j += 1
-        test_lines.append([]) # new bottom up diagonal, unten entlang
+        test_lines.append([])  # new bottom up diagonal, unten entlang
         j = 0
         while bottom_up[1] - j >= 0 and bottom_up[0] + j < width:
             test_lines[-1].append(board[bottom_up[1] - j][bottom_up[0] + j])
             j += 1
 
+    # index des spielers der gewonnen hat
+    connected_player = 0
+
     # durchlauf der zusammengefügten test_lines
     for line in test_lines:
         # count of successively placed chips
         connected_count = 0
-        connected_player = 0
         for chip in line:
             # in der luft
             if chip == "_":
@@ -118,7 +122,7 @@ while not game_ended():
                 col = -1
         except ValueError:
             continue
-    col -= 1 # make column-index 0 based
+    col -= 1  # make column-index 0 based
 
     row = 0
     # solange der boden nicht erreicht wird und er sich in der luft befindet

@@ -1,25 +1,13 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-"""
-ZetCode PyQt5 tutorial
-
-This program creates a quit
-button. When we press the button,
-the application terminates.
-
-author: Jan Bodnar
-website: zetcode.com
-last edited: January 2015
-"""
-
 import sys
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 
 
-class Example(QWidget):
+class FourInARow(QWidget):
 
     def __init__(self):
         super().__init__()
@@ -31,13 +19,14 @@ class Example(QWidget):
         graphics.move(0, 0)
 
         layout = QGridLayout()
-        layout.setContentsMargins(0, 0, 0, 0)
+        layout.setContentsMargins(0,0,0,0)
         layout.addWidget(graphics, 0, 0)
 
         self.setLayout(layout)
         self.setGeometry(300, 300, 250, 150)
         self.setWindowTitle('VIER GEWINNT 3000')
         self.show()
+
 
 class Board(QGraphicsView):
 
@@ -48,5 +37,5 @@ class Board(QGraphicsView):
         self.setBackgroundBrush(QBrush(QColor(50, 90, 150)))
 
 app = QApplication(sys.argv)
-ex = Example()
+ex = FourInARow()
 sys.exit(app.exec_())
