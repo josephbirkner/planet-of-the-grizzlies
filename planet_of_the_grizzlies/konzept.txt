@@ -17,3 +17,5 @@ Die Gegner gehören der humanoiden Spezies an
 Die Betätigung eines versteckten Schalters öffnet eine Tür
 Eine Abfolge von Aktionen lässt eine Truhe sich öffnen
 Öffnung einer Tür, während der andere Spieler einen Hebel betätigt
+Rätsel können gelöst werden
+Die Missionen sind mit einer Story behaftet
