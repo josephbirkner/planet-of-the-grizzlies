@@ -4,7 +4,7 @@ Diesbezüglich existieren Kombinationen
 Möglich ist das Abfeuern einer Waffe
 Die Spieler können miteinander und gegebenfalls gegeneinander kämpfen
 Die Intelligenz zeigt sich im Schlagabtausch
-Es existieren zwei oder drei Dimensionen
+Es existieren entweder zwei oder drei Dimensionen
 
 b) Rollenspiel
 Der Spieler bewegt sich frei nach vorne und nach hinten
