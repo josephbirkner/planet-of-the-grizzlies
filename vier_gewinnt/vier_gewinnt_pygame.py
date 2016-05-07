@@ -1,13 +1,11 @@
 #!/usr/local/bin/python3
 
 import pygame
-import sys
 
 board = []
-board_width = 7
+board_width = 6
 board_height = 6
 min_connected_for_win = 4
-players = [input("Player "+str(i+1)+", please enter your name: ") for i in range(2)]
 current_player = 0
 colors = [
     pygame.Color(0x5e, 0x56, 0x5a),
@@ -15,7 +13,6 @@ colors = [
     pygame.Color(0xf7, 0xff, 0x58),
     pygame.Color(0xff, 0x93, 0x4f)
 ]
-
 
 def draw_board(surface, width, height, sel_col):
     cell_width = int(width/board_width)
@@ -130,9 +127,10 @@ def game_ended():
 
 pygame.init()
 
-window = pygame.display.set_mode((640, 480))
+screen_size = (board_width*40, board_height*40)
+window = pygame.display.set_mode(screen_size)
 screen = pygame.display.get_surface()
-pygame.display.set_caption("pyrats")
+pygame.display.set_caption("4 gewinnen!")
 
 # Fill background
 background = pygame.Surface(screen.get_size())
@@ -148,18 +146,19 @@ for y in range(board_height):
     for x in range(board_width):
         board[-1].append(-1)
 
-game_has_ended = False
+winner_emerged = False
+game_quit = False
 
-while True:
+while not game_quit:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            break
+            game_quit = True
         elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_RIGHT and not game_has_ended:
+            if event.key == pygame.K_RIGHT and not winner_emerged:
                 selected_col += 1
-            elif event.key == pygame.K_LEFT and not game_has_ended:
+            elif event.key == pygame.K_LEFT and not winner_emerged:
                 selected_col -= 1
-            elif event.key == pygame.K_RETURN and not game_has_ended:
+            elif (event.key == pygame.K_RETURN or event.key == pygame.K_SPACE) and not winner_emerged:
                 row = 0
                 # solange der boden nicht erreicht wird und er sich in der luft befindet
                 while (row + 1) < board_height and board[row + 1][selected_col] == -1:
@@ -168,23 +167,21 @@ while True:
                 board[row][selected_col] = current_player
                 # alternation zwischen 0 und 1
                 current_player = 1 - current_player
-                game_has_ended = game_ended()
-                if game_has_ended:
+                winner_emerged = game_ended()
+                if winner_emerged:
                     selected_col = -1
             elif event.key == pygame.K_ESCAPE:
-                break
+                game_quit = True
 
-    if not game_has_ended:
+    if not winner_emerged:
         if selected_col < 0:
             selected_col = 0
         elif selected_col >= len(board[0]):
             selected_col = len(board[0]) - 1
 
     screen.blit(background, (0, 0))
-    draw_board(screen, 640, 480, selected_col)
+    draw_board(screen, screen_size[0], screen_size[1], selected_col)
 
     pygame.display.update()
     heartbeat.tick(60)
 
-pygame.display.quit()
-sys.exit()

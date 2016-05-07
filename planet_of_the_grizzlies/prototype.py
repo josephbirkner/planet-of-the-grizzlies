@@ -6,6 +6,7 @@ from random import randint
 
 
 class Block():
+
     rect = pygame.Rect(0, 0, 0, 0)
     color = pygame.Color(0, 0, 0)
 
@@ -13,25 +14,35 @@ class Block():
         self.rect = rct
         self.color = col
 
+    def type(self):
+        return "_"
+
     def collision(self, player):
         diff = (
-            (self.rect.top - player.rect.bottom, player.rect.top < self.rect.top),
-            (self.rect.bottom - player.rect.top, player.rect.bottom > self.rect.bottom),
-            (self.rect.left - player.rect.right, player.rect.left < self.rect.left),
-            (self.rect.right - player.rect.left, player.rect.right > self.rect.right)
+            (self.rect.top - player.rect.bottom),
+            (self.rect.bottom - player.rect.top),
+            (self.rect.left - player.rect.right),
+            (self.rect.right - player.rect.left)
         )
-        if  ((diff[0][0] < 0 and diff[0][1]) or \
-            (diff[1][0] > 0 and diff[0][1])) and \
-            not (diff[0][0] < 0 and diff[1][0] > 0 and diff[0][1] and diff[1][1]):
-            player.rect = player.rect.move(0, -player.velocity[1])
-            player.velocity[1] /= 2
 
-        if  ((diff[2][0] < 0 and diff[2][1]) or \
-            (diff[3][0] > 0 and diff[3][1])) and \
-            not (diff[2][0] < 0 and diff[3][0] > 0 and diff[2][1] and diff[3][1]):
-            print(diff)
-            player.rect = player.rect.move(-player.velocity[0], 0)
-            player.velocity[0] /= 2
+        if player.velocity[1] > 0 and player.velocity[1]+diff[0] >= 0:
+            player.onground = True
+            player.velocity[1] = 0
+            player.rect = player.rect.move(0, diff[0])
+        elif player.velocity[1] < 0 and player.velocity[1]+diff[1] <= 0:
+            player.rect = player.rect.move(0, diff[1])
+            player.velocity[1] = 0
+
+        # if the player isn't colliding anymore, skip the horizontal check
+        if not player.rect.colliderect(self.rect):
+            return
+
+        if player.velocity[0] > 0 and player.velocity[0]+diff[2] >= 0:
+            player.rect = player.rect.move(diff[2], 0)
+            player.velocity[0] = 0
+        elif player.velocity[0] < 0 and player.velocity[0]+diff[3] <= 0:
+            player.rect = player.rect.move(diff[3], 0)
+            player.velocity[0] = 0
 
     def draw(self, surf):
         pygame.draw.rect(surf, self.color, self.rect)
@@ -45,6 +56,9 @@ class Water(Block):
     def collision(self, player):
         player.kill()
 
+    def type(self):
+        return "W"
+
 
 class TargetBlock(Block):
 
@@ -54,14 +68,18 @@ class TargetBlock(Block):
     def collision(self, player):
         player.win()
 
+    def type(self):
+        return "T"
+
 
 class Player():
     rect = pygame.Rect(0, 0, 0, 0)
     color = pygame.Color(100, 200, 50)
     status = 0
     velocity = [0, 0]
-    jump_strength = -5
-    speed = 5
+    jump_strength = -17
+    speed = 2
+    onground = False
 
     def __init__(self, rct):
         self.rect = rct
@@ -85,8 +103,9 @@ class Player():
     def update(self, gravity, jump, left, right):
 
         self.velocity[1] += gravity
-        if jump:
+        if jump and self.onground:
             self.velocity[1] += self.jump_strength
+            self.onground = False
         if left:
             self.velocity[0] = -self.speed
         if right:
@@ -102,7 +121,7 @@ class Player():
 class World:
     player = None
     blocks = []
-    gravity = 1
+    gravity = 0.5
 
     def __init__(self, level, width, height):
         block_width = width/len(level[0])
@@ -110,15 +129,24 @@ class World:
         pos = [0, 0]
         for line in level:
             pos[0] = 0
+            last = None
             for block in line:
-                if block == "_":
-                    self.blocks.append(Block(pygame.Rect(pos[0], pos[1], block_width+1, block_height+1), pygame.Color(70, 90, 120)))
-                elif block == "T":
-                    self.blocks.append(TargetBlock(pygame.Rect(pos[0], pos[1], block_width+1, block_height+1)))
-                elif block == "W":
-                    self.blocks.append(Water(pygame.Rect(pos[0], pos[1], block_width+1, block_height+1)))
-                elif block == "P":
-                    self.player = Player(pygame.Rect(pos[0], pos[1], block_width+1, block_height+1))
+                if last and block == last.type():
+                    last.rect = pygame.Rect(last.rect.x, last.rect.y, last.rect.width+block_width, last.rect.height)
+                else:
+                    if block == "_":
+                        self.blocks.append(Block(pygame.Rect(pos[0], pos[1], block_width+1, block_height+1), pygame.Color(70, 90, 120)))
+                        last = self.blocks[-1]
+                    elif block == "T":
+                        self.blocks.append(TargetBlock(pygame.Rect(pos[0], pos[1], block_width+1, block_height+1)))
+                        last = self.blocks[-1]
+                    elif block == "W":
+                        self.blocks.append(Water(pygame.Rect(pos[0], pos[1], block_width+1, block_height+1)))
+                        last = self.blocks[-1]
+                    elif block == "P":
+                        self.player = Player(pygame.Rect(pos[0], pos[1], block_width+1, block_height+1))
+                        last = None
+
                 pos[0] += block_width
             pos[1] += block_height
 
@@ -153,12 +181,12 @@ world = World(
         "                           ",
         "                           ",
         "              ___          ",
-        "       ___                 ",
+        "P      ___                 ",
         "                           ",
         "                        TT ",
         "                  _____    ",
         "             _____         ",
-        "P      ______              ",
+        "       ______              ",
         "_____                      ",
         "                           ",
         "WWWWWWWWWWWWWWWWWWWWWWWWWWW",
@@ -184,7 +212,7 @@ while world.player.status == 0:
     world.update(jump, left, right)
     world.draw(screen)
     pygame.display.update()
-    heartbeat.tick(20)
+    heartbeat.tick(60)
 
 pygame.display.quit()
 sys.exit()
