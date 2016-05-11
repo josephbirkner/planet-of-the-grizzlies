@@ -183,3 +183,4 @@ while not game_quit:
     pygame.display.update()
     heartbeat.tick(60)
 
+pygame.display.quit()
