@@ -3,7 +3,7 @@
 import pygame
 
 board = []
-board_width = 6
+board_width = 7
 board_height = 6
 min_connected_for_win = 4
 current_player = 0
@@ -18,9 +18,7 @@ def draw_board(surface, width, height, sel_col):
     cell_width = int(width/board_width)
     cell_height = int(height/board_height)
     y = 0
-    # die folgenden zeilen
     for line in board:
-        # join fügt das zwischen den elementen ein
         x = 0
         for cell in line:
             color = colors[0]
