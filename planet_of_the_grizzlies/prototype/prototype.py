@@ -1,4 +1,4 @@
-#!/usr/local/bin/python3
+# !/usr/local/bin/python3
 
 import pygame
 import sys
@@ -219,7 +219,7 @@ def draw_centered(target, image):
     offy = target.get_height()/2 - image.get_height() / 2
     target.blit(image, (offx, offy))
 
-# ------------------------ Implementation ------------------------
+# Implementation
 
 pygame.init()
 
