@@ -39,6 +39,9 @@ class World:
                     elif block == "W":
                         self.blocks.append(Water(pygame.Rect(pos[0], pos[1], block_width, block_height), self))
                         last = self.blocks[-1]
+                    elif block == "H":
+                        self.blocks.append(Human(pygame.Rect(pos[0], pos[1], block_width, block_height), self))
+                        last = self.blocks[-1]
                     elif block == "L":
                         self.blocks.append(Lever(pygame.Rect(pos[0], pos[1], block_width, block_height), self))
                         last = self.blocks[-1]
@@ -168,13 +171,25 @@ class Block():
 class Water(Block):
 
     def __init__(self, rct, world):
-        super(Water, self).__init__(rct, world, pygame.Color(50, 100, 155))
+        super(Water, self).__init__(rct, world, pygame.Color(50, 25, 155))
 
     def collision(self, player):
         player.kill()
 
     def type(self):
         return "W"
+
+
+class Human(Block):
+
+    def __init__(self, rct, world):
+        super(Human, self).__init__(rct, world, pygame.Color(50, 25, 155))
+
+    def collision(self, player):
+        player.kill()
+
+    def type(self):
+        return "H"
 
 
 class TargetBlock(Block):
@@ -251,7 +266,7 @@ level = [
     "                                                      ",
     "                                                      ",
     "                                                      ",
-    "                                                      ",
+    "                       H                              ",
     "______________________________________________________",
     "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
     "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
