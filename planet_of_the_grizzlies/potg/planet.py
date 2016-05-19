@@ -12,6 +12,110 @@ import sys
 from random import randint
 
 
+class World:
+    player = None
+    blocks = []
+    gravity = .8
+    width = 0
+    height = 0
+
+    def __init__(self, level, block_width, block_height):
+        pos = [0, 0]
+        self.width = len(level[0])
+        self.height = len(level)
+        for line in level:
+            pos[0] = 0
+            last = None
+            for block in line:
+                if last and block == last.type():
+                    last.rect = pygame.Rect(last.rect.x, last.rect.y, last.rect.width+block_width, last.rect.height)
+                else:
+                    if block == "_":
+                        self.blocks.append(Block(pygame.Rect(pos[0], pos[1], block_width, block_height), self, pygame.Color(70, 90, 120)))
+                        last = self.blocks[-1]
+                    elif block == "T":
+                        self.blocks.append(TargetBlock(pygame.Rect(pos[0], pos[1], block_width, block_height), self))
+                        last = self.blocks[-1]
+                    elif block == "W":
+                        self.blocks.append(Water(pygame.Rect(pos[0], pos[1], block_width, block_height), self))
+                        last = self.blocks[-1]
+                    elif block == "L":
+                        self.blocks.append(Lever(pygame.Rect(pos[0], pos[1], block_width, block_height), self))
+                        last = self.blocks[-1]
+                    elif block == "P":
+                        self.player = Player(pygame.Rect(pos[0], pos[1], block_width, block_height))
+                        last = None
+                    else:
+                        last = None
+
+                pos[0] += block_width
+            pos[1] += block_height
+
+    def update(self, jump, left, right, use):
+        self.player.update(self.gravity, jump, left, right, use)
+        for block in self.blocks:
+            self.player.check_collision(block)
+
+    def draw(self, surf):
+        for block in self.blocks:
+            block.draw(surf)
+        self.player.draw(surf)
+
+
+class Player():
+    size = (140, 84)
+    rect = pygame.Rect(0, 0, 0, 0)
+    color = pygame.Color(100, 200, 50)
+    sprite = None
+    status = 0
+    velocity = [0, 0]
+    jump_strength = -19
+    speed = 4.5
+    onground = False
+    using = False
+
+    def __init__(self, rct):
+        size = (140, 84)
+        self.rect = pygame.Rect(rct.left, rct.top, self.size[0], self.size[1])
+        self.sprite = pygame.image.load("grizzlie.png").convert_alpha()
+        self.sprite = pygame.transform.scale(self.sprite, self.size)
+
+    def check_collision(self, block):
+        if self.rect.colliderect(block.rect):
+            block.collision(self)
+
+    def win(self):
+        self.status = 1
+
+    def kill(self):
+        self.status = -1
+
+    def won(self):
+        return self.status == 1
+
+    def killed(self):
+        return self.status == -1
+
+    def update(self, gravity, jump, left, right, use):
+
+        self.velocity[1] += gravity
+        if jump and self.onground:
+            self.velocity[1] += self.jump_strength
+            self.onground = False
+        if left:
+            self.velocity[0] = -self.speed
+        if right:
+            self.velocity[0] = self.speed
+        if not left and not right:
+            self.velocity[0] = 0
+        self.using = use
+        self.rect = self.rect.move(self.velocity[0], self.velocity[1])
+
+    def draw(self, surf):
+        #pygame.draw.rect(surf, self.color, self.rect)
+        screen.blit(self.sprite, (self.rect.left, self.rect.top));
+
+
 class Block():
 
     rect = pygame.Rect(0, 0, 0, 0)
@@ -117,109 +221,6 @@ class Lever(Block):
     def type(self):
         return "L"
 
-
-class Player():
-    size = (140, 84)
-    rect = pygame.Rect(0, 0, 0, 0)
-    color = pygame.Color(100, 200, 50)
-    sprite = None
-    status = 0
-    velocity = [0, 0]
-    jump_strength = -19
-    speed = 4.5
-    onground = False
-    using = False
-
-    def __init__(self, rct):
-        size = (140, 84)
-        self.rect = pygame.Rect(rct.left, rct.top, self.size[0], self.size[1])
-        self.sprite = pygame.image.load("grizzlie.png").convert_alpha()
-        self.sprite = pygame.transform.scale(self.sprite, self.size)
-
-    def check_collision(self, block):
-        if self.rect.colliderect(block.rect):
-            block.collision(self)
-
-    def win(self):
-        self.status = 1
-
-    def kill(self):
-        self.status = -1
-
-    def won(self):
-        return self.status == 1
-
-    def killed(self):
-        return self.status == -1
-
-    def update(self, gravity, jump, left, right, use):
-
-        self.velocity[1] += gravity
-        if jump and self.onground:
-            self.velocity[1] += self.jump_strength
-            self.onground = False
-        if left:
-            self.velocity[0] = -self.speed
-        if right:
-            self.velocity[0] = self.speed
-        if not left and not right:
-            self.velocity[0] = 0
-        self.using = use
-        self.rect = self.rect.move(self.velocity[0], self.velocity[1])
-
-    def draw(self, surf):
-        #pygame.draw.rect(surf, self.color, self.rect)
-        screen.blit(self.sprite, (self.rect.left, self.rect.top));
-
-
-class World:
-    player = None
-    blocks = []
-    gravity = .8
-    width = 0
-    height = 0
-
-    def __init__(self, level, block_width, block_height):
-        pos = [0, 0]
-        self.width = len(level[0])
-        self.height = len(level)
-        for line in level:
-            pos[0] = 0
-            last = None
-            for block in line:
-                if last and block == last.type():
-                    last.rect = pygame.Rect(last.rect.x, last.rect.y, last.rect.width+block_width, last.rect.height)
-                else:
-                    if block == "_":
-                        self.blocks.append(Block(pygame.Rect(pos[0], pos[1], block_width, block_height), self, pygame.Color(70, 90, 120)))
-                        last = self.blocks[-1]
-                    elif block == "T":
-                        self.blocks.append(TargetBlock(pygame.Rect(pos[0], pos[1], block_width, block_height), self))
-                        last = self.blocks[-1]
-                    elif block == "W":
-                        self.blocks.append(Water(pygame.Rect(pos[0], pos[1], block_width, block_height), self))
-                        last = self.blocks[-1]
-                    elif block == "L":
-                        self.blocks.append(Lever(pygame.Rect(pos[0], pos[1], block_width, block_height), self))
-                        last = self.blocks[-1]
-                    elif block == "P":
-                        self.player = Player(pygame.Rect(pos[0], pos[1], block_width, block_height))
-                        last = None
-                    else:
-                        last = None
-
-                pos[0] += block_width
-            pos[1] += block_height
-
-    def update(self, jump, left, right, use):
-        self.player.update(self.gravity, jump, left, right, use)
-        for block in self.blocks:
-            self.player.check_collision(block)
-
-    def draw(self, surf):
-        for block in self.blocks:
-            block.draw(surf)
-        self.player.draw(surf)
 
 def draw_centered(target, image):
     offx = target.get_width()/2 - image.get_width()/2
