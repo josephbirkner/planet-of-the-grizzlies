@@ -5,7 +5,7 @@
 # - World: The world containing the level and characters
 # - Section: A logically seperate world section.
 # - Platform: A piece of ground within the level
-# - Character: A moving object within the world
+# - Character: A moving object within the world# !/usr/local/bin/python3
 
 import pygame
 import sys
@@ -172,60 +172,6 @@ class Player():
         screen.blit(self.sprite, (self.rect.left, self.rect.top));
 
 
-class Humanoid():
-    size = (140, 84)
-    rect = pygame.Rect(0, 0, 0, 0)
-    color = pygame.Color(100, 200, 50)
-    sprite = None
-    status = 0
-    velocity = [0, 0]
-    jump_strength = -19
-    speed = 4.5
-    onground = False
-    using = False
-
-    def __init__(self, rct):
-        size = (140, 84)
-        self.rect = pygame.Rect(rct.left, rct.top, self.size[0], self.size[1])
-        self.sprite = pygame.image.load("captain.jpg").convert_alpha()
-        self.sprite = pygame.transform.scale(self.sprite, self.size)
-
-    def check_collision(self, block):
-        if self.rect.colliderect(block.rect):
-            block.collision(self)
-
-    def win(self):
-        self.status = 1
-
-    def kill(self):
-        self.status = -1
-
-    def won(self):
-        return self.status == 1
-
-    def killed(self):
-        return self.status == -1
-
-    def update(self, gravity, jump, left, right, use):
-
-        self.velocity[1] += gravity
-        if jump and self.onground:
-            self.velocity[1] += self.jump_strength
-            self.onground = False
-        if left:
-            self.velocity[0] = -self.speed
-        if right:
-            self.velocity[0] = self.speed
-        if not left and not right:
-            self.velocity[0] = 0
-        self.using = use
-        self.rect = self.rect.move(self.velocity[0], self.velocity[1])
-
-    def draw(self, surf):
-        #pygame.draw.rect(surf, self.color, self.rect)
-        screen.blit(self.sprite, (self.rect.left, self.rect.top));
-
-
 class World:
     player = None
     blocks = []
@@ -259,9 +205,6 @@ class World:
                     elif block == "P":
                         self.player = Player(pygame.Rect(pos[0], pos[1], block_width, block_height))
                         last = None
-                    elif block == "H":
-                        self.player = Humanoid(pygame.Rect(pos[0], pos[1], block_width, block_height))
-                        last = None
                     else:
                         last = None
 
@@ -292,24 +235,23 @@ level = [
     "L                                                     ",
     "                                                      ",
     "                                                      ",
-    "        _____                   ________              ",
-    "            _                          _              ",
-    "__          _               _          _              ",
-    "            _                          _              ",
-    "            _     _________            ________       ",
-    "            ______                            _       ",
-    "                                              _TTTTTTT",
-    "                           _____              ________",
     "                                                      ",
-    "____                                                  ",
-    "                                                 L    ",
-    "                                        _             ",
-    " P                         H                          ",
-    "                          _                          _",
-    "                     _                          _     ",
     "                                                      ",
-    "_____          _           _____          _           ",
-    "           ___                        ___             ",
+    "                                                      ",
+    "                                                      ",
+    "                                                      ",
+    "                                                      ",
+    "                                               TTTTTTT",
+    "                                               _______",
+    "P                                                     ",
+    "                                                      ",
+    "                                                      ",
+    "                                                      ",
+    "                                                      ",
+    "                                                      ",
+    "                                                      ",
+    "                                                      ",
+    "______________________________________________________",
     "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
     "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
 ]
@@ -317,7 +259,7 @@ block_size = (20, 25)
 
 window = pygame.display.set_mode((len(level[0])*block_size[0], len(level)*block_size[1]))
 screen = pygame.display.get_surface()
-pygame.display.set_caption("Planet of the Grizzlies")
+pygame.display.set_caption("pyrats")
 
 # Fill background
 background = pygame.Surface(screen.get_size())
