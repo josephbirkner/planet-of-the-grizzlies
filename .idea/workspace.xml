@@ -5,7 +5,6 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/pyrunner/pygame2/example2-level.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pyrunner" afterPath="$PROJECT_DIR$/pyrunner" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/planet_of_the_grizzlies/potg/planet.py" afterPath="$PROJECT_DIR$/planet_of_the_grizzlies/potg/planet.py" />
     </list>
     <ignored path="python mit dem raspberry pi skript.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,8 +28,8 @@
       <file leaf-file-name="planet.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/planet_of_the_grizzlies/potg/planet.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="470">
-              <caret line="39" column="111" selection-start-line="39" selection-start-column="111" selection-end-line="39" selection-end-column="111" />
+            <state relative-caret-position="283">
+              <caret line="28" column="30" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
               <folding>
                 <element signature="e#337#350#0" expanded="true" />
               </folding>
@@ -439,6 +438,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/planet_of_the_grizzlies/potg/planet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#337#350#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/planet_of_the_grizzlies/prototype/prototype.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -473,8 +482,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/planet_of_the_grizzlies/potg/planet.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="39" column="111" selection-start-line="39" selection-start-column="111" selection-end-line="39" selection-end-column="111" />
+        <state relative-caret-position="283">
+          <caret line="28" column="30" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
           <folding>
             <element signature="e#337#350#0" expanded="true" />
           </folding>
