@@ -1,4 +1,4 @@
-﻿      P L A N E T    O F    T H E   G R I Z Z L I E S
+﻿P L A N E T   O F   T H E   G R I Z Z L I E S
 
 Per-Level Settings: Planet, Human Camp, Space
 -> Different physical properties, combat demands
@@ -18,8 +18,6 @@ High frequency rewards:
 -> Styling/Upgrading with items
 -> Your character makes occasional victory dances
 -> You can consume honeypots to add temporary strength
-
-===========================================================
 
 a) Action
 Die Figuren kämpfen mit den Händen und den Füßen

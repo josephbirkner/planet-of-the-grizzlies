@@ -1,4 +1,4 @@
-#!/usr/local/bin/python3
+# !/usr/local/bin/python3
 
 import pygame
 import sys
@@ -219,15 +219,15 @@ def draw_centered(target, image):
     offy = target.get_height()/2 - image.get_height() / 2
     target.blit(image, (offx, offy))
 
-# ------------------------ Implementation ------------------------
+# Implementation
 
 pygame.init()
 
 level = [
     "______________________________________________________",
-    "L1                                                    ",
+    "L                                                     ",
     "                                                      ",
-    "                                   B0                 ",
+    "                                                      ",
     "        _____                   ________              ",
     "            _                          _              ",
     "__          _               _          _              ",
@@ -238,7 +238,7 @@ level = [
     "                           _____              ________",
     "                                                      ",
     "____                                                  ",
-    "                                                 L2   ",
+    "                                                 L    ",
     "                                        _             ",
     " P                                                    ",
     "                          _                          _",

@@ -1,4 +1,4 @@
-#!/usr/local/bin/python3
+# !/usr/local/bin/python3
 
 import pygame
 
@@ -28,9 +28,7 @@ def draw_board(surface, width, height, sel_col):
                 color = colors[2]
             pygame.draw.rect(surface, color, pygame.Rect(x+1, y+1, cell_width-1, cell_height-1))
             x += cell_width
-
         y += cell_height
-
     if sel_col >= 0:
         pygame.draw.rect(surface, colors[3], pygame.Rect(sel_col*cell_width, 0, cell_width, height), 1)
 
@@ -58,13 +56,15 @@ def game_ended():
     top_down = [0, 0]
     bottom_up = [0, board_height - 1]
     for i in range(0, board_height):
-        test_lines.append([]) # new top down diagonal, links entlang
+        # new top down diagonal, links entlang
+        test_lines.append([])
         j = 0
         while top_down[1] + j < board_height and top_down[0] + j < board_width:
             # y läuft entlang des boards, welches vertikal orientiert ist
             test_lines[-1].append((top_down[1] + j, top_down[0] + j))
             j += 1
-        test_lines.append([]) # new bottom up diagonal, links entlang
+        # new bottom up diagonal, links entlang
+        test_lines.append([])
         j = 0
         while bottom_up[1] - j >= 0 and bottom_up[0] + j < board_width:
             test_lines[-1].append((bottom_up[1] - j, bottom_up[0] + j))
@@ -76,12 +76,14 @@ def game_ended():
     for i in range(0, board_width-1):
         top_down[0] += 1
         bottom_up[0] += 1
-        test_lines.append([])  # new top down diagonal, oben entlang
+        # new top down diagonal, oben entlang
+        test_lines.append([])
         j = 0
         while top_down[1] + j < board_height and top_down[0] + j < board_width:
             test_lines[-1].append((top_down[1] + j, top_down[0] + j))
             j += 1
-        test_lines.append([])  # new bottom up diagonal, unten entlang
+        # new bottom up diagonal, unten entlang
+        test_lines.append([])
         j = 0
         while bottom_up[1] - j >= 0 and bottom_up[0] + j < board_width:
             test_lines[-1].append((bottom_up[1] - j, bottom_up[0] + j))

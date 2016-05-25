@@ -4,8 +4,7 @@ height = 6
 min_connected_for_win = 4
 players = [input("Player "+str(i+1)+", please enter your name: ") for i in range(2)]
 current_player = 0
-chips = ["X", "O"]
-
+    chips = ["X", "O"]
 
 def print_board():
     # die erste zeile
@@ -15,15 +14,15 @@ def print_board():
         # join fügt das zwischen den elementen ein
         print("|".join(line))
 
-
 # vier gewinnt
 def game_ended():
     result = False
 
     # this variable store all the chains of chips that we want to test
     # first, this includes all horizontal lines (a copy of the board)
-    test_lines = board[0:] # this creates a shallow copy of the board
-    # add columns, (swap x and y)
+    # this creates a shallow copy of the board
+    test_lines = board[0:]
+    # add columns, swap x and y
     for x in range(0, width):
         test_lines.append([])
         for y in range(0, height):
@@ -32,13 +31,15 @@ def game_ended():
     top_down = [0, 0]
     bottom_up = [0, height-1]
     for i in range(0, height):
-        test_lines.append([]) # new top down diagonal, links entlang
+        # new top down diagonal, links entlang
+        test_lines.append([])
         j = 0
         while top_down[1] + j < height and top_down[0] + j < width:
             # y läuft entlang des boards, welches vertikal orientiert ist
             test_lines[-1].append(board[top_down[1] + j][top_down[0] + j])
             j += 1
-        test_lines.append([]) # new bottom up diagonal, links entlang
+        # new bottom up diagonal, links entlang
+        test_lines.append([])
         j = 0
         while bottom_up[1] - j >= 0 and bottom_up[0] + j < width:
             test_lines[-1].append(board[bottom_up[1] - j][bottom_up[0] + j])
@@ -50,12 +51,14 @@ def game_ended():
     for i in range(0, width-1):
         top_down[0] += 1
         bottom_up[0] += 1
-        test_lines.append([])  # new top down diagonal, oben entlang
+        # new top down diagonal, oben entlang
+        test_lines.append([])
         j = 0
         while top_down[1] + j < height and top_down[0] + j < width:
             test_lines[-1].append(board[top_down[1] + j][top_down[0] + j])
             j += 1
-        test_lines.append([])  # new bottom up diagonal, unten entlang
+        # new bottom up diagonal, unten entlang
+        test_lines.append([])
         j = 0
         while bottom_up[1] - j >= 0 and bottom_up[0] + j < width:
             test_lines[-1].append(board[bottom_up[1] - j][bottom_up[0] + j])
