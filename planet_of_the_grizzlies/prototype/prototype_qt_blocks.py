@@ -138,9 +138,9 @@ class Lever(Block):
             player.jump_strength = -player.jump_strength
             self.world.gravity = -self.world.gravity
             if self.activated:
-                self.childItems()[-1].setPixmap(self.sprite_on)
+                self.setPixmap(self.sprite_on)
             else:
-                self.childItems()[-1].setPixmap(self.sprite_off)
+                self.setPixmap(self.sprite_off)
 
     def item_type(self):
         return "L"
