@@ -25,9 +25,11 @@ class World(QGraphicsScene):
     depth_vec = (0, 0)
     depth = 10
     root = None
+    update_timer_id = 0
 
     # signals
     signalPlayerPosChanged = pyqtSignal(QPointF)
+    signalPlayerStatusChanged = pyqtSignal(int)
 
     def __init__(self, level, block_width, block_height, depth_vec=[2, 1], depth=10):
         super().__init__()
@@ -86,7 +88,7 @@ class World(QGraphicsScene):
         self.setFocusItem(self.player)
 
         # begin updates
-        self.startTimer(20)
+        self.update_timer_id = self.startTimer(20)
 
     def timerEvent(self, e):
         self.player.update()
@@ -100,6 +102,9 @@ class World(QGraphicsScene):
             if (self.player.logic_pos[1], self.player.logic_pos[0]) > (block.logic_pos[1], block.logic_pos[0]):
                 self.player.setZValue(block.zValue()-.5)
                 break
+
+    def stop_updates(self):
+        self.killTimer(self.update_timer_id)
 
 
 class PlanetOfTheGrizzlies(QWidget):
@@ -132,6 +137,7 @@ class PlanetOfTheGrizzlies(QWidget):
     def set_world(self, world):
         self.world = world
         self.graphics.setScene(world)
+        self.world.signalPlayerStatusChanged.connect(self.onPlayerStatusChanged)
 
     def onPlayerPosChanged(self, pos: QPointF):
         view_center = self.graphics.rect().center()
@@ -140,7 +146,6 @@ class PlanetOfTheGrizzlies(QWidget):
         dCy = pos_in_view_coords.y() - view_center.y()
 
         scene_rect = self.world.root.childrenBoundingRect()
-        # print(self.world.root.pos())
         scroll_pos = world.root.mapFromScene(self.graphics.mapToScene(QPoint(0, 0)))
 
         if dCx < 0:
@@ -163,6 +168,16 @@ class PlanetOfTheGrizzlies(QWidget):
 
         if abs(dCx) > 0 or abs(dCy) > 0:
             world.root.moveBy(-dCx, -dCy)
+
+    def onPlayerStatusChanged(self, status):
+        self.world.stop_updates()
+        banner = None
+        if status == 1:
+            banner = self.world.addPixmap(QPixmap("win.png"))
+        elif status == -1:
+            banner = self.world.addPixmap(QPixmap("dead.png"))
+        banner.setPos(self.graphics.viewport().width()/2-banner.pixmap().width()/2, self.graphics.viewport().height()/2-banner.pixmap().height()/2)
+        pass
 
 
 level = [
