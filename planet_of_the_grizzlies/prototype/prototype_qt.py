@@ -5,8 +5,6 @@ import sys
 import math
 import os
 
-from PyQt5.QtGui import QOpenGLFramebufferObjectFormat
-
 sys.path.append(os.path.abspath(os.curdir))
 
 from prototype_qt_blocks import *
@@ -14,6 +12,7 @@ from prototype_qt_blocks import *
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
+
 
 
 class World(QGraphicsScene):

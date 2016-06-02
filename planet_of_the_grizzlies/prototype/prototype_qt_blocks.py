@@ -146,7 +146,7 @@ class Lever(Block):
         return "L"
 
 
-class Player(QGraphicsPixmapItem):
+class Entity(QGraphicsPixmapItem):
 
     size = (140, 84)
     logic_pos = [0, 0, 0]
@@ -169,9 +169,13 @@ class Player(QGraphicsPixmapItem):
     def logic_rect(self):
         return QRectF(self.logic_pos[0] + 5, self.logic_pos[1] + 5, self.size[0] - 5, self.size[1] - 20)
 
-    def check_collision(self, block):
-        if self.logic_rect().intersects(block.logic_rect):
-            block.collision(self)
+    def check_collision(self, object):
+        if isinstance(object, Block):
+            if self.logic_rect().intersects(object.logic_rect):
+                object.collision(self)
+        elif isinstance(object, Entity):
+            if self.logic_rect().intersects(object.logic_rect()):
+                object.collision(self)
         self.update_screen_pos()
 
     def win(self):
@@ -205,6 +209,15 @@ class Player(QGraphicsPixmapItem):
         screen_pos[1] += self.logic_pos[2] * self.world.depth_vec[1]
         self.setPos(screen_pos[0], screen_pos[1])
 
+    def collision(self, colliding_entity):
+        pass
+
+    def entity_type(self):
+        return "Ent"
+
+
+class Player(Entity):
+
     def keyPressEvent(self, e: QKeyEvent):
         if e.key() == Qt.Key_Space and self.on_ground:
             self.velocity[1] += self.jump_strength
@@ -218,7 +231,7 @@ class Player(QGraphicsPixmapItem):
         elif e.key() == Qt.Key_Down:
             self.velocity[2] = self.speed
         elif e.key() == Qt.Key_E:
-             self.using = True
+            self.using = True
 
     def keyReleaseEvent(self, e: QKeyEvent):
         if e.key() == Qt.Key_Left and self.velocity[0] < 0:
@@ -232,3 +245,15 @@ class Player(QGraphicsPixmapItem):
         elif e.key() == Qt.Key_E:
             self.using = False
 
+    def entity_type(self):
+        return "P"
+
+
+class Enemy(Entity):
+
+    def collision(self, colliding_entity):
+        if colliding_entity.entity_type() == "P":
+            colliding_entity.kill()
+
+    def entity_type(self):
+        return "E"
