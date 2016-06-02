@@ -63,34 +63,34 @@ class Block(QGraphicsPixmapItem):
     def item_type(self):
         return "_"
 
-    def collision(self, player):
+    def collision(self, ent):
         diff = (
-            (self.logic_rect.top() - player.logic_rect().bottom()),
-            (self.logic_rect.bottom() - player.logic_rect().top()),
-            (self.logic_rect.left() - player.logic_rect().right()),
-            (self.logic_rect.right() - player.logic_rect().left())
+            (self.logic_rect.top() - ent.logic_rect.bottom()),
+            (self.logic_rect.bottom() - ent.logic_rect.top()),
+            (self.logic_rect.left() - ent.logic_rect.right()),
+            (self.logic_rect.right() - ent.logic_rect.left())
         )
 
-        if player.velocity[1] > 0 and player.velocity[1]+diff[0] >= -0.01:
+        if ent.velocity[1] > 0 and ent.velocity[1]+diff[0] >= -0.01:
             if self.world.gravity > 0:
-                player.on_ground = True
-            player.logic_pos[1] += diff[0]
-            player.velocity[1] = 0
-        elif player.velocity[1] < 0 and player.velocity[1]+diff[1] <= 0.01:
+                ent.on_ground = True
+            ent.logic_pos[1] += diff[0]
+            ent.velocity[1] = 0
+        elif ent.velocity[1] < 0 and ent.velocity[1]+diff[1] <= 0.01:
             if self.world.gravity < 0:
-                player.on_ground = True
-            player.logic_pos[1] += diff[1]
-            player.velocity[1] = 0
+                ent.on_ground = True
+            ent.logic_pos[1] += diff[1]
+            ent.velocity[1] = 0
 
         # if the player isn't colliding anymore, skip the horizontal check
-        if not player.logic_rect().intersects(self.logic_rect):
+        if not ent.logic_rect.intersects(self.logic_rect):
             return
-        if player.velocity[0] > 0 and player.velocity[0]+diff[2] >= -0.01:
-            player.logic_pos[0] += diff[2]
-            player.velocity[0] = 0
-        elif player.velocity[0] < 0 and player.velocity[0]+diff[3] <= 0.01:
-            player.logic_pos[0] += diff[3]
-            player.velocity[0] = 0
+        if ent.velocity[0] > 0 and ent.velocity[0]+diff[2] >= -0.01:
+            ent.logic_pos[0] += diff[2]
+            ent.velocity[0] = 0
+        elif ent.velocity[0] < 0 and ent.velocity[0]+diff[3] <= 0.01:
+            ent.logic_pos[0] += diff[3]
+            ent.velocity[0] = 0
 
 
 class Water(Block):
@@ -98,8 +98,9 @@ class Water(Block):
     def __init__(self, pos, world):
         super().__init__(pos, world, QPixmap("water_wide.png"))
 
-    def collision(self, player):
-        player.kill()
+    def collision(self, ent):
+        if ent.entity_type() == "P":
+            ent.kill()
 
     def item_type(self):
         return "W"
@@ -110,8 +111,9 @@ class TargetBlock(Block):
     def __init__(self, pos, world):
         super().__init__(pos, world, QPixmap("target_wide.png"))
 
-    def collision(self, player):
-        player.win()
+    def collision(self, ent):
+        if ent.entity_type() == "P":
+            ent.win()
 
     def item_type(self):
         return "T"
@@ -131,11 +133,11 @@ class Lever(Block):
         self.logic_rect.setWidth(self.size[0])
         self.logic_rect.setWidth(self.size[1])
 
-    def collision(self, player):
-        if player.using:
-            player.using = False
+    def collision(self, ent):
+        if ent.using:
+            ent.using = False
             self.activated = not self.activated
-            player.jump_strength = -player.jump_strength
+            ent.jump_strength = -ent.jump_strength
             self.world.gravity = -self.world.gravity
             if self.activated:
                 self.setPixmap(self.sprite_on)
@@ -148,7 +150,7 @@ class Lever(Block):
 
 class Entity(QGraphicsPixmapItem):
 
-    size = (140, 84)
+    size = (0, 0)
     logic_pos = [0, 0, 0]
     sprite = None
     status = 0
@@ -158,24 +160,19 @@ class Entity(QGraphicsPixmapItem):
     on_ground = False
     using = False
     world = None
+    logic_rect = None
 
-    def __init__(self, pos, world):
-        super().__init__(QPixmap("grizzlie.png").scaled(self.size[0], self.size[1]), world.root)
+    def __init__(self, pos, world, filename):
+        super().__init__(QPixmap(filename).scaled(self.size[0], self.size[1]), world.root)
         self.world = world
         self.logic_pos = [pos[0], pos[1], 0]
+        self.velocity = [0, 0, 0]
         self.update_screen_pos()
         self.setFlag(QGraphicsItem.ItemIsFocusable)
 
-    def logic_rect(self):
-        return QRectF(self.logic_pos[0] + 5, self.logic_pos[1] + 5, self.size[0] - 5, self.size[1] - 20)
-
     def check_collision(self, object):
-        if isinstance(object, Block):
-            if self.logic_rect().intersects(object.logic_rect):
-                object.collision(self)
-        elif isinstance(object, Entity):
-            if self.logic_rect().intersects(object.logic_rect()):
-                object.collision(self)
+        if self.logic_rect.intersects(object.logic_rect):
+            object.collision(self)
         self.update_screen_pos()
 
     def win(self):
@@ -208,6 +205,7 @@ class Entity(QGraphicsPixmapItem):
         screen_pos[0] += self.logic_pos[2] * self.world.depth_vec[0]
         screen_pos[1] += self.logic_pos[2] * self.world.depth_vec[1]
         self.setPos(screen_pos[0], screen_pos[1])
+        self.logic_rect = QRectF(self.logic_pos[0] + 5, self.logic_pos[1] + 5, self.size[0] - 5, self.size[1] - 20)
 
     def collision(self, colliding_entity):
         pass
@@ -217,6 +215,11 @@ class Entity(QGraphicsPixmapItem):
 
 
 class Player(Entity):
+
+    size = (140, 84)
+
+    def __init__(self, pos, world):
+        super().__init__(pos, world, "grizzlie.png")
 
     def keyPressEvent(self, e: QKeyEvent):
         if e.key() == Qt.Key_Space and self.on_ground:
@@ -250,6 +253,11 @@ class Player(Entity):
 
 
 class Enemy(Entity):
+
+    size = (139/1.5, 177/1.5)
+
+    def __init__(self, pos, world):
+        super().__init__(pos, world, "stripper.png")
 
     def collision(self, colliding_entity):
         if colliding_entity.entity_type() == "P":

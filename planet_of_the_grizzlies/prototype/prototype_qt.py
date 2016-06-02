@@ -18,6 +18,7 @@ from PyQt5.QtGui import *
 class World(QGraphicsScene):
 
     blocks = []
+    entities = []
     block_size = (0, 0)
     player = None
     gravity = .8
@@ -73,6 +74,9 @@ class World(QGraphicsScene):
                     elif block == "P":
                         self.player = Player((pos[0], pos[1]), self)
                         last = None
+                    elif block == "E":
+                        self.entities.append(Enemy((pos[0], pos[1]), self))
+                        last = None
                     else:
                         last = None
 
@@ -90,17 +94,30 @@ class World(QGraphicsScene):
         self.update_timer_id = self.startTimer(20)
 
     def timerEvent(self, e):
+        # update all entities
+        for ent in self.entities:
+            ent.update()
         self.player.update()
+
+        # check collision between player and entities
+        for ent in self.entities:
+            self.player.check_collision(ent)
+
+        # check collision between entities and blocks
         for block in self.blocks:
             self.player.check_collision(block)
-        self.update_player_z_order()
+            for ent in self.entities:
+                ent.check_collision(block)
+
+        self.update_entity_zorder()
         self.signalPlayerPosChanged.emit(self.player.pos())
 
-    def update_player_z_order(self):
-        for block in self.blocks:
-            if (self.player.logic_pos[1], self.player.logic_pos[0]) > (block.logic_pos[1], block.logic_pos[0]):
-                self.player.setZValue(block.zValue()-.5)
-                break
+    def update_entity_zorder(self):
+        for ent in self.entities+[self.player]:
+            for block in self.blocks:
+                if (ent.logic_pos[1], ent.logic_pos[0]) > (block.logic_pos[1], block.logic_pos[0]):
+                    ent.setZValue(block.zValue()-.5)
+                    break
 
     def stop_updates(self):
         self.killTimer(self.update_timer_id)
@@ -180,9 +197,9 @@ class PlanetOfTheGrizzlies(QWidget):
 
 
 level = [
-    "____                                                  ",
+    "____     ____                                         ",
     "L                                                     ",
-    "                                                      ",
+    "            E                                         ",
     "                                                      ",
     "        _____                   ________              ",
     "            _                          _              ",
@@ -196,7 +213,7 @@ level = [
     "____                                                  ",
     "                                                 L    ",
     "                                        _             ",
-    " P                                                    ",
+    " P                        E                           ",
     "                          _                          _",
     "                     _                          _     ",
     "                                                      ",
