@@ -238,6 +238,6 @@ view = PlanetOfTheGrizzlies()
 view.set_world(world)
 world.signalPlayerPosChanged.connect(view.onPlayerPosChanged)
 
-QTimer.singleShot(1000, view.showFullScreen)
+QTimer.singleShot(200, view.showFullScreen)
 
 sys.exit(app.exec_())
