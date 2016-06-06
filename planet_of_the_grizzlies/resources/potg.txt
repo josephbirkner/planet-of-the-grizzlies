@@ -1,0 +1,42 @@
+﻿P L A N E T   O F   T H E   G R I Z Z L I E S
+
+Per-Level Settings: Planet, Human Camp, Space
+-> Different physical properties, combat demands
+   - Gravity (No gravity in space)
+   - Stealth
+   - Interaction (Intensity of RPG Elements)
+   - Combat styles (Hand-to-hand, Long range)
+
+Cooperative Motivation:
+-> Combat
+-> Character specialization (Wise, Angry, Smart)
+   - Translates to physical properties (Health, Stealth, Stamina, Strength)
+-> Puzzle Solving
+
+High frequency rewards:
+-> Enemies react satisfyingly to your success (swear at you etc.)
+-> Styling/Upgrading with items
+-> Your character makes occasional victory dances
+-> You can consume honeypots to add temporary strength
+
+a) Action
+Die Figuren kämpfen mit den Händen und den Füßen
+Diesbezüglich existieren Kombinationen
+Möglich ist das Abfeuern einer Waffe
+Die Spieler können miteinander und gegebenfalls gegeneinander kämpfen
+Die Intelligenz zeigt sich im Schlagabtausch
+Es existieren entweder zwei oder drei Dimensionen
+
+b) Rollenspiel
+Der Spieler bewegt sich frei nach vorne und nach hinten
+Die Gegner lassen Rüstungen und Waffen fallen
+Diese sind in einem Inventar einsichtbar
+Die Entwicklung von Skills schreitet voran
+
+c) Adventure
+Auf einem Planeten unbekannter Zeit weilen die Grizzlies
+Deren Frieden wird von einer unteren Rasse bedroht, den Humanoiden
+Welche im Gegensatz zu den Grizzlies keine Sprache entwickelt haben
+Die Betätigung eines versteckten Schalters öffnet eine Tür
+Eine zu lösende Abfolge von Aktionen lässt eine Truhe sich öffnen
+Öffnung einer Tür, während der andere Spieler einen Hebel betätigt
