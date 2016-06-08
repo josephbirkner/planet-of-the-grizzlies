@@ -3,6 +3,7 @@ import math
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
+from box import *
 
 
 class Block(QGraphicsPixmapItem):
@@ -13,7 +14,7 @@ class Block(QGraphicsPixmapItem):
     sprite_height = 0
     logic_pos = (0, 0)
     rect = QRectF()
-    logic_rect = QRect()
+    box = Box()
     world = None
     sprite = None
     brush = None
@@ -51,7 +52,7 @@ class Block(QGraphicsPixmapItem):
     def notify_blocks_changed(self):
         self.rect = QRectF(0, 0, (self.width_blocks-1)*self.world.block_size[0], (self.height_blocks-1)*self.world.block_size[1])
         self.rect.adjust(0, 0, self.sprite_width, self.sprite_height)
-        self.logic_rect = QRectF(self.logic_pos[0], self.logic_pos[1], self.width_blocks * self.world.block_size[0], self.height_blocks * self.world.block_size[1])
+        self.box = Box(self.logic_pos, [self.width_blocks * self.world.block_size[0], self.height_blocks * self.world.block_size[1], self.world.depth])
         # self.setRect(self.rect)
 
         # update tiles
@@ -65,10 +66,10 @@ class Block(QGraphicsPixmapItem):
 
     def collision(self, ent):
         diff = (
-            (self.logic_rect.top() - ent.logic_rect.bottom()),
-            (self.logic_rect.bottom() - ent.logic_rect.top()),
-            (self.logic_rect.left() - ent.logic_rect.right()),
-            (self.logic_rect.right() - ent.logic_rect.left())
+            (self.box.top() - ent.box.bottom()),
+            (self.box.bottom() - ent.box.top()),
+            (self.box.left() - ent.box.right()),
+            (self.box.right() - ent.box.left())
         )
 
         if ent.velocity[1] > 0 and ent.velocity[1]+diff[0] >= -0.01:
@@ -83,7 +84,7 @@ class Block(QGraphicsPixmapItem):
             ent.velocity[1] = 0
 
         # if the player isn't colliding anymore, skip the horizontal check
-        if not ent.logic_rect.intersects(self.logic_rect):
+        if not ent.box.intersects(self.box):
             return
         if ent.velocity[0] > 0 and ent.velocity[0]+diff[2] >= -0.01:
             ent.logic_pos[0] += diff[2]
@@ -130,8 +131,8 @@ class Lever(Block):
         self.sprite_off = QPixmap("lever.png").scaled(self.size[0], self.size[1])
         self.sprite_on = QPixmap("lever2.png").scaled(self.size[0], self.size[1])
         super().__init__(pos, world, self.sprite_off)
-        self.logic_rect.setWidth(self.size[0])
-        self.logic_rect.setWidth(self.size[1])
+        self.box.setWidth(self.size[0])
+        self.box.setHeight(self.size[1])
 
     def collision(self, ent):
         if ent.using:
@@ -150,7 +151,7 @@ class Lever(Block):
 
 class Entity(QGraphicsPixmapItem):
 
-    size = (0, 0)
+    size = [0, 0, 0]
     logic_pos = [0, 0, 0]
     sprite = None
     status = 0
@@ -160,7 +161,7 @@ class Entity(QGraphicsPixmapItem):
     on_ground = False
     using = False
     world = None
-    logic_rect = None
+    box = None
 
     def __init__(self, pos, world, filename):
         super().__init__(QPixmap(filename).scaled(self.size[0], self.size[1]), world.root)
@@ -171,7 +172,7 @@ class Entity(QGraphicsPixmapItem):
         self.setFlag(QGraphicsItem.ItemIsFocusable)
 
     def check_collision(self, object):
-        if self.logic_rect.intersects(object.logic_rect):
+        if self.box.intersects(object.box):
             object.collision(self)
         self.update_screen_pos()
 
@@ -194,18 +195,18 @@ class Entity(QGraphicsPixmapItem):
         self.logic_pos[0] += self.velocity[0]
         self.logic_pos[1] += self.velocity[1]
         self.logic_pos[2] += self.velocity[2]
-        if self.logic_pos[2] > self.world.block_size[0] * self.world.depth:
-            self.logic_pos[2] = self.world.block_size[0] * self.world.depth
+        if self.logic_pos[2] > self.world.depth - self.box.depth():
+            self.logic_pos[2] = self.world.depth - self.box.depth()
         elif self.logic_pos[2] < 0:
             self.logic_pos[2] = 0
         self.update_screen_pos()
 
     def update_screen_pos(self):
         screen_pos = self.logic_pos[0:]
-        screen_pos[0] += self.logic_pos[2] * self.world.depth_vec[0]
-        screen_pos[1] += self.logic_pos[2] * self.world.depth_vec[1]
+        screen_pos[0] += self.logic_pos[2]/self.world.depth * self.world.depth_vec[0]
+        screen_pos[1] += self.logic_pos[2]/self.world.depth * self.world.depth_vec[1]
         self.setPos(screen_pos[0], screen_pos[1])
-        self.logic_rect = QRectF(self.logic_pos[0] + 5, self.logic_pos[1] + 5, self.size[0] - 5, self.size[1] - 20)
+        self.box = Box(self.logic_pos, self.size)
 
     def collision(self, colliding_entity):
         pass
@@ -216,7 +217,7 @@ class Entity(QGraphicsPixmapItem):
 
 class Player(Entity):
 
-    size = (140, 84)
+    size = [140, 84, 10]
 
     def __init__(self, pos, world):
         super().__init__(pos, world, "grizzlie.png")
@@ -254,7 +255,7 @@ class Player(Entity):
 
 class Enemy(Entity):
 
-    size = (139/1.5, 177/1.5)
+    size = [139/1.5, 177/1.5, 10]
 
     def __init__(self, pos, world):
         super().__init__(pos, world, "stripper.png")

@@ -23,7 +23,7 @@ class World(QGraphicsScene):
     player = None
     gravity = .8
     depth_vec = (0, 0)
-    depth = 10
+    depth = 0
     root = None
     update_timer_id = 0
 
@@ -31,24 +31,20 @@ class World(QGraphicsScene):
     signalPlayerPosChanged = pyqtSignal(QPointF)
     signalPlayerStatusChanged = pyqtSignal(int)
 
-    def __init__(self, level, block_width, block_height, depth_vec=[2, 1], depth=10):
+    def __init__(self, level, block_width, block_height, depth_vec=[122, 72], depth=10):
         super().__init__()
 
         # normalize depth vector
-        depth_len = math.sqrt(depth_vec[0]*depth_vec[0] + depth_vec[1]*depth_vec[1]) # *float(block_width)
-        depth_vec[0] /= depth_len
-        depth_vec[1] /= depth_len
+        self.depth = math.sqrt(depth_vec[0]*depth_vec[0] + depth_vec[1]*depth_vec[1]) # *float(block_width)
+        self.depth_vec = depth_vec
+        self.block_size = (block_width, block_height)
 
         self.root = QGraphicsRectItem()
         self.root.setPen(QPen(Qt.NoPen))
         self.root.setPos(0, 0)
         self.addItem(self.root)
 
-        self.depth_vec = depth_vec
-        self.depth = depth
-        self.block_size = (block_width, block_height)
-
-        pos = [0, 0]
+        pos = [0, 0, 0]
         self.width = len(level[0])
         self.height = len(level)
         for line in level:
@@ -60,22 +56,22 @@ class World(QGraphicsScene):
                     last.notify_blocks_changed()
                 else:
                     if block == "_":
-                        self.blocks.append(Block((pos[0], pos[1]), self))
+                        self.blocks.append(Block(pos[0:], self))
                         last = self.blocks[-1]
                     elif block == "T":
-                        self.blocks.append(TargetBlock((pos[0], pos[1]), self))
+                        self.blocks.append(TargetBlock(pos[0:], self))
                         last = self.blocks[-1]
                     elif block == "W":
-                        self.blocks.append(Water((pos[0], pos[1]), self))
+                        self.blocks.append(Water(pos[0:], self))
                         last = self.blocks[-1]
                     elif block == "L":
-                        self.blocks.append(Lever((pos[0], pos[1]), self))
+                        self.blocks.append(Lever(pos[0:], self))
                         last = self.blocks[-1]
                     elif block == "P":
-                        self.player = Player((pos[0], pos[1]), self)
+                        self.player = Player(pos[0:], self)
                         last = None
                     elif block == "E":
-                        self.entities.append(Enemy((pos[0], pos[1]), self))
+                        self.entities.append(Enemy(pos[0:], self))
                         last = None
                     else:
                         last = None
