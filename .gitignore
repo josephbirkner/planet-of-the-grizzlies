@@ -3,3 +3,5 @@ planet_of_the_grizzlies/prototype/.idea/
 planet_of_the_grizzlies/prototype/__pycache__/
 planet_of_the_grizzlies/potg/__pycache__/
 planet_of_the_grizzlies/potg/.idea/
+*/.idea/
+*/__pycache__/
