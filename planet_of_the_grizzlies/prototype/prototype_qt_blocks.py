@@ -162,6 +162,7 @@ class Entity(QGraphicsPixmapItem):
     using = False
     world = None
     box = None
+    platform = None
 
     def __init__(self, pos, world, filename):
         super().__init__(QPixmap(filename).scaled(self.size[0], self.size[1]), world.root)
@@ -199,6 +200,8 @@ class Entity(QGraphicsPixmapItem):
             self.logic_pos[2] = self.world.depth - self.box.depth()
         elif self.logic_pos[2] < 0:
             self.logic_pos[2] = 0
+        if self.platform is None or not self.platform.box.intersectsVerticalRay(self.logic_pos[0], self.logic_pos[2]):
+            self.update_platform()
         self.update_screen_pos()
 
     def update_screen_pos(self):
@@ -207,6 +210,16 @@ class Entity(QGraphicsPixmapItem):
         screen_pos[1] += self.logic_pos[2]/self.world.depth * self.world.depth_vec[1]
         self.setPos(screen_pos[0], screen_pos[1])
         self.box = Box(self.logic_pos, self.size)
+
+    def update_platform(self):
+        best_delta_y = -1
+        best_platform = None
+        for platform in self.world.blocks:
+            if platform.box.intersectsVerticalRay(self.logic_pos[0], self.logic_pos[2]):
+                delta_y = platform.box.top() - self.logic_pos[1]
+                if delta_y > 0 and (delta_y < best_delta_y or best_delta_y == -1):
+                    best_delta_y = delta_y
+                    best_platform = platform
 
     def collision(self, colliding_entity):
         pass
