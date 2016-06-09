@@ -191,6 +191,12 @@ class PlanetOfTheGrizzlies(QWidget):
         banner.setPos(self.graphics.viewport().width()/2-banner.pixmap().width()/2, self.graphics.viewport().height()/2-banner.pixmap().height()/2)
         pass
 
+    def eventFilter(self, obj, e):
+        if e.type() == QEvent.KeyPress and e.key() == Qt.Key_Escape:
+            self.close()
+            self.deleteLater()
+        return QObject.eventFilter(self, obj, e)
+
 
 level = [
     "____     ____                                         ",
@@ -233,6 +239,7 @@ world = World(level, block_size[0], block_size[1])
 view = PlanetOfTheGrizzlies()
 view.set_world(world)
 world.signalPlayerPosChanged.connect(view.onPlayerPosChanged)
+app.installEventFilter(view)
 
 QTimer.singleShot(200, view.showFullScreen)
 
