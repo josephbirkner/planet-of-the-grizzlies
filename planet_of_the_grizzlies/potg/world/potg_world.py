@@ -71,6 +71,9 @@ class World(QGraphicsScene):
                     elif block == "F":
                         self.entities.append(PatrollingEnemy(pos[0:], self, 0))
                         last = None
+                    elif block == "H":
+                        self.entities.append(PatrollingEnemy(pos[0:], self, 2))
+                        last = None
                     else:
                         last = None
 

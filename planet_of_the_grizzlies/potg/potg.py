@@ -100,7 +100,7 @@ class PlanetOfTheGrizzlies(QWidget):
 
 app = QApplication(sys.argv)
 
-world = World("test")
+world = World("grizzlycity")
 view = PlanetOfTheGrizzlies()
 view.set_world(world)
 world.signalPlayerPosChanged.connect(view.onPlayerPosChanged)

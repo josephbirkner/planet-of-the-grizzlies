@@ -5,7 +5,7 @@ from potg_functions import sgn
 
 class Enemy(Entity):
 
-    size = [139/1.5, 177/1.5, 10]
+    size = [139/2.5, 177/2.5, 10]
 
     def __init__(self, pos, world, image):
         super().__init__(pos, world, image)
@@ -20,7 +20,7 @@ class Enemy(Entity):
 
 class PatrollingEnemy(Enemy):
 
-    speed = 1
+    speed = 6
     direction = 0
 
     def __init__(self, pos, world, direction):
