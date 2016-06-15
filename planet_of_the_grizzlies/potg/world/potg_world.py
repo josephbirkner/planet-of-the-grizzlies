@@ -42,7 +42,7 @@ class World(QGraphicsScene):
         pos = [0, 0, 0]
         self.width = len(level[0])
         self.height = len(level)
-        for line in level:
+        for line in open("levels/"+level+".txt"):
             pos[0] = 0
             last = None
             for block in line:
