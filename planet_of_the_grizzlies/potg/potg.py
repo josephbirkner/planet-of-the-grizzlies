@@ -5,11 +5,13 @@ import sys
 import os
 
 sys.path.append(os.path.abspath(os.curdir+"/network/"))
-sys.path.append(os.path.abspath(os.curdir+"/ui/"))
+sys.path.append(os.path.abspath(os.curdir+"/views/"))
 sys.path.append(os.path.abspath(os.curdir+"/util/"))
 sys.path.append(os.path.abspath(os.curdir+"/world/"))
+sys.path.append(os.path.abspath(os.curdir+"/controllers/"))
 
 from potg_world import *
+from potg_main_controller import *
 
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
@@ -36,6 +38,9 @@ class PlanetOfTheGrizzlies(QWidget):
         layout = QGridLayout()
         layout.setContentsMargins(0,0,0,0)
         layout.addWidget(self.graphics, 0, 0)
+
+        self.main_menu = MainMenu(self.graphics)
+        self.main_menu.signalExit.connect(self.deleteLater)
 
         self.setLayout(layout)
         self.setGeometry(300, 300, 1024, 768)
@@ -93,40 +98,6 @@ class PlanetOfTheGrizzlies(QWidget):
             self.deleteLater()
         return QObject.eventFilter(self, obj, e)
 
-
-level = [
-    "____     ____                                         ",
-    "L                                                     ",
-    "            E                                         ",
-    "                                                      ",
-    "        _____                   ________              ",
-    "            _                          _              ",
-    "__          _               _          _              ",
-    "            _                          _              ",
-    "            _     _________            ________       ",
-    "            ______                            _       ",
-    "                                              _TTTTTTT",
-    "                           _____              ________",
-    "                                                      ",
-    "____                                                  ",
-    "                                                 L    ",
-    "                                        _             ",
-    " P                        E                           ",
-    "                          _                          _",
-    "                     _                          _     ",
-    "                                                      ",
-    "_____          _           _____          _           ",
-    "           ___                        ___             ",
-    "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
-    "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
-]
-
-# level = [
-#     "___",
-#     "   ",
-#     " P "
-# ]
-
 block_size = (41, 40)
 
 app = QApplication(sys.argv)
@@ -137,6 +108,6 @@ view.set_world(world)
 world.signalPlayerPosChanged.connect(view.onPlayerPosChanged)
 app.installEventFilter(view)
 
-QTimer.singleShot(200, view.showFullScreen)
+#QTimer.singleShot(200, view.showFullScreen)
 
 sys.exit(app.exec_())
