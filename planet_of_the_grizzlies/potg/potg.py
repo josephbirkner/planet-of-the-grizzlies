@@ -98,8 +98,6 @@ class PlanetOfTheGrizzlies(QWidget):
             self.deleteLater()
         return QObject.eventFilter(self, obj, e)
 
-block_size = (41, 40)
-
 app = QApplication(sys.argv)
 
 world = World(level, block_size[0], block_size[1])

@@ -14,25 +14,25 @@ class World(QGraphicsScene):
 
     blocks = []
     entities = []
-    block_size = (0, 0)
     player = None
     gravity = .8
     depth_vec = (0, 0)
     depth = 0
     root = None
     update_timer_id = 0
+    block_size = (41, 40)
 
     # signals
     signalPlayerPosChanged = pyqtSignal(QPointF)
     signalPlayerStatusChanged = pyqtSignal(int)
 
-    def __init__(self, level, block_width, block_height, depth_vec=[122, 72], depth=10):
+    def __init__(self, level, depth_vec=[122, 72], depth=10):
         super().__init__()
 
         # normalize depth vector
-        self.depth = math.sqrt(depth_vec[0]*depth_vec[0] + depth_vec[1]*depth_vec[1]) # *float(block_width)
+        self.depth = math.sqrt(depth_vec[0]*depth_vec[0] + depth_vec[1]*depth_vec[1]) # *float(self.block_size[0)
         self.depth_vec = depth_vec
-        self.block_size = (block_width, block_height)
+        self.block_size = (self.block_size[0], self.block_size[1])
 
         self.root = QGraphicsRectItem()
         self.root.setPen(QPen(Qt.NoPen))
@@ -71,8 +71,8 @@ class World(QGraphicsScene):
                     else:
                         last = None
 
-                pos[0] += block_width
-            pos[1] += block_height
+                pos[0] += self.block_size[0]
+            pos[1] += self.block_size[1]
 
         # sort block by distance from camera
         self.blocks.sort(key=lambda block: (block.logic_pos[1], block.logic_pos[0]), reverse=True)
