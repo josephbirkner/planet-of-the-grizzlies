@@ -6,14 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>170</width>
-    <height>98</height>
+    <width>897</width>
+    <height>586</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
+  <layout class="QHBoxLayout" name="horizontalLayout">
+   <item>
+    <widget class="QProgressBar" name="progressBar">
+     <property name="value">
+      <number>24</number>
+     </property>
+    </widget>
+   </item>
    <item>
     <widget class="QPushButton" name="playButton">
      <property name="text">
@@ -25,6 +32,13 @@
     <widget class="QPushButton" name="exitButton">
      <property name="text">
       <string>Exit</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QProgressBar" name="progressBar2">
+     <property name="value">
+      <number>24</number>
      </property>
     </widget>
    </item>
