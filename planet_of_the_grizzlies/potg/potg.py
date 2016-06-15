@@ -98,40 +98,6 @@ class PlanetOfTheGrizzlies(QWidget):
             self.deleteLater()
         return QObject.eventFilter(self, obj, e)
 
-
-level = [
-    "____     ____                                         ",
-    "L                                                     ",
-    "            E                                         ",
-    "                                                      ",
-    "        _____                   ________              ",
-    "            _                          _              ",
-    "__          _               _          _              ",
-    "            _                          _              ",
-    "            _     _________            ________       ",
-    "            ______                            _       ",
-    "                                              _TTTTTTT",
-    "                           _____              ________",
-    "                                                      ",
-    "____                                                  ",
-    "                                                 L    ",
-    "                                        _             ",
-    " P                        E                           ",
-    "                          _                          _",
-    "                     _                          _     ",
-    "                                                      ",
-    "_____          _           _____          _           ",
-    "           ___                        ___             ",
-    "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
-    "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
-]
-
-# level = [
-#     "___",
-#     "   ",
-#     " P "
-# ]
-
 block_size = (41, 40)
 
 app = QApplication(sys.argv)
