@@ -102,7 +102,7 @@ block_size = (41, 40)
 
 app = QApplication(sys.argv)
 
-world = World(level, block_size[0], block_size[1])
+world = World("grizzlycity", block_size[0], block_size[1])
 view = PlanetOfTheGrizzlies()
 view.set_world(world)
 world.signalPlayerPosChanged.connect(view.onPlayerPosChanged)
