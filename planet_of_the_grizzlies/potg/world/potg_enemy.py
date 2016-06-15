@@ -18,9 +18,9 @@ class Enemy(Entity):
         return "E"
 
 
-class PatrollingEnemy(Entity):
+class PatrollingEnemy(Enemy):
 
-    speed = 8
+    speed = 1
     direction = 0
 
     def __init__(self, pos, world, direction):
@@ -29,13 +29,19 @@ class PatrollingEnemy(Entity):
         self.velocity[direction] = self.speed
 
     def update(self):
-        platform_box = self.platform.box
-        distances = []
-        for axis in range(0,3):
-            distances.append([self.box.position[axis]-platform_box.position[axis], platform_box.position[axis]+platform_box.size[axis]-self.box.position[axis]-self.box.size[axis]])
-        if distances[self.direction][1-sgn(self.velocity[self.direction])]<abs(self.velocity[self.direction]):
-            self.velocity[self.direction] *= -1
-        super(PatrollingEnemy,self).update()
+        if self.platform:
+            self_pos = self.box.position[self.direction]
+            platform_pos = self.platform.box.position[self.direction]
+
+            distances = [
+                self_pos - platform_pos,
+                platform_pos + self.platform.box.size[self.direction] - self_pos - self.box.size[self.direction]
+            ]
+
+            if distances[1-sgn(self.velocity[self.direction])] < abs(self.velocity[self.direction]):
+                self.velocity[self.direction] *= -1
+
+        super().update()
 
     def entity_type(self):
         return "F"

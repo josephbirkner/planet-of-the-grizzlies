@@ -76,6 +76,7 @@ class Entity(QGraphicsPixmapItem):
                 if delta_y > 0 and (delta_y < best_delta_y or best_delta_y == -1):
                     best_delta_y = delta_y
                     best_platform = platform
+        self.platform = best_platform
 
     def collision(self, colliding_entity):
         pass
