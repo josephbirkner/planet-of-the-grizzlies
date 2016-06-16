@@ -5,13 +5,13 @@ from potg_functions import sgn
 
 class Enemy(Entity):
 
-    size = [139/2.5, 177/2.5, 10]
+    size = [139/2.5, 177/2.5, 10]   #two dimensional image but depth of 10
 
     def __init__(self, pos, world, image):
         super().__init__(pos, world, image)
 
     def collision(self, colliding_entity):
-        if colliding_entity.entity_type() == "P":
+        if colliding_entity.entity_type() == "P":   #if collide with player, kill player
             colliding_entity.kill()
 
     def entity_type(self):

@@ -27,8 +27,8 @@ class World(QGraphicsScene):
     block_size = (41, 40)
 
     # signals
-    signalPlayerPosChanged = pyqtSignal(QPointF)
-    signalPlayerStatusChanged = pyqtSignal(int)
+    signalPlayerPosChanged = pyqtSignal(QPointF)    #movement
+    signalPlayerStatusChanged = pyqtSignal(int)     #win/dead
 
     def __init__(self, level, depth_vec=[122, 72], depth=10):
         super().__init__()
