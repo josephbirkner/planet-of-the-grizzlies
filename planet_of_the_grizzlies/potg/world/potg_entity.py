@@ -12,8 +12,8 @@ class Entity(QGraphicsPixmapItem):
     sprite = None
     status = 0
     velocity = [0, 0, 0]
-    jump_strength = -19
-    speed = 8
+    jump_strength = -18
+    speed = 12
     on_ground = False
     using = False
     world = None
