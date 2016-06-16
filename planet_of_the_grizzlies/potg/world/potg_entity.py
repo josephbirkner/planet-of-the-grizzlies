@@ -56,7 +56,7 @@ class Entity(QGraphicsPixmapItem):
             self.logic_pos[2] = self.world.depth - self.box.depth()
         elif self.logic_pos[2] < 0:
             self.logic_pos[2] = 0
-        if self.platform is None or not self.platform.box.intersectsVerticalRay(self.logic_pos[0], self.logic_pos[2]):
+        if not self.platform or not self.platform.box.intersectsVerticalRay(self.logic_pos[0], self.logic_pos[2]):
             self.update_platform()
         self.update_screen_pos()
 
@@ -70,7 +70,7 @@ class Entity(QGraphicsPixmapItem):
     def update_platform(self):
         best_delta_y = -1
         best_platform = None
-        for platform in self.world.blocks:
+        for platform in self.world.platforms:
             if platform.box.intersectsVerticalRay(self.logic_pos[0], self.logic_pos[2]):
                 delta_y = platform.box.top() - self.logic_pos[1]
                 if delta_y > 0 and (delta_y < best_delta_y or best_delta_y == -1):

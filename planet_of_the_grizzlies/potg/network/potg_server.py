@@ -72,7 +72,7 @@ class LocalServer(IServer):
     # server-side methods
 
     def timerEvent(self, e: QTimerEvent):
-        if not self.world:
+        if self.world:
             changed_objects = self.world.changed_entities():
             self.world.reset_changed_entities()
 

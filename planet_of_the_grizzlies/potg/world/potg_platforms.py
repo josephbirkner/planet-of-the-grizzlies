@@ -100,8 +100,9 @@ class Water(Platform):
         super().__init__(pos, world, QPixmap("gfx/water_wide.png"))
 
     def collision(self, ent):
-        if ent.entity_type() == "P":
-            ent.kill()
+        #if ent.entity_type() == "P":
+        #    ent.kill()
+        pass
 
     def item_type(self):
         return "W"

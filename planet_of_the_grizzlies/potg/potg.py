@@ -16,6 +16,7 @@ from potg_main_controller import *
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
+from PyQt5.QtOpenGL import QGLWidget
 
 class PlanetOfTheGrizzlies(QWidget):
 
