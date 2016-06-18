@@ -39,7 +39,7 @@ class IServer(QObject):
     def broadcast_level(self, level):
         pass
 
-    def broadcast(self, message):
+    def broadcast_to_remote_severs(self, message):
         pass
 
 
@@ -75,13 +75,19 @@ class LocalServer(IServer):
         if self.world:
             changed_objects = self.world.changed_entities():
             self.world.reset_changed_entities()
-
+            self.broadcast_update(changed_objects)
 
     def broadcast_update(self, updated_objects):
-        pass
+        for clientid, client in self.clients:
+            client.notify_world_update(updated_objects)
+        #self.broadcast_to_remote_severs(json(updated_objects))
 
     def broadcast_level(self, level):
-        pass
+        for clientid, client in self.clients:
+            client.notify_level(level)
+        #self.broadcast_to_remote_severs(json(level))
 
-    def broadcast(self, message):
+    def broadcast_to_remote_severs(self, message):
+        # for remote_server in self.remote_severs:
+        #   remote_server.send(message)
         pass
