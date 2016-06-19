@@ -15,7 +15,7 @@ class World(QGraphicsScene):
     platforms = []
     entities = []
 
-    grid = []
+    grid = []                           # grid: only check small part of platforms for changes
     grid_cell_size = (10, 10)
 
     player = None
@@ -49,12 +49,14 @@ class World(QGraphicsScene):
         pos = [0, 0, 0]
         self.width = len(level[0])
         self.height = len(level)
-        for line in open("levels/"+level+".txt"):
+
+        #parsing level from file
+        for line in open("levels/"+level+".txt"):                   # level als parameter im konstruktor
             pos[0] = 0
             last = None
-            for block in line:
+            for block in line:                                      # block: characters in level string
                 if last and block == last.item_type():
-                    last.width_blocks += 1
+                    last.width_blocks += 1                          # last: for combining blocks to platforms
                     last.notify_blocks_changed()
                 else:
                     if block == "_":
@@ -93,6 +95,7 @@ class World(QGraphicsScene):
         for z in range(0, len(self.platforms)):
             self.platforms[z].setZValue(z)
 
+        # focus on player
         self.setFocusItem(self.player)
 
         # convert grid cell size from blocks into pixels

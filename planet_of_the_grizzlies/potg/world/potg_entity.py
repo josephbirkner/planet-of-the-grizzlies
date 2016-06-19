@@ -17,11 +17,11 @@ class Entity(QGraphicsPixmapItem):
     on_ground = False
     using = False
     world = None
-    box = None
+    box = None      # 3 dimensional with 2 dimensional picture
     platform = None
 
     def __init__(self, pos, world, filename):
-        super().__init__(QPixmap(filename).scaled(self.size[0], self.size[1]), world.root)
+        super().__init__(QPixmap(filename).scaled(self.size[0], self.size[1]), world.root)          # root ????
         self.world = world
         self.logic_pos = [pos[0], pos[1], 0]
         self.velocity = [0, 0, 0]

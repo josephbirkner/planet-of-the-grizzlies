@@ -16,8 +16,8 @@ class Box:
     size = None
 
     def __init__(self, position=[0, 0, 0], size=[0, 0, 0]):
-        self.position = position[0:]
-        self.size = size[0:]
+        self.position = position[0:]        #copy
+        self.size = size[0:]                #copy
 
     def setWidth(self, width):
         self.size[0] = width
