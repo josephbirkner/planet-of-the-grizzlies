@@ -18,9 +18,13 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtOpenGL import QGLWidget
 
+
 class PlanetOfTheGrizzlies(QWidget):
 
     world = None
+
+    local_server = None
+    local_client = None
 
     def __init__(self):
         super().__init__()
@@ -101,7 +105,7 @@ class PlanetOfTheGrizzlies(QWidget):
 
 app = QApplication(sys.argv)
 
-world = World("grizzlycity")
+world = World("test")
 view = PlanetOfTheGrizzlies()
 view.set_world(world)
 world.signalPlayerPosChanged.connect(view.onPlayerPosChanged)
