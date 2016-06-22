@@ -49,6 +49,7 @@ class PlanetOfTheGrizzlies(QWidget):
         layout.setContentsMargins(0,0,0,0)
         layout.addWidget(self.graphics, 0, 0)
 
+
         self.main_menu = MainMenu(self.graphics)
         self.main_menu.signalExit.connect(self.deleteLater)
 
