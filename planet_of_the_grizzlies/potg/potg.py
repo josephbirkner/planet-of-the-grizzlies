@@ -12,6 +12,8 @@ sys.path.append(os.path.abspath(os.curdir+"/controllers/"))
 
 from potg_world import *
 from potg_main_controller import *
+from potg_server import *
+from potg_client import *
 
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
@@ -28,6 +30,9 @@ class PlanetOfTheGrizzlies(QWidget):
 
     def __init__(self):
         super().__init__()
+        self.local_server = LocalServer()
+        self.local_client = Client(self.local_server)
+        self.local_client.signalLevelChanged.connect(self.onClientLevelChanged)
         self.initUI()
 
     def initUI(self):
@@ -56,15 +61,16 @@ class PlanetOfTheGrizzlies(QWidget):
         self.world = world
         self.graphics.setScene(world)
         self.world.signalPlayerStatusChanged.connect(self.onPlayerStatusChanged)
+        self.world.signalPlayerPosChanged.connect(self.onPlayerPosChanged)
 
     def onPlayerPosChanged(self, pos: QPointF):
         view_center = self.graphics.rect().center()
-        pos_in_view_coords = self.graphics.mapFromScene(world.root.mapToScene(pos))
+        pos_in_view_coords = self.graphics.mapFromScene(self.world.root.mapToScene(pos))
         dCx = pos_in_view_coords.x() - view_center.x()
         dCy = pos_in_view_coords.y() - view_center.y()
 
         scene_rect = self.world.root.childrenBoundingRect()
-        scroll_pos = world.root.mapFromScene(self.graphics.mapToScene(QPoint(0, 0)))
+        scroll_pos = self.world.root.mapFromScene(self.graphics.mapToScene(QPoint(0, 0)))
 
         if dCx < 0:
             edge_dist = scroll_pos.x()
@@ -85,7 +91,7 @@ class PlanetOfTheGrizzlies(QWidget):
         #        dCy = edge_dist
 
         if abs(dCx) > 0 or abs(dCy) > 0:
-            world.root.moveBy(-dCx, -dCy)
+            self.world.root.moveBy(-dCx, -dCy)
 
     def onPlayerStatusChanged(self, status):
         self.world.stop_updates()
@@ -97,18 +103,27 @@ class PlanetOfTheGrizzlies(QWidget):
         banner.setPos(self.graphics.viewport().width()/2-banner.pixmap().width()/2, self.graphics.viewport().height()/2-banner.pixmap().height()/2)
         pass
 
+    def onClientLevelChanged(self):
+        self.set_world(self.local_client.world)
+
     def eventFilter(self, obj, e):
-        if e.type() == QEvent.KeyPress and e.key() == Qt.Key_Escape:
-            self.close()
-            self.deleteLater()
+        if e.type() == QEvent.KeyPress:
+            if e.key() == Qt.Key_Escape:
+                self.close()
+                self.deleteLater()
+            else:
+                self.local_server.notify_input(self.local_client.id, e.key(), True)
+            return True
+        elif e.type() == QEvent.KeyRelease:
+            self.local_server.notify_input(self.local_client.id, e.key(), False)
+            return True
         return QObject.eventFilter(self, obj, e)
 
 app = QApplication(sys.argv)
 
-world = World("test")
 view = PlanetOfTheGrizzlies()
-view.set_world(world)
-world.signalPlayerPosChanged.connect(view.onPlayerPosChanged)
+view.local_server.request_level("grizzlycity")
+
 app.installEventFilter(view)
 
 #QTimer.singleShot(200, view.showFullScreen)

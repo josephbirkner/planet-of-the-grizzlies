@@ -7,8 +7,8 @@ class Enemy(Entity):
 
     size = [139/2.5, 177/2.5, 10]
 
-    def __init__(self, pos, world, image):
-        super().__init__(pos, world, image)
+    def __init__(self, id, pos, world, image):
+        super().__init__(id, pos, world, image)
 
     def collision(self, colliding_entity):
         if colliding_entity.entity_type() == "P":
@@ -23,8 +23,8 @@ class PatrollingEnemy(Enemy):
     speed = 6
     direction = 0
 
-    def __init__(self, pos, world, direction):
-        super().__init__(pos, world, "gfx/bart.png")
+    def __init__(self, id, pos, world, direction):
+        super().__init__(id, pos, world, "gfx/bart.png")
         self.direction = direction
         self.velocity[direction] = self.speed
 
