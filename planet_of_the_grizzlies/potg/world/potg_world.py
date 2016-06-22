@@ -26,6 +26,7 @@ class World(QGraphicsScene):
     root = None
     update_timer_id = 0
     block_size = (41, 40)
+    background_image = None
 
     # signals
     signalPlayerPosChanged = pyqtSignal(QPointF)
@@ -50,7 +51,11 @@ class World(QGraphicsScene):
         pos = [0, 0, 0]
         self.width = len(level[0])
         self.height = len(level)
-        for line in open("levels/"+level+".txt"):
+
+        level_content = open("levels/"+level+".txt").read()
+        level_json = json.loads(level_content)
+
+        for line in level_json["level"]:
             pos[0] = 0
             last = None
 
@@ -91,6 +96,11 @@ class World(QGraphicsScene):
 
                 pos[0] += self.block_size[0]
             pos[1] += self.block_size[1]
+
+        self.setBackgroundBrush(QBrush(QColor(level_json["background-color"][0], level_json["background-color"][1], level_json["background-color"][2])))
+        self.background_image = QGraphicsPixmapItem(QPixmap(level_json["background"]), self.root)
+        self.addItem(self.background_image)
+        self.background_image.setZValue(-1)
 
         # sort platforms by distance from camera
         self.platforms.sort(key=lambda block: (block.logic_pos[1], block.logic_pos[0]), reverse=True)
@@ -234,3 +244,11 @@ class World(QGraphicsScene):
             else:
                 self.player.deserialize(entity_info)
         pass
+
+    def scroll_background(self, player):
+        background_dx = self.root.boundingRect().width() - self.background_image.boundingRect().width()
+        background_dy = self.root.boundingRect().height() - self.background_image.boundingRect().height()
+        self.background_image.setPos(
+            player.logic_pos[0] / self.root.boundingRect().width() * background_dx,
+            player.logic_pos[1] / self.root.boundingRect().height() * background_dy
+        )

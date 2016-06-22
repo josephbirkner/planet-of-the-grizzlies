@@ -26,6 +26,6 @@
 "                                                                                                                                                                                                                                                                   _____                                                                 T",
 "                                                                                                                                                                                                                                                                   WWWWW                                                                 T"
 ],
-"background-color": "#b5efff",
+"background-color": [181,239,255],
 "background": "gfx/skyline.png"
 }

@@ -39,7 +39,6 @@ class PlanetOfTheGrizzlies(QWidget):
         self.graphics = QGraphicsView()
         self.graphics.resize(self.graphics.sizeHint())
         self.graphics.move(0, 0)
-        self.graphics.setBackgroundBrush(Qt.black)
         self.graphics.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.graphics.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.graphics.setStyleSheet("QGraphicsView { border-style: none; }")
@@ -93,6 +92,7 @@ class PlanetOfTheGrizzlies(QWidget):
 
         if abs(dCx) > 0 or abs(dCy) > 0:
             self.world.root.moveBy(-dCx, -dCy)
+            self.world.scroll_background(self.world.player)
 
     def onPlayerStatusChanged(self, status):
         self.world.stop_updates()
@@ -123,7 +123,7 @@ class PlanetOfTheGrizzlies(QWidget):
 app = QApplication(sys.argv)
 
 view = PlanetOfTheGrizzlies()
-view.local_server.request_level("grizzlycity")
+view.local_server.request_level("grizzlycity_with_background")
 
 app.installEventFilter(view)
 
