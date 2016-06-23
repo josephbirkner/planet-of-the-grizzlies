@@ -5,17 +5,30 @@ from potg_functions import sgn
 
 class Enemy(Entity):
 
-    size = [139/2.5, 177/2.5, 10]                        #two dimensional image but depth of 10
+    # two dimensional image but depth of 10
+    size = [139/2.5, 177/2.5, 10]
 
     def __init__(self, id, pos, world, image):
         super().__init__(id, pos, world, image)
 
+    # if collide with player, kill player
     def collision(self, colliding_entity):
-        if colliding_entity.entity_type() == "P":        #if collide with player, kill player
+        if colliding_entity.entity_type() == "P":
             colliding_entity.kill()
 
     def entity_type(self):
         return "E"
+
+    def load_images(self):
+        self.sprites[Entity.Idle] = QPixmap("gfx/walk_enemy.png").scaled(self.size[0], self.size[1])
+        self.sprites[Entity.Walking] = QPixmap("gfx/walk_enemy.png").scaled(self.size[0], self.size[1])
+        self.sprites[Entity.Running] = QPixmap("gfx/walk_enemy.png").scaled(self.size[0], self.size[1])
+        self.sprites[Entity.Dodging] = QPixmap("gfx/walk_enemy.png").scaled(self.size[0], self.size[1])
+        self.sprites[Entity.Jumping] = QPixmap("gfx/walk_enemy.png").scaled(self.size[0], self.size[1])
+        #self.sprites[Entity.Punching] = QPixmap("gfx/punch_player.png").scaled(self.size[0], self.size[1])
+        self.sprites[Entity.Punched] = QPixmap("gfx/punch_enemy.png").scaled(self.size[0], self.size[1])
+        #self.sprites[Entity.Kicking] = QPixmap("gfx/kick_player.png").scaled(self.size[0], self.size[1])
+        self.sprites[Entity.Kicked] = QPixmap("gfx/kick_enemy.png").scaled(self.size[0], self.size[1])
 
 
 class PatrollingEnemy(Enemy):
@@ -24,7 +37,7 @@ class PatrollingEnemy(Enemy):
     direction = 0
 
     def __init__(self, id, pos, world, direction):
-        super().__init__(id, pos, world, "gfx/move_walk_enemy.png")
+        super().__init__(id, pos, world, "gfx/walk_enemy.png")
         self.direction = direction
         self.velocity[direction] = self.speed
 
