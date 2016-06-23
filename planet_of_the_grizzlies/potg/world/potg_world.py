@@ -246,9 +246,9 @@ class World(QGraphicsScene):
         pass
 
     def scroll_background(self, player):
-        background_dx = self.root.boundingRect().width() - self.background_image.boundingRect().width()
-        background_dy = self.root.boundingRect().height() - self.background_image.boundingRect().height()
+        background_dx = self.root.childrenBoundingRect().width() - self.background_image.boundingRect().width()
+        background_dy = self.root.childrenBoundingRect().height() - self.background_image.boundingRect().height()
         self.background_image.setPos(
-            player.logic_pos[0] / self.root.boundingRect().width() * background_dx,
-            player.logic_pos[1] / self.root.boundingRect().height() * background_dy
+            player.logic_pos[0] / self.root.childrenBoundingRect().width() * background_dx,
+            player.logic_pos[1] / self.root.childrenBoundingRect().height() * background_dy
         )
