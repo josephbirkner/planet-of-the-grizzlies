@@ -35,6 +35,7 @@ class PlanetOfTheGrizzlies(QWidget):
         self.local_client.signalLevelChanged.connect(self.onClientLevelChanged)
         self.initUI()
 
+    # user interface
     def initUI(self):
         self.graphics = QGraphicsView()
         self.graphics.resize(self.graphics.sizeHint())
@@ -45,9 +46,8 @@ class PlanetOfTheGrizzlies(QWidget):
         self.graphics.setViewport(QOpenGLWidget(self.graphics))
 
         layout = QGridLayout()
-        layout.setContentsMargins(0,0,0,0)
+        layout.setContentsMargins(0, 0, 0, 0)
         layout.addWidget(self.graphics, 0, 0)
-
 
         self.main_menu = MainMenu(self.graphics)
         self.main_menu.signalExit.connect(self.deleteLater)
@@ -102,7 +102,6 @@ class PlanetOfTheGrizzlies(QWidget):
         elif status == -1:
             banner = self.world.addPixmap(QPixmap("dead.png"))
         banner.setPos(self.graphics.viewport().width()/2-banner.pixmap().width()/2, self.graphics.viewport().height()/2-banner.pixmap().height()/2)
-        pass
 
     def onClientLevelChanged(self):
         self.set_world(self.local_client.world)
