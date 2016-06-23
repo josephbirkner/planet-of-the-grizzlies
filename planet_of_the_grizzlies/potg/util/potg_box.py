@@ -37,14 +37,19 @@ class Box:
     def depth(self):
         return self.size[2]
 
+    # intersection
     def intersects(self, other):
-        return (self.right() > other.left() and self.left() < other.right()
-        and self.bottom() > other.top() and self.top() < other.bottom()
-        and self.front() > other.back() and self.back() < other.front())
+        return (
+            self.right() > other.left() and self.left() < other.right()
+            and self.bottom() > other.top() and self.top() < other.bottom()
+            and self.front() > other.back() and self.back() < other.front()
+        )
 
     def intersectsVerticalRay(self, rx, rz):
-        return (rx <= self.right() and rx >= self.left()
-        and rz <= self.front() and rz >= self.back())
+        return (
+            rx <= self.right() and rx >= self.left()
+            and rz <= self.front() and rz >= self.back()
+        )
 
     def right(self):
         return self.position[0] + self.size[0]

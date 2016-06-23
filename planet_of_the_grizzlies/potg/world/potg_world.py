@@ -52,6 +52,7 @@ class World(QGraphicsScene):
         self.width = len(level[0])
         self.height = len(level)
 
+        # level
         level_content = open("levels/"+level+".txt").read()
         level_json = json.loads(level_content)
 
@@ -97,6 +98,7 @@ class World(QGraphicsScene):
                 pos[0] += self.block_size[0]
             pos[1] += self.block_size[1]
 
+        # background
         self.setBackgroundBrush(QBrush(QColor(level_json["background-color"][0], level_json["background-color"][1], level_json["background-color"][2])))
         self.background_image = QGraphicsPixmapItem(QPixmap(level_json["background"]), self.root)
         self.addItem(self.background_image)
@@ -245,9 +247,14 @@ class World(QGraphicsScene):
                 self.player.deserialize(entity_info)
         pass
 
+    # scrolling of the background
     def scroll_background(self, player):
+
+        # difference
         background_dx = self.root.childrenBoundingRect().width() - self.background_image.boundingRect().width()
         background_dy = self.root.childrenBoundingRect().height() - self.background_image.boundingRect().height()
+
+        # proportion
         self.background_image.setPos(
             player.logic_pos[0] / self.root.childrenBoundingRect().width() * background_dx,
             player.logic_pos[1] / self.root.childrenBoundingRect().height() * background_dy

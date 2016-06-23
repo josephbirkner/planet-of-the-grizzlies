@@ -41,4 +41,3 @@ class Player(Entity):
 
     def entity_type(self):
         return "P"
-

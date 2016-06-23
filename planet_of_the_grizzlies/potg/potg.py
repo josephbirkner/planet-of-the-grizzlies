@@ -37,6 +37,7 @@ class PlanetOfTheGrizzlies(QWidget):
         super().__init__()
         self.initUI()
 
+    # user interface
     def initUI(self):
         self.graphics = QGraphicsView()
         self.graphics.resize(self.graphics.sizeHint())
@@ -47,7 +48,7 @@ class PlanetOfTheGrizzlies(QWidget):
         self.graphics.setViewport(QOpenGLWidget(self.graphics))
 
         layout = QGridLayout()
-        layout.setContentsMargins(0,0,0,0)
+        layout.setContentsMargins(0, 0, 0, 0)
         layout.addWidget(self.graphics, 0, 0)
 
         self.dummy_scene = QGraphicsScene()
@@ -115,7 +116,6 @@ class PlanetOfTheGrizzlies(QWidget):
             banner = self.world.addPixmap(QPixmap("gfx/dead.png"))
         banner.setZValue(10)
         banner.setPos(self.graphics.viewport().width()/2-banner.pixmap().width()/2, self.graphics.viewport().height()/2-banner.pixmap().height()/2)
-        pass
 
     def onClientLevelChanged(self):
         self.set_world(self.local_client.world)
