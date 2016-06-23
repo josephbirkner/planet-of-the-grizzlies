@@ -24,7 +24,7 @@ class PatrollingEnemy(Enemy):
     direction = 0
 
     def __init__(self, id, pos, world, direction):
-        super().__init__(id, pos, world, "gfx/bart.png")
+        super().__init__(id, pos, world, "gfx/move_walk_enemy.png")
         self.direction = direction
         self.velocity[direction] = self.speed
 
