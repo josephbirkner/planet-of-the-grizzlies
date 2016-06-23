@@ -5,15 +5,15 @@ from PyQt5.QtGui import *
 
 from potg_main import *
 
-class MainMenu(QWidget, Ui_MainMenu):
+class MainMenu(QWidget, Ui_potg_main):
 
     signalExit = pyqtSignal()
+    signalCreateServer = pyqtSignal()
+    signalJoinServer = pyqtSignal()
 
     def __init__(self, parent):
         QWidget.__init__(self, parent)
-        Ui_MainMenu.__init__(self)
+        Ui_potg_main.__init__(self)
         self.setupUi(self)
-        self.exitButton.mouseReleaseEvent = self.onExitButtonClicked
-
-    def onExitButtonClicked(self, e):
-        self.signalExit.emit()
+        self.exit_game_button.mouseReleaseEvent = lambda e: self.signalExit.emit()
+        self.create_server_button.mouseReleaseEvent = lambda e: self.signalCreateServer.emit()
