@@ -17,30 +17,28 @@ class Player(Entity):
             if key == Qt.Key_Space and self.on_ground:
                 self.velocity[1] += self.jump_strength
                 self.on_ground = False
-            elif key == Qt.Key_S:
-                self.velocity[0] = -self.speed
-            elif key == Qt.Key_W:
-                self.velocity[0] = self.speed
             elif key == Qt.Key_A:
-                self.velocity[2] = -self.speed
+                self.velocity[0] = -self.speed
             elif key == Qt.Key_D:
+                self.velocity[0] = self.speed
+            elif key == Qt.Key_W:
+                self.velocity[2] = -self.speed
+            elif key == Qt.Key_S:
                 self.velocity[2] = self.speed
             elif key == Qt.Key_Up:
                 self.update_state(Entity.Punching)
-                pass
             elif key == Qt.Key_Down:
                 self.update_state(Entity.Kicking)
-                pass
             elif key == Qt.Key_E:
                 self.using = True
         else:
-            if key == Qt.Key_S and self.velocity[0] < 0:
+            if key == Qt.Key_A and self.velocity[0] < 0:
                 self.velocity[0] = 0
-            elif key == Qt.Key_W and self.velocity[0] > 0:
+            elif key == Qt.Key_D and self.velocity[0] > 0:
                 self.velocity[0] = 0
-            elif key == Qt.Key_A and self.velocity[2] < 0:
+            elif key == Qt.Key_W and self.velocity[2] < 0:
                 self.velocity[2] = 0
-            elif key == Qt.Key_D and self.velocity[2] > 0:
+            elif key == Qt.Key_S and self.velocity[2] > 0:
                 self.velocity[2] = 0
             elif key == Qt.Key_E:
                 self.using = False

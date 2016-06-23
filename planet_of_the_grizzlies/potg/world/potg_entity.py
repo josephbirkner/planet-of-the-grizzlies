@@ -10,6 +10,7 @@ class Entity(QGraphicsPixmapItem):
     id = 0
     size = [0, 0, 0]
     logic_pos = [0, 0, 0]
+    is_mirrored = False
     sprite = None
     status = 0
     velocity = [0, 0, 0]
@@ -98,9 +99,18 @@ class Entity(QGraphicsPixmapItem):
                     best_platform = platform
         self.platform = best_platform
 
+    # state of the movement
     def update_state(self, state):
         self.state = state
         self.setPixmap(self.sprites[state])
+        self.is_mirrored = False
+        self.resetTransform()
+        if self.is_mirrored != (self.velocity[0] < 0):
+            current_transform = self.transform()
+            current_transform.scale(-1, 1)
+            current_transform.translate(-self.boundingRect().width(), 0)
+            self.setTransform(current_transform)
+            self.is_mirrored = not self.is_mirrored
 
     def check_collision(self, object):
         if self.box.intersects(object.box):

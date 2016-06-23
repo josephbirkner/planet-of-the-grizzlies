@@ -134,11 +134,19 @@ class PlanetOfTheGrizzlies(QWidget):
             if e.key() == Qt.Key_Escape:
                 self.close()
                 self.deleteLater()
-            else:
+            elif self.local_server:
                 self.local_server.notify_input(self.local_client.id, e.key(), True)
+                # immediate application to the client in order to mitigate the lag of the server
+                player = self.world.player_for_client(self.local_client.id)
+                if player:
+                    player.process_input(e.key, True)
             return True
         elif e.type() == QEvent.KeyRelease:
             self.local_server.notify_input(self.local_client.id, e.key(), False)
+            # immediate application to the client in order to mitigate the lag of the server
+            player = self.world.player_for_client(self.local_client.id)
+            if player:
+                player.process_input(e.key, False)
             return True
         return QObject.eventFilter(self, obj, e)
 
