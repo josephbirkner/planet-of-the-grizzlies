@@ -4,6 +4,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 
 import math
+import json
 
 from potg_platforms import *
 from potg_player import *
@@ -13,9 +14,9 @@ from potg_enemy import *
 class World(QGraphicsScene):
 
     platforms = []
-    entities = []
+    entities = {}
 
-    grid = []                           # grid: only check small part of platforms for changes
+    grid = []
     grid_cell_size = (10, 10)
 
     player = None
@@ -25,15 +26,16 @@ class World(QGraphicsScene):
     root = None
     update_timer_id = 0
     block_size = (41, 40)
+    background_image = None
 
     # signals
-    signalPlayerPosChanged = pyqtSignal(QPointF)    #movement
-    signalPlayerStatusChanged = pyqtSignal(int)     #win/dead
+    signalPlayerPosChanged = pyqtSignal(QPointF)
+    signalPlayerStatusChanged = pyqtSignal(int)
 
     def __init__(self, level, depth_vec=[122, 72], depth=10):
         super().__init__()
         self.platforms = []
-        self.entities = []
+        self.entities = {}
         self.grid = []
 
         # normalize depth vector
@@ -50,13 +52,18 @@ class World(QGraphicsScene):
         self.width = len(level[0])
         self.height = len(level)
 
-        #parsing level from file
-        for line in open("levels/"+level+".txt"):                   # level als parameter im konstruktor
+        level_content = open("levels/"+level+".txt").read()
+        level_json = json.loads(level_content)
+
+        for line in level_json["level"]:
             pos[0] = 0
             last = None
-            for block in line:                                      # block: characters in level string
+
+            for block in line:
+                next_entity_id = len(self.entities)
+
                 if last and block == last.item_type():
-                    last.width_blocks += 1                          # last: for combining blocks to platforms
+                    last.width_blocks += 1
                     last.notify_blocks_changed()
                 else:
                     if block == "_":
@@ -78,11 +85,11 @@ class World(QGraphicsScene):
                     #    self.entities.append(Enemy(pos[0:], self))
                     #    last = None
                     elif block == "F":
-                        self.entities.append(PatrollingEnemy(pos[0:], self, 0))
+                        self.entities[next_entity_id] = PatrollingEnemy(next_entity_id, pos[0:], self, 0)
                         last = None
                     elif block == "H":
-                        self.entities.append(PatrollingEnemy(pos[0:], self, 2))
-                        self.entities[-1].velocity[2] = 2
+                        self.entities[next_entity_id] = PatrollingEnemy(next_entity_id, pos[0:], self, 2)
+                        self.entities[next_entity_id].velocity[2] = 2
                         last = None
                     else:
                         last = None
@@ -90,12 +97,16 @@ class World(QGraphicsScene):
                 pos[0] += self.block_size[0]
             pos[1] += self.block_size[1]
 
+        self.setBackgroundBrush(QBrush(QColor(level_json["background-color"][0], level_json["background-color"][1], level_json["background-color"][2])))
+        self.background_image = QGraphicsPixmapItem(QPixmap(level_json["background"]), self.root)
+        self.addItem(self.background_image)
+        self.background_image.setZValue(-1)
+
         # sort platforms by distance from camera
         self.platforms.sort(key=lambda block: (block.logic_pos[1], block.logic_pos[0]), reverse=True)
         for z in range(0, len(self.platforms)):
             self.platforms[z].setZValue(z)
 
-        # focus on player
         self.setFocusItem(self.player)
 
         # convert grid cell size from blocks into pixels
@@ -127,7 +138,7 @@ class World(QGraphicsScene):
             self.insert_into_grid(x, y, platform)
 
             # if the platform is wider than the grid cell, add it to the neighbouring too!
-            while(True):
+            while True:
                 next_border = (x+1) * self.grid_cell_size[0]
                 if platform.box.right() > next_border:
                     x += 1
@@ -136,7 +147,7 @@ class World(QGraphicsScene):
                     break
 
             # if the platform is wider than the grid cell, add it to the neighbouring too!
-            while (True):
+            while True:
                 next_border = (y+1) * self.grid_cell_size[1]
                 if platform.box.bottom() > next_border:
                     y += 1
@@ -156,7 +167,7 @@ class World(QGraphicsScene):
             result += self.grid[y][x]
 
         # if the platform is wider than the grid cell, add it to the neighbouring too!
-        while (True):
+        while True:
             next_border = (x + 1) * self.grid_cell_size[0]
             if box.right() > next_border:
                 x += 1
@@ -166,7 +177,7 @@ class World(QGraphicsScene):
                 break
 
         # if the platform is wider than the grid cell, add it to the neighbouring too!
-        while (True):
+        while True:
             next_border = (y + 1) * self.grid_cell_size[1]
             if box.bottom() > next_border:
                 y += 1
@@ -177,18 +188,21 @@ class World(QGraphicsScene):
 
         return result
 
+    def entities_and_players(self):
+        return list(self.entities.items())+[(self.player.id, self.player)]
+
     def timerEvent(self, e):
         # update all entities
-        for ent in self.entities:
+        for entid, ent in self.entities.items():
             ent.update()
         self.player.update()
 
         # check collision between player and entities
-        for ent in self.entities:
+        for entid, ent in self.entities.items():
             self.player.check_collision(ent)
 
         # check collision between entities and blocks
-        for ent in self.entities+[self.player]:
+        for entid, ent in self.entities_and_players():
             for block in self.platforms_for_box(ent.box):
                 ent.check_collision(block)
 
@@ -196,7 +210,7 @@ class World(QGraphicsScene):
         self.signalPlayerPosChanged.emit(self.player.pos())
 
     def update_entity_zorder(self):
-        for ent in self.entities+[self.player]:
+        for entid, ent in self.entities_and_players():
             for block in self.platforms:
                 if (ent.logic_pos[1], ent.logic_pos[0]) > (block.logic_pos[1], block.logic_pos[0]):
                     ent.setZValue(block.zValue()-.5)
@@ -204,3 +218,37 @@ class World(QGraphicsScene):
 
     def stop_updates(self):
         self.killTimer(self.update_timer_id)
+
+    # these are used for sever-client interaction
+
+    def add_player(self, clientid):
+        pass
+
+    def player_for_client(self, clientid):
+        return self.player
+
+    def changed_entities(self):
+        result = []
+        for entityid, entity in self.entities.items():
+            result.append(entity.serialize())
+        result.append(self.player.serialize())
+        return result
+
+    def reset_changed_entities(self):
+        pass
+
+    def update_entities_from_list(self, entity_json_objects):
+        for entity_info in entity_json_objects:
+            if entity_info["type"] != "P":
+                self.entities[entity_info["id"]].deserialize(entity_info)
+            else:
+                self.player.deserialize(entity_info)
+        pass
+
+    def scroll_background(self, player):
+        background_dx = self.root.boundingRect().width() - self.background_image.boundingRect().width()
+        background_dy = self.root.boundingRect().height() - self.background_image.boundingRect().height()
+        self.background_image.setPos(
+            player.logic_pos[0] / self.root.boundingRect().width() * background_dx,
+            player.logic_pos[1] / self.root.boundingRect().height() * background_dy
+        )

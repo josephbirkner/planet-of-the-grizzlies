@@ -7,6 +7,7 @@ from potg_box import *
 
 class Entity(QGraphicsPixmapItem):
 
+    id = 0
     size = [0, 0, 0]
     logic_pos = [0, 0, 0]
     sprite = None
@@ -17,11 +18,12 @@ class Entity(QGraphicsPixmapItem):
     on_ground = False
     using = False
     world = None
-    box = None      # 3 dimensional with 2 dimensional picture
+    box = None
     platform = None
 
-    def __init__(self, pos, world, filename):
-        super().__init__(QPixmap(filename).scaled(self.size[0], self.size[1]), world.root)          # root ????
+    def __init__(self, id, pos, world, filename):
+        super().__init__(QPixmap(filename).scaled(self.size[0], self.size[1]), world.root)
+        self.id = id
         self.world = world
         self.logic_pos = [pos[0], pos[1], 0]
         self.velocity = [0, 0, 0]
@@ -83,4 +85,20 @@ class Entity(QGraphicsPixmapItem):
 
     def entity_type(self):
         return "Ent"
+
+    def serialize(self):
+        result = {}
+        result["pos"] = self.logic_pos[0:]
+        result["velocity"] = self.velocity[0:]
+        result["type"] = self.entity_type()
+        result["id"] = self.id
+        return result
+
+    def deserialize(self, json_data):
+        assert json_data["id"] == self.id and json_data["type"] == self.entity_type()
+        self.logic_pos = json_data["pos"]
+        self.velocity = json_data["velocity"]
+        if not self.platform or not self.platform.box.intersectsVerticalRay(self.logic_pos[0], self.logic_pos[2]):
+            self.update_platform()
+        self.update_screen_pos()
 
