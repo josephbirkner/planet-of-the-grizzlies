@@ -26,6 +26,7 @@ class World(QGraphicsScene):
     root = None
     update_timer_id = 0
     block_size = (41, 40)
+    margin = 0
     background_image = None
 
     # signals
@@ -48,16 +49,18 @@ class World(QGraphicsScene):
         self.root.setPos(0, 0)
         self.addItem(self.root)
 
-        pos = [0, 0, 0]
         self.width = len(level[0])
         self.height = len(level)
 
         # level
-        level_content = open("levels/"+level+".txt").read()
-        level_json = json.loads(level_content)
+        level_json = open("levels/"+level+".txt").read()
+        level_json = json.loads(level_json)
+
+        self.margin = level_json["margin"]
+        pos = [0, self.margin, 0]
 
         for line in level_json["level"]:
-            pos[0] = 0
+            pos[0] = self.margin
             last = None
 
             for block in line:
@@ -98,9 +101,19 @@ class World(QGraphicsScene):
                 pos[0] += self.block_size[0]
             pos[1] += self.block_size[1]
 
-        # background
-        self.setBackgroundBrush(QBrush(QColor(level_json["background-color"][0], level_json["background-color"][1], level_json["background-color"][2])))
-        self.background_image = QGraphicsPixmapItem(QPixmap(level_json["background"]), self.root)
+        # background gradient
+        children_rect = self.root.childrenBoundingRect()
+        self.root.setRect(QRectF(0, 0, children_rect.width() + self.margin*2, children_rect.height() + self.margin*2))
+        background_gradient = QLinearGradient(QPointF(0, 0), QPointF(0, self.root.rect().height()))
+        background_gradient.setColorAt(0, QColor(level_json["background-gradient"][0][0], level_json["background-gradient"][0][1], level_json["background-gradient"][0][2])),
+        background_gradient.setColorAt(1, QColor(level_json["background-gradient"][1][0], level_json["background-gradient"][1][1], level_json["background-gradient"][1][2]))
+        self.root.setBrush(QBrush(background_gradient))
+
+        # background image
+        self.background_image = QGraphicsPixmapItem(QPixmap(level_json["background"]).scaled(
+            level_json["background-size"][0],
+            level_json["background-size"][1],
+        ), self.root)
         self.addItem(self.background_image)
         self.background_image.setZValue(-1)
 
@@ -251,11 +264,11 @@ class World(QGraphicsScene):
     def scroll_background(self, player):
 
         # difference
-        background_dx = self.root.childrenBoundingRect().width() - self.background_image.boundingRect().width()
-        background_dy = self.root.childrenBoundingRect().height() - self.background_image.boundingRect().height()
+        background_dx = self.root.rect().width() - self.background_image.boundingRect().width()
+        background_dy = self.root.rect().height() - self.background_image.boundingRect().height()
 
         # proportion
         self.background_image.setPos(
-            player.logic_pos[0] / self.root.childrenBoundingRect().width() * background_dx,
-            player.logic_pos[1] / self.root.childrenBoundingRect().height() * background_dy
+            player.logic_pos[0] / self.root.rect().width() * background_dx,
+            player.logic_pos[1] / self.root.rect().height() * background_dy
         )

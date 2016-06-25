@@ -27,6 +27,8 @@
 "                                                                                                                                                                                                                                                                                                                                         T",
 "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW WWWW"
 ],
-"background-color": [181,239,255],
-"background": "gfx/skyline.png"
+"background-gradient": [[189, 227, 255], [60, 149, 214], [255, 243, 3], [245, 70, 2]],
+"background": "gfx/skyline.png",
+"background-size": [2521, 1188],
+"margin": 500
 }

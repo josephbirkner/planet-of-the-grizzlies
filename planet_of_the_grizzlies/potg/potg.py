@@ -21,6 +21,9 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtOpenGL import QGLWidget
 
+import qdarkstyle
+
+
 
 class PlanetOfTheGrizzlies(QWidget):
 
@@ -45,7 +48,7 @@ class PlanetOfTheGrizzlies(QWidget):
         self.graphics.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.graphics.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.graphics.setStyleSheet("QGraphicsView { border-style: none; }")
-        self.graphics.setViewport(QOpenGLWidget(self.graphics))
+        self.graphics.setViewport(QOpenGLWidget())
 
         layout = QGridLayout()
         layout.setContentsMargins(0, 0, 0, 0)
@@ -82,8 +85,9 @@ class PlanetOfTheGrizzlies(QWidget):
         dCx = pos_in_view_coords.x() - view_center.x()
         dCy = pos_in_view_coords.y() - view_center.y()
 
-        scene_rect = self.world.root.childrenBoundingRect()
+        scene_rect = self.world.root.rect()
         scroll_pos = self.world.root.mapFromScene(self.graphics.mapToScene(QPoint(0, 0)))
+        #scroll_pos = self.graphics.mapToScene(QPoint(0, 0))
 
         if dCx < 0:
             edge_dist = scroll_pos.x()
@@ -105,7 +109,7 @@ class PlanetOfTheGrizzlies(QWidget):
 
         if abs(dCx) > 0 or abs(dCy) > 0:
             self.world.root.moveBy(-dCx, -dCy)
-            self.world.scroll_background(self.world.player)
+            self.world.scroll_background(self.world.player_for_client(self.local_client.id))
 
     def onPlayerStatusChanged(self, status):
         self.world.stop_updates()
@@ -164,6 +168,8 @@ class PlanetOfTheGrizzlies(QWidget):
 
 
 app = QApplication(sys.argv)
+app.setStyleSheet(qdarkstyle.load_stylesheet(False))
+
 view = PlanetOfTheGrizzlies()
 
 app.installEventFilter(view)
