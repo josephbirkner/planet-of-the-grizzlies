@@ -105,7 +105,7 @@ class RemoteServer(IServer):
 
     socket = None
 
-    def __init__(self, ip, port):
+    def __init__(self, ip, port):            #ip and port of localserver
         super().__init__()
         socket = QTcpSocket()
         socket.connectToHost(ip, port)
