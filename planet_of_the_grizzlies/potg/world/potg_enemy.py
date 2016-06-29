@@ -49,7 +49,7 @@ class PatrollingEnemy(Enemy):
 
 class ShootingEnemy(PatrollingEnemy):
 
-    speed = 6
+    speed = 0
     direction = 0
     shots = 3
 
