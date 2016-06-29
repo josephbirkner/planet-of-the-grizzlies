@@ -10,6 +10,7 @@ class Entity(QGraphicsPixmapItem):
     id = 0
     size = [0, 0, 0]
     logic_pos = [0, 0, 0]
+    is_mirrored = False
     sprite = None
     status = 0
     velocity = [0, 0, 0]
@@ -21,6 +22,23 @@ class Entity(QGraphicsPixmapItem):
     box = None
     platform = None
 
+    health = 100
+    concentrate = 0
+
+    Idle = 0
+    Walking = 1
+    Running = 2
+    Dodging = 3
+    Jumping = 4
+    Punching = 5
+    Punched = 6
+    Kicking = 7
+    Kicked = 8
+
+    state = Idle
+
+    sprites = None
+
     def __init__(self, id, pos, world, filename):
         super().__init__(QPixmap(filename).scaled(self.size[0], self.size[1]), world.root)
         self.id = id
@@ -29,11 +47,9 @@ class Entity(QGraphicsPixmapItem):
         self.velocity = [0, 0, 0]
         self.update_screen_pos()
         self.setFlag(QGraphicsItem.ItemIsFocusable)
-
-    def check_collision(self, object):
-        if self.box.intersects(object.box):
-            object.collision(self)
-        self.update_screen_pos()
+        # dictionary from the state of the entity to the its image
+        self.sprites = {}
+        self.load_images()
 
     def win(self):
         self.status = 1
@@ -48,6 +64,9 @@ class Entity(QGraphicsPixmapItem):
 
     def killed(self):
         return self.status == -1
+
+    def entity_type(self):
+        return "Ent"
 
     def update(self):
         self.velocity[1] += self.world.gravity
@@ -80,11 +99,26 @@ class Entity(QGraphicsPixmapItem):
                     best_platform = platform
         self.platform = best_platform
 
+    # state of the movement
+    def update_state(self, state):
+        self.state = state
+        self.setPixmap(self.sprites[state])
+        self.is_mirrored = False
+        self.resetTransform()
+        if self.is_mirrored != (self.velocity[0] < 0):
+            current_transform = self.transform()
+            current_transform.scale(-1, 1)
+            current_transform.translate(-self.boundingRect().width(), 0)
+            self.setTransform(current_transform)
+            self.is_mirrored = not self.is_mirrored
+
+    def check_collision(self, object):
+        if self.box.intersects(object.box):
+            object.collision(self)
+        self.update_screen_pos()
+
     def collision(self, colliding_entity):
         pass
-
-    def entity_type(self):
-        return "Ent"
 
     def serialize(self):
         result = {}
@@ -92,6 +126,7 @@ class Entity(QGraphicsPixmapItem):
         result["velocity"] = self.velocity[0:]
         result["type"] = self.entity_type()
         result["id"] = self.id
+        result["state"] = self.state
         return result
 
     def deserialize(self, json_data):
@@ -101,4 +136,15 @@ class Entity(QGraphicsPixmapItem):
         if not self.platform or not self.platform.box.intersectsVerticalRay(self.logic_pos[0], self.logic_pos[2]):
             self.update_platform()
         self.update_screen_pos()
+        self.update_state(json_data["state"])
 
+    def load_images(self):
+        pass
+
+    def attacking(self):
+        self.concentrate += 10
+        pass
+
+    def attacked(self):
+        self.health -= 10
+        pass

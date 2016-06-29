@@ -24,7 +24,7 @@ class Platform(QGraphicsPixmapItem):
     def __init__(self, pos, world, sprite=None):
         super().__init__(world.root)
         if sprite is None:
-            sprite = QPixmap("gfx/platform_wide.png")
+            sprite = QPixmap("gfx/platform_wide_3.png")
         self.logic_pos = pos
         self.rect = QRectF()
         self.world = world
@@ -100,8 +100,8 @@ class Water(Platform):
         super().__init__(pos, world, QPixmap("gfx/water_wide.png"))
 
     def collision(self, ent):
-        #if ent.entity_type() == "P":
-        #    ent.kill()
+        if ent.entity_type() == "P":
+            ent.kill()
         pass
 
     def item_type(self):
