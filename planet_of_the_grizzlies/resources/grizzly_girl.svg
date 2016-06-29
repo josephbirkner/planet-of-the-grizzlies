@@ -27,7 +27,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.49497475"
-     inkscape:cx="-335.22439"
+     inkscape:cx="-445.08942"
      inkscape:cy="620.29048"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -56,7 +56,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -79,7 +79,10 @@
        cy="556.57709"
        rx="64.632095"
        ry="107.7081"
-       transform="matrix(0.86064067,0.50921276,-0.44071779,0.89764572,0,0)" />
+       transform="matrix(0.86064067,0.50921276,-0.44071779,0.89764572,0,0)"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\berry.png"
+       inkscape:export-xdpi="41.939999"
+       inkscape:export-ydpi="41.939999" />
     <ellipse
        transform="matrix(-0.86064067,0.50921276,0.44071779,0.89764572,0,0)"
        ry="107.7081"
@@ -87,7 +90,10 @@
        cy="914.26154"
        cx="-73.63047"
        id="ellipse4276"
-       style="fill:#c87137;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none" />
+       style="fill:#c87137;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\berry.png"
+       inkscape:export-xdpi="41.939999"
+       inkscape:export-ydpi="41.939999" />
     <ellipse
        style="fill:#784421;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none"
        id="ellipse4280"
@@ -95,7 +101,10 @@
        cy="557.93958"
        rx="60.960224"
        ry="83.138062"
-       transform="matrix(-0.30753977,-0.95153523,0.55828648,-0.82964824,0,0)" />
+       transform="matrix(-0.30753977,-0.95153523,0.55828648,-0.82964824,0,0)"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\berry.png"
+       inkscape:export-xdpi="41.939999"
+       inkscape:export-ydpi="41.939999" />
     <ellipse
        transform="matrix(0.48442927,-0.87483043,-0.75542427,-0.65523597,0,0)"
        ry="89.339333"
@@ -103,17 +112,26 @@
        cy="-323.62604"
        cx="-292.24765"
        id="ellipse4282"
-       style="fill:#784421;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none" />
+       style="fill:#784421;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\berry.png"
+       inkscape:export-xdpi="41.939999"
+       inkscape:export-ydpi="41.939999" />
     <ellipse
        style="fill:#d38d5f;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path4203"
        cx="351.71991"
        cy="492.35175"
        rx="250.40231"
-       ry="317.27054" />
+       ry="317.27054"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\berry.png"
+       inkscape:export-xdpi="41.939999"
+       inkscape:export-ydpi="41.939999" />
     <g
        id="g4231"
-       transform="matrix(0.9,0,0,0.9,52.643172,49.747225)">
+       transform="matrix(0.9,0,0,0.9,52.643172,49.747225)"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\berry.png"
+       inkscape:export-xdpi="41.939999"
+       inkscape:export-ydpi="41.939999">
       <ellipse
          ry="45.540974"
          rx="38.57143"
@@ -131,7 +149,10 @@
     </g>
     <g
        id="g4235"
-       transform="matrix(0.9,0,0,0.9,203.55996,49.747225)">
+       transform="matrix(0.9,0,0,0.9,203.55996,49.747225)"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\berry.png"
+       inkscape:export-xdpi="41.939999"
+       inkscape:export-ydpi="41.939999">
       <ellipse
          style="fill:#784421;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none"
          id="ellipse4237"
@@ -153,49 +174,73 @@
        cx="355.38586"
        cy="439.57208"
        rx="53.639099"
-       ry="51.820824" />
+       ry="51.820824"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\berry.png"
+       inkscape:export-xdpi="41.939999"
+       inkscape:export-ydpi="41.939999" />
     <path
        style="fill:#784421;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 355.56943,447.70188 c -17.94841,0.61358 -27.37817,-15.87749 -33.6134,-29.52615 -6.23521,-13.64867 70.82658,-13.39502 64.87438,-0.72651 -5.9522,12.66852 -13.31257,29.63902 -31.26098,30.25266 z"
        id="path4245"
        inkscape:connector-curvature="0"
-       sodipodi:nodetypes="zzzz" />
+       sodipodi:nodetypes="zzzz"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\berry.png"
+       inkscape:export-xdpi="41.939999"
+       inkscape:export-ydpi="41.939999" />
     <path
        style="fill:#e9afaf;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="M 587.67985,598.80146 C 553.151,721.66647 460.54219,809.62228 351.7199,809.62228 243.185,809.62228 150.77805,722.1304 116.03472,599.77412 223.6106,513.852 488.12532,516.69907 587.67985,598.80146 Z"
        id="ellipse4269"
        inkscape:connector-curvature="0"
-       sodipodi:nodetypes="cscc" />
+       sodipodi:nodetypes="cscc"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\berry.png"
+       inkscape:export-xdpi="41.939999"
+       inkscape:export-ydpi="41.939999" />
     <path
-       style="fill:#ff00ff;fill-rule:evenodd;stroke:#000000;stroke-width:1.13057005px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="fill:#ff00ff;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
        d="m 308.03537,195.23446 c -159.46984,87.44788 -159.46984,90.09782 -159.46984,90.09782 l 0,-211.994865 157.50107,66.248395 z"
        id="path5220-0"
-       inkscape:connector-curvature="0" />
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\berry.png"
+       inkscape:export-xdpi="41.939999"
+       inkscape:export-ydpi="41.939999" />
     <path
-       style="fill:#ff00ff;fill-rule:evenodd;stroke:#000000;stroke-width:1.13057005px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="fill:#ff00ff;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
        d="M 389.98579,146.46776 C 549.45563,59.019879 549.45563,56.369944 549.45563,56.369944 l 0,211.994856 -157.50107,-66.24839 z"
        id="path5220"
-       inkscape:connector-curvature="0" />
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\berry.png"
+       inkscape:export-xdpi="41.939999"
+       inkscape:export-ydpi="41.939999" />
     <ellipse
-       style="fill:#ff00ff"
+       style="fill:#ff00ff;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none"
        id="path5218"
        cx="342.44171"
        cy="169.48889"
        rx="67.680222"
-       ry="64.649765" />
+       ry="64.649765"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\berry.png"
+       inkscape:export-xdpi="41.939999"
+       inkscape:export-ydpi="41.939999" />
     <ellipse
        style="fill:#ffaaaa"
        id="path5252"
        cx="492.95444"
        cy="440.20978"
        rx="36.36549"
-       ry="34.345188" />
+       ry="34.345188"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\berry.png"
+       inkscape:export-xdpi="41.939999"
+       inkscape:export-ydpi="41.939999" />
     <ellipse
        style="fill:#ffaaaa"
        id="path5252-2"
        cx="202.0305"
        cy="442.23007"
        rx="36.36549"
-       ry="34.345188" />
+       ry="34.345188"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\berry.png"
+       inkscape:export-xdpi="41.939999"
+       inkscape:export-ydpi="41.939999" />
   </g>
 </svg>

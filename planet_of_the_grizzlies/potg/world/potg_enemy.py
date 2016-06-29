@@ -62,7 +62,7 @@ class ShootingEnemy(PatrollingEnemy):
     def update(self):
         super().update()
 
-        while self.pos.x == player.logic_pos[0]:
+        while self.pos.z == player.logic_pos[2]:
             shoot()
 
     def entity_type(self):

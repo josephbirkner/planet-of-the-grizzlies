@@ -154,7 +154,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.49497475"
-     inkscape:cx="-530.09579"
+     inkscape:cx="-627.07044"
      inkscape:cy="620.29048"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -197,7 +197,10 @@
        cx="461.63971"
        cy="135.14371"
        rx="69.700523"
-       ry="56.568542" />
+       ry="56.568542"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\player_step1.png"
+       inkscape:export-xdpi="41.939999"
+       inkscape:export-ydpi="41.939999" />
     <image
        y="-288.49506"
        x="-1674.1232"
@@ -213,7 +216,10 @@
        cy="785.47791"
        cx="359.18851"
        id="ellipse4276"
-       style="fill:#a05a2c;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none" />
+       style="fill:#a05a2c;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\player_step1.png"
+       inkscape:export-xdpi="41.939999"
+       inkscape:export-ydpi="41.939999" />
     <ellipse
        style="fill:#784421;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none"
        id="ellipse4280"
@@ -221,24 +227,36 @@
        cy="774.82825"
        rx="56.0536"
        ry="102.67222"
-       transform="matrix(0.57485221,-0.81825725,0.70543981,0.70876983,0,0)" />
+       transform="matrix(0.57485221,-0.81825725,0.70543981,0.70876983,0,0)"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\player_step1.png"
+       inkscape:export-xdpi="41.939999"
+       inkscape:export-ydpi="41.939999" />
     <ellipse
        style="opacity:0.77520004;fill:#784421;fill-opacity:1;stroke:#000000;stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path6930"
        cx="453.55847"
        cy="149.28584"
        rx="37.375641"
-       ry="38.385796" />
+       ry="38.385796"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\player_step1.png"
+       inkscape:export-xdpi="41.939999"
+       inkscape:export-ydpi="41.939999" />
     <ellipse
        style="fill:#c87137;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path4203"
        cx="369.68314"
        cy="472.58987"
        rx="259.03189"
-       ry="367.67511" />
+       ry="367.67511"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\player_step1.png"
+       inkscape:export-xdpi="41.939999"
+       inkscape:export-ydpi="41.939999" />
     <g
        id="g4231"
-       transform="translate(208.09142,-70.710678)">
+       transform="translate(208.09142,-70.710678)"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\player_step1.png"
+       inkscape:export-xdpi="41.939999"
+       inkscape:export-ydpi="41.939999">
       <ellipse
          ry="45.540974"
          rx="38.57143"
@@ -256,7 +274,10 @@
     </g>
     <g
        id="g4235"
-       transform="translate(278.8021,-68.690373)">
+       transform="translate(278.8021,-68.690373)"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\player_step1.png"
+       inkscape:export-xdpi="41.939999"
+       inkscape:export-ydpi="41.939999">
       <ellipse
          style="fill:#784421;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none"
          id="ellipse4237"
@@ -278,19 +299,28 @@
        cx="530.33002"
        cy="405.86462"
        rx="55.558388"
-       ry="66.670067" />
+       ry="66.670067"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\player_step1.png"
+       inkscape:export-xdpi="41.939999"
+       inkscape:export-ydpi="41.939999" />
     <path
        style="fill:#784421;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 535.3277,421.96456 c -16.07109,0.83758 -24.51453,-21.67394 -30.09758,-40.30535 -5.58304,-18.63142 63.41843,-18.28518 58.08881,-0.99174 -5.32963,17.29345 -11.92014,40.45943 -27.99123,41.29709 z"
        id="path4245"
        inkscape:connector-curvature="0"
-       sodipodi:nodetypes="zzzz" />
+       sodipodi:nodetypes="zzzz"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\player_step1.png"
+       inkscape:export-xdpi="41.939999"
+       inkscape:export-ydpi="41.939999" />
     <path
        style="fill:#d38d5f;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 614.68825,606.01965 c -35.70309,136.51668 -131.46131,234.24536 -243.98438,234.24536 -112.22592,0 -207.77541,-97.2132 -243.70027,-233.16463 111.23427,-95.46902 384.7445,-92.30561 487.68465,-1.08073 z"
        id="ellipse4269"
        inkscape:connector-curvature="0"
-       sodipodi:nodetypes="cscc" />
+       sodipodi:nodetypes="cscc"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\player_step1.png"
+       inkscape:export-xdpi="41.939999"
+       inkscape:export-ydpi="41.939999" />
     <rect
        style="fill:#552200;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none"
        id="rect4286"
@@ -298,7 +328,10 @@
        height="22.223356"
        x="426.90475"
        y="144.46123"
-       transform="matrix(0.99113054,0.13289192,-0.13289192,0.99113054,0,0)" />
+       transform="matrix(0.99113054,0.13289192,-0.13289192,0.99113054,0,0)"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\player_step1.png"
+       inkscape:export-xdpi="41.939999"
+       inkscape:export-ydpi="41.939999" />
     <rect
        y="432.7345"
        x="317.65948"
@@ -306,7 +339,10 @@
        width="90.913727"
        id="rect4288"
        style="fill:#552200;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none"
-       transform="matrix(0.86602541,-0.5,0.5,0.86602541,0,0)" />
+       transform="matrix(0.86602541,-0.5,0.5,0.86602541,0,0)"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\player_step1.png"
+       inkscape:export-xdpi="41.939999"
+       inkscape:export-ydpi="41.939999" />
     <path
        sodipodi:type="star"
        style="opacity:0.77520004;fill:#c87137;fill-opacity:1;stroke:#000000;stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -370,21 +406,30 @@
        cy="520.21777"
        cx="-307.44678"
        id="ellipse4282"
-       style="fill:#784421;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none" />
+       style="fill:#784421;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\player_step1.png"
+       inkscape:export-xdpi="41.939999"
+       inkscape:export-ydpi="41.939999" />
     <ellipse
        style="opacity:0.77520004;fill:#d38d5f;fill-opacity:1;stroke:#000000;stroke-width:5.00000048;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path6913-8"
        cx="286.88333"
        cy="188.68176"
        rx="59.599003"
-       ry="54.548237" />
+       ry="54.548237"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\player_step1.png"
+       inkscape:export-xdpi="41.939999"
+       inkscape:export-ydpi="41.939999" />
     <ellipse
        style="opacity:0.77520004;fill:#784421;fill-opacity:1;stroke:#000000;stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path6930-3"
        cx="288.90366"
        cy="187.67163"
        rx="34.345184"
-       ry="38.385796" />
+       ry="38.385796"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\player_step1.png"
+       inkscape:export-xdpi="41.939999"
+       inkscape:export-ydpi="41.939999" />
     <ellipse
        style="fill:#a05a2c;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none"
        id="path4274"
@@ -392,6 +437,9 @@
        cy="591.1972"
        rx="71.861275"
        ry="127.74149"
-       transform="matrix(0.89889283,0.43816855,-0.35962365,0.93309744,0,0)" />
+       transform="matrix(0.89889283,0.43816855,-0.35962365,0.93309744,0,0)"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\player_step1.png"
+       inkscape:export-xdpi="41.939999"
+       inkscape:export-ydpi="41.939999" />
   </g>
 </svg>

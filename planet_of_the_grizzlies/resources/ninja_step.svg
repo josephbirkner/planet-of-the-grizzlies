@@ -26,7 +26,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.49497475"
-     inkscape:cx="186.99779"
+     inkscape:cx="-254.43887"
      inkscape:cy="688.72221"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -56,75 +56,109 @@
     <ellipse
        style="fill:#1a1a1a;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        id="path3336"
-       cx="390.70322"
-       cy="447.02286"
+       cx="-215.83691"
+       cy="553.97223"
        rx="98.571426"
        ry="184.28572"
-       transform="matrix(0.98480775,0.17364818,-0.17364818,0.98480775,0,0)" />
+       transform="matrix(-0.98480775,0.17364818,0.17364818,0.98480775,0,0)"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\ninja_step.png"
+       inkscape:export-xdpi="41.939999"
+       inkscape:export-ydpi="41.939999" />
     <ellipse
        style="fill:#1a1a1a"
        id="path3338"
-       cx="396.30569"
-       cy="21.138792"
+       cx="-75.498764"
+       cy="417.02975"
        rx="95.714287"
        ry="92.85714"
-       transform="matrix(0.76604444,0.64278762,-0.64278762,0.76604444,0,0)" />
+       transform="matrix(-0.76604444,0.64278762,0.64278762,0.76604444,0,0)"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\ninja_step.png"
+       inkscape:export-xdpi="41.939999"
+       inkscape:export-ydpi="41.939999" />
     <ellipse
        style="fill:#1a1a1a"
        id="path3340"
-       cx="188.28752"
-       cy="753.90826"
+       cx="-424.2355"
+       cy="689.52948"
        rx="17.142857"
        ry="61.42857"
-       transform="matrix(0.99452189,-0.10452847,0.10452847,0.99452189,0,0)" />
+       transform="matrix(-0.99452189,-0.10452847,-0.10452847,0.99452189,0,0)"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\ninja_step.png"
+       inkscape:export-xdpi="41.939999"
+       inkscape:export-ydpi="41.939999" />
     <ellipse
        style="fill:#1a1a1a"
        id="path3342"
-       cx="537.31628"
-       cy="519.8371"
+       cx="-53.060467"
+       cy="760.5896"
        rx="16.029869"
        ry="68.57444"
-       transform="matrix(0.92119265,0.3891068,-0.29925448,0.95417334,0,0)" />
+       transform="matrix(-0.92119265,0.3891068,0.29925448,0.95417334,0,0)"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\ninja_step.png"
+       inkscape:export-xdpi="41.939999"
+       inkscape:export-ydpi="41.939999" />
     <rect
        style="fill:#f2f2f2"
        id="rect3344"
        width="182.85715"
        height="37.14286"
-       x="197.14285"
+       x="-418.75412"
        y="243.79077"
        ry="18.57143"
-       rx="0" />
+       rx="18.57143"
+       transform="scale(-1,1)"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\ninja_step.png"
+       inkscape:export-xdpi="41.939999"
+       inkscape:export-ydpi="41.939999" />
     <rect
        style="fill:#f2f2f2"
        id="rect3346"
        width="17.142857"
        height="5.7142859"
-       x="285.71429"
-       y="272.36221" />
+       x="-330.18268"
+       y="272.36221"
+       transform="scale(-1,1)"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\ninja_step.png"
+       inkscape:export-xdpi="41.939999"
+       inkscape:export-ydpi="41.939999" />
     <ellipse
        style="fill:#000000"
        id="path3348"
-       cx="255.71428"
+       cx="-360.18271"
        cy="259.50507"
        rx="10"
-       ry="24.285713" />
+       ry="24.285713"
+       transform="scale(-1,1)"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\ninja_step.png"
+       inkscape:export-xdpi="41.939999"
+       inkscape:export-ydpi="41.939999" />
     <ellipse
        style="fill:#000000"
        id="path3350"
-       cx="317.14285"
+       cx="-298.75412"
        cy="260.93362"
        rx="14.285714"
-       ry="20" />
+       ry="20"
+       transform="scale(-1,1)"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\ninja_step.png"
+       inkscape:export-xdpi="41.939999"
+       inkscape:export-ydpi="41.939999" />
     <path
        style="fill:#1a1a1a"
-       d="m 356.49194,206.63225 c 1.88049,-1.71103 40.04009,-28.34474 44.68349,-31.18708 2.40768,-1.47381 22.05563,24.34541 20.05151,26.34953 -1.18953,1.18953 -49.41216,6.47277 -59.68424,6.53897 -4.04861,0.0261 -6.1656,-0.68704 -5.05076,-1.70142 z"
+       d="m 259.40505,206.63225 c -1.88049,-1.71103 -40.04009,-28.34474 -44.68349,-31.18708 -2.40768,-1.47381 -22.05563,24.34541 -20.05151,26.34953 1.18953,1.18953 49.41216,6.47277 59.68424,6.53897 4.04861,0.0261 6.1656,-0.68704 5.05076,-1.70142 z"
        id="path3364"
-       inkscape:connector-curvature="0" />
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\ninja_step.png"
+       inkscape:export-xdpi="41.939999"
+       inkscape:export-ydpi="41.939999" />
     <path
        style="fill:#1a1a1a"
-       d="m 375.91603,222.08354 c -11.48455,-7.71795 -20.38607,-14.52757 -19.78115,-15.13249 2.01095,-2.01096 39.91657,5.82715 40.92808,8.46309 0.54224,1.41307 0.70424,6.6491 0.35998,11.63563 l -0.62591,9.06641 -20.881,-14.03264 z"
+       d="m 239.98096,222.08354 c 11.48455,-7.71795 20.38607,-14.52757 19.78115,-15.13249 -2.01095,-2.01096 -39.91657,5.82715 -40.92808,8.46309 -0.54224,1.41307 -0.70424,6.6491 -0.35998,11.63563 l 0.62591,9.06641 20.881,-14.03264 z"
        id="path3366"
-       inkscape:connector-curvature="0" />
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\ninja_step.png"
+       inkscape:export-xdpi="41.939999"
+       inkscape:export-ydpi="41.939999" />
     <path
        style="fill:#1a1a1a"
        d=""
@@ -146,33 +180,42 @@
        id="path3374"
        inkscape:connector-curvature="0" />
     <path
-       d="m -200.79083,755.05072 a 81.932556,21.075859 0 0 1 -54.08629,19.82128 81.932556,21.075859 0 0 1 -90.85071,-6.34804 81.932556,21.075859 0 0 1 -7.66823,-24.13627 l 70.67267,10.66303 z"
+       d="m -463.38177,336.97958 a 81.932556,21.075859 0 0 1 -54.0863,19.82128 81.932556,21.075859 0 0 1 -90.8507,-6.34803 81.932556,21.075859 0 0 1 -7.66823,-24.13627 l 70.67267,10.66302 z"
        sodipodi:end="3.6720589"
        sodipodi:start="0"
        sodipodi:ry="21.075859"
        sodipodi:rx="81.932556"
-       sodipodi:cy="755.05072"
-       sodipodi:cx="-282.72339"
+       sodipodi:cy="336.97958"
+       sodipodi:cx="-545.31433"
        sodipodi:type="arc"
        id="path3395"
        style="fill:#1a1a1a"
-       transform="matrix(0.84554927,-0.53389739,0.94209661,0.33534158,0,0)" />
+       transform="matrix(-0.84554927,-0.53389739,-0.94209661,0.33534158,0,0)"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\ninja_step.png"
+       inkscape:export-xdpi="41.939999"
+       inkscape:export-ydpi="41.939999" />
     <path
-       d="m 300.07394,388.34106 a 79.802048,17.172594 0 0 1 -52.67987,16.15037 79.802048,17.172594 0 0 1 -88.4883,-5.17238 79.802048,17.172594 0 0 1 -7.46883,-19.66621 l 68.83496,8.68822 z"
+       d="m -306.65193,494.23169 a 79.802048,17.172594 0 0 1 -52.67988,16.15036 79.802048,17.172594 0 0 1 -88.48829,-5.17237 79.802048,17.172594 0 0 1 -7.46883,-19.66622 l 68.83495,8.68823 z"
        sodipodi:end="3.6720589"
        sodipodi:start="0"
        sodipodi:ry="17.172594"
        sodipodi:rx="79.802048"
-       sodipodi:cy="388.34106"
-       sodipodi:cx="220.2719"
+       sodipodi:cy="494.23169"
+       sodipodi:cx="-386.45398"
        sodipodi:type="arc"
        id="path3395-0"
        style="fill:#1a1a1a"
-       transform="matrix(0.98510932,0.17192911,-0.17192911,0.98510932,0,0)" />
+       transform="matrix(-0.98510932,0.17192911,0.17192911,0.98510932,0,0)"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\ninja_step.png"
+       inkscape:export-xdpi="41.939999"
+       inkscape:export-ydpi="41.939999" />
     <path
        style="fill:#808080"
-       d="M 148.11401,263.15095 A 10.379626,192.35945 15.821533 0 1 85.912698,444.45402 10.379626,192.35945 15.821533 0 1 128.4906,256.25871 10.379626,192.35945 15.821533 0 1 190.83569,74.320275 10.379626,192.35945 15.821533 0 1 148.46825,261.90133 l -10.07735,-2.5089 z"
+       d="M 467.78298,263.15095 A 192.35945,10.379626 74.178467 0 0 529.98429,444.45402 192.35945,10.379626 74.178467 0 0 487.40639,256.25871 192.35945,10.379626 74.178467 0 0 425.0613,74.320275 192.35945,10.379626 74.178467 0 0 467.42874,261.90133 l 10.07735,-2.5089 z"
        id="path4238"
-       inkscape:connector-curvature="0" />
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\ninja_step.png"
+       inkscape:export-xdpi="41.939999"
+       inkscape:export-ydpi="41.939999" />
   </g>
 </svg>
