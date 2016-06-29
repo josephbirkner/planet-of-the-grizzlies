@@ -4,6 +4,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 
 from potg_box import *
+from potg_entity import *
 
 
 class Platform(QGraphicsPixmapItem):
@@ -115,7 +116,7 @@ class TargetPlatform(Platform):
 
     def collision(self, ent):
         if ent.entity_type() == "P":
-            ent.win()
+            ent.set_state(Entity.Won)
 
     def item_type(self):
         return "T"

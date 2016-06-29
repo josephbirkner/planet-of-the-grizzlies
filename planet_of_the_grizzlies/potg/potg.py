@@ -112,14 +112,17 @@ class PlanetOfTheGrizzlies(QWidget):
             self.world.scroll_background(self.world.player_for_client(self.local_client.id))
 
     def onPlayerStatusChanged(self, status):
-        self.world.stop_updates()
         banner = None
-        if status == 1:
+
+        if status == Entity.Won:
             banner = self.world.addPixmap(QPixmap("gfx/win.png"))
-        elif status == -1:
+        elif status == Entity.Dead:
             banner = self.world.addPixmap(QPixmap("gfx/dead.png"))
-        banner.setZValue(10)
-        banner.setPos(self.graphics.viewport().width()/2-banner.pixmap().width()/2, self.graphics.viewport().height()/2-banner.pixmap().height()/2)
+
+        if banner:
+            self.world.stop_updates()
+            banner.setZValue(10)
+            banner.setPos(self.graphics.viewport().width()/2-banner.pixmap().width()/2, self.graphics.viewport().height()/2-banner.pixmap().height()/2)
 
     def onClientLevelChanged(self):
         self.set_world(self.local_client.world)
