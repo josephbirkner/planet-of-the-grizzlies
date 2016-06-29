@@ -35,21 +35,27 @@ class Entity(QGraphicsPixmapItem):
     Kicking = 7
     Kicked = 8
 
-    state = Idle
+    state = -1
 
     sprites = None
+    sprite_cycle_timer_interval = 8 # change image every 15 updates
+    current_sprite_list = None
+    current_sprite_list_index = 0
+    update_count = 0
 
     def __init__(self, id, pos, world, filename):
         super().__init__(QPixmap(filename).scaled(self.size[0], self.size[1]), world.root)
         self.id = id
         self.world = world
         self.logic_pos = [pos[0], pos[1], 0]
+
         self.velocity = [0, 0, 0]
         self.update_screen_pos()
         self.setFlag(QGraphicsItem.ItemIsFocusable)
         # dictionary from the state of the entity to the its image
         self.sprites = {}
         self.load_images()
+        self.update_state(Entity.Idle)
 
     def win(self):
         self.status = 1
@@ -69,6 +75,9 @@ class Entity(QGraphicsPixmapItem):
         return "Ent"
 
     def update(self):
+        self.update_count += 1
+        self.update_count %= self.sprite_cycle_timer_interval
+
         self.velocity[1] += self.world.gravity
         self.logic_pos[0] += self.velocity[0]
         self.logic_pos[1] += self.velocity[1]
@@ -77,9 +86,12 @@ class Entity(QGraphicsPixmapItem):
             self.logic_pos[2] = self.world.depth - self.box.depth()
         elif self.logic_pos[2] < 0:
             self.logic_pos[2] = 0
+
         if not self.platform or not self.platform.box.intersectsVerticalRay(self.logic_pos[0], self.logic_pos[2]):
             self.update_platform()
+
         self.update_screen_pos()
+        self.update_sprite()
 
     def update_screen_pos(self):
         screen_pos = self.logic_pos[0:]
@@ -101,8 +113,12 @@ class Entity(QGraphicsPixmapItem):
 
     # state of the movement
     def update_state(self, state):
-        self.state = state
-        self.setPixmap(self.sprites[state])
+        if self.state != state:
+            self.state = state
+            self.setPixmap(self.sprites[state][0])
+            self.current_sprite_list = self.sprites[state]
+            self.current_sprite_list_index = 0
+
         self.is_mirrored = False
         self.resetTransform()
         if self.is_mirrored != (self.velocity[0] < 0):
@@ -111,6 +127,12 @@ class Entity(QGraphicsPixmapItem):
             current_transform.translate(-self.boundingRect().width(), 0)
             self.setTransform(current_transform)
             self.is_mirrored = not self.is_mirrored
+
+    def update_sprite(self):
+        if self.update_count == 0:
+            self.current_sprite_list_index += 1
+            self.current_sprite_list_index %= len(self.current_sprite_list)
+            self.setPixmap(self.current_sprite_list[self.current_sprite_list_index])
 
     def check_collision(self, object):
         if self.box.intersects(object.box):

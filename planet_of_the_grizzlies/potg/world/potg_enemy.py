@@ -6,7 +6,7 @@ from potg_functions import sgn
 class Enemy(Entity):
 
     # two dimensional image but depth of 10
-    size = [139/2.5, 177/2.5, 10]
+    size = [300/2.5, 300/2.5, 10]
 
     def __init__(self, id, pos, world, image):
         super().__init__(id, pos, world, image)
@@ -20,15 +20,15 @@ class Enemy(Entity):
         return "E"
 
     def load_images(self):
-        self.sprites[Entity.Idle] = QPixmap("gfx/walk_enemy.png").scaled(self.size[0], self.size[1])
-        self.sprites[Entity.Walking] = QPixmap("gfx/walk_enemy.png").scaled(self.size[0], self.size[1])
-        self.sprites[Entity.Running] = QPixmap("gfx/walk_enemy.png").scaled(self.size[0], self.size[1])
-        self.sprites[Entity.Dodging] = QPixmap("gfx/walk_enemy.png").scaled(self.size[0], self.size[1])
-        self.sprites[Entity.Jumping] = QPixmap("gfx/walk_enemy.png").scaled(self.size[0], self.size[1])
-        #self.sprites[Entity.Punching] = QPixmap("gfx/punch_player.png").scaled(self.size[0], self.size[1])
-        self.sprites[Entity.Punched] = QPixmap("gfx/punch_enemy.png").scaled(self.size[0], self.size[1])
-        #self.sprites[Entity.Kicking] = QPixmap("gfx/kick_player.png").scaled(self.size[0], self.size[1])
-        self.sprites[Entity.Kicked] = QPixmap("gfx/kick_enemy.png").scaled(self.size[0], self.size[1])
+        self.sprites[Entity.Idle] = [QPixmap("gfx/soldier_idle.png").scaled(self.size[0], self.size[1])]
+        self.sprites[Entity.Walking] = [QPixmap("gfx/soldier_step1.png").scaled(self.size[0], self.size[1]), QPixmap("gfx/soldier_step2.png").scaled(self.size[0], self.size[1])]
+        self.sprites[Entity.Running] = [QPixmap("gfx/soldier_idle.png").scaled(self.size[0], self.size[1])]
+        self.sprites[Entity.Dodging] = [QPixmap("gfx/soldier_idle.png").scaled(self.size[0], self.size[1])]
+        self.sprites[Entity.Jumping] = [QPixmap("gfx/soldier_idle.png").scaled(self.size[0], self.size[1])]
+        #self.sprites[Entity.Punching] = [QPixmap("gfx/punch_player.png").scaled(self.size[0], self.size[1])]
+        self.sprites[Entity.Punched] = [QPixmap("gfx/soldier_idle.png").scaled(self.size[0], self.size[1])]
+        #self.sprites[Entity.Kicking] = [QPixmap("gfx/kick_player.png").scaled(self.size[0], self.size[1])]
+        self.sprites[Entity.Kicked] = [QPixmap("gfx/soldier_idle.png").scaled(self.size[0], self.size[1])]
 
 
 class PatrollingEnemy(Enemy):
@@ -42,6 +42,7 @@ class PatrollingEnemy(Enemy):
         self.velocity[direction] = self.speed
 
     def update(self):
+        self.update_state(Entity.Walking)
         if self.platform:
             self_pos = self.box.position[self.direction]
             platform_pos = self.platform.box.position[self.direction]
@@ -60,7 +61,7 @@ class PatrollingEnemy(Enemy):
     def entity_type(self):
         return "F"
 
-
+"""
 class ShootingEnemy(PatrollingEnemy):
 
     speed = 0
@@ -93,3 +94,4 @@ class boss(ShootingEnemy, PatrollingEnemy):
 
     def entity_type(self):
         return "B"
+"""

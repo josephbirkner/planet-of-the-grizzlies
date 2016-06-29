@@ -7,7 +7,7 @@ from potg_entity import *
 
 class Player(Entity):
 
-    size = [140, 84, 10]
+    size = [349/3, 374/3, 10]
 
     def __init__(self, pos, world):
         super().__init__(0, pos, world, "gfx/walk_player.png")
@@ -17,14 +17,19 @@ class Player(Entity):
             if key == Qt.Key_Space and self.on_ground:
                 self.velocity[1] += self.jump_strength
                 self.on_ground = False
+                self.update_state(Entity.Jumping)
             elif key == Qt.Key_A:
                 self.velocity[0] = -self.speed
+                self.update_state(Entity.Walking)
             elif key == Qt.Key_D:
                 self.velocity[0] = self.speed
+                self.update_state(Entity.Walking)
             elif key == Qt.Key_W:
                 self.velocity[2] = -self.speed
+                self.update_state(Entity.Walking)
             elif key == Qt.Key_S:
                 self.velocity[2] = self.speed
+                self.update_state(Entity.Walking)
             elif key == Qt.Key_Up:
                 self.update_state(Entity.Punching)
             elif key == Qt.Key_Down:
@@ -32,14 +37,24 @@ class Player(Entity):
             elif key == Qt.Key_E:
                 self.using = True
         else:
-            if key == Qt.Key_A and self.velocity[0] < 0:
+            if key == Qt.Key_Space and self.state == Entity.Jumping:
+                self.update_state(Entity.Idle)
+            elif key == Qt.Key_A and self.velocity[0] < 0:
                 self.velocity[0] = 0
+                if self.state == Entity.Walking:
+                    self.update_state(Entity.Idle)
             elif key == Qt.Key_D and self.velocity[0] > 0:
                 self.velocity[0] = 0
+                if self.state == Entity.Walking:
+                    self.update_state(Entity.Idle)
             elif key == Qt.Key_W and self.velocity[2] < 0:
                 self.velocity[2] = 0
+                if self.state == Entity.Walking:
+                    self.update_state(Entity.Idle)
             elif key == Qt.Key_S and self.velocity[2] > 0:
                 self.velocity[2] = 0
+                if self.state == Entity.Walking:
+                    self.update_state(Entity.Idle)
             elif key == Qt.Key_E:
                 self.using = False
             # stopping punching upon punching
@@ -53,12 +68,12 @@ class Player(Entity):
         return "P"
 
     def load_images(self):
-        self.sprites[Entity.Idle] = QPixmap("gfx/walk_player.png").scaled(self.size[0], self.size[1])
-        self.sprites[Entity.Walking] = QPixmap("gfx/walk_player.png").scaled(self.size[0], self.size[1])
-        self.sprites[Entity.Running] = QPixmap("gfx/walk_player.png").scaled(self.size[0], self.size[1])
-        self.sprites[Entity.Dodging] = QPixmap("gfx/walk_player.png").scaled(self.size[0], self.size[1])
-        self.sprites[Entity.Jumping] = QPixmap("gfx/walk_player.png").scaled(self.size[0], self.size[1])
-        self.sprites[Entity.Punching] = QPixmap("gfx/punch_player.png").scaled(self.size[0], self.size[1])
-        #self.sprites[Entity.Punched] = QPixmap("gfx/punch_enemy.png").scaled(self.size[0], self.size[1])
-        self.sprites[Entity.Kicking] = QPixmap("gfx/kick_player.png").scaled(self.size[0], self.size[1])
-        #self.sprites[Entity.Kicked] = QPixmap("gfx/kick_enemy.png").scaled(self.size[0], self.size[1])
+        self.sprites[Entity.Idle] = [QPixmap("gfx/player_idle.png").scaled(self.size[0], self.size[1])]
+        self.sprites[Entity.Walking] = [QPixmap("gfx/player_step1.png").scaled(self.size[0], self.size[1]), QPixmap("gfx/player_step2.png").scaled(self.size[0], self.size[1])]
+        self.sprites[Entity.Running] = [QPixmap("gfx/player_idle.png").scaled(self.size[0], self.size[1])]
+        self.sprites[Entity.Dodging] = [QPixmap("gfx/player_idle.png").scaled(self.size[0], self.size[1])]
+        self.sprites[Entity.Jumping] = [QPixmap("gfx/player_jump.png").scaled(self.size[0], self.size[1])]
+        self.sprites[Entity.Punching] = [QPixmap("gfx/player_punch.png").scaled(self.size[0], self.size[1])]
+        #self.sprites[Entity.Punched] = [QPixmap("gfx/punch_enemy.png").scaled(self.size[0], self.size[1])]
+        self.sprites[Entity.Kicking] = [QPixmap("gfx/player_kick.png").scaled(self.size[0], self.size[1])]
+        #self.sprites[Entity.Kicked] = [QPixmap("gfx/kick_enemy.png").scaled(self.size[0], self.size[1])]
