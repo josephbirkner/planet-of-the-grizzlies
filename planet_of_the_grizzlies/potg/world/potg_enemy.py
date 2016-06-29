@@ -24,7 +24,7 @@ class PatrollingEnemy(Enemy):
     direction = 0
 
     def __init__(self, id, pos, world, direction):
-        super().__init__(id, pos, world, "gfx/bart.png")
+        super().__init__(id, pos, world, "gfx/ninja.png")
         self.direction = direction
         self.velocity[direction] = self.speed
 
@@ -45,3 +45,37 @@ class PatrollingEnemy(Enemy):
 
     def entity_type(self):
         return "F"
+
+
+class ShootingEnemy(PatrollingEnemy):
+
+    speed = 6
+    direction = 0
+    shots = 3
+
+    def __init__(self):
+        super().__init__(id, pos, world, "gfx/soldat.png")
+
+    def shoot(self):
+        pass
+
+    def update(self):
+        super().update()
+
+        while self.pos.x == player.logic_pos[0]:
+            shoot()
+
+    def entity_type(self):
+        return "S"
+
+
+class boss(ShootingEnemy, PatrollingEnemy):
+
+    health = 100
+    alive = True
+
+    def __init__(self):
+        super().__init__(id, pos, world, "gfx/doktor.png")
+
+    def entity_type(self):
+        return "B"
