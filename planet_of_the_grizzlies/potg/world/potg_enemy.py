@@ -17,7 +17,7 @@ class Enemy(Entity):
             if colliding_entity.event() == Entity.Punching:
                 self.hurt(colliding_entity.punch_strength)
                 if not self.killed():
-                    self.set_state(Entity.Punched, 25)
+                    self.activate_state(Entity.Punched, 25)
 
     def entity_type(self):
         return "E"
@@ -44,35 +44,33 @@ class PatrollingEnemy(Enemy):
     def __init__(self, id, pos, world, direction):
         super().__init__(id, pos, world, "gfx/ninja.png")
         self.direction = direction
-        self.velocity[direction] = self.speed
-        self.set_state(Entity.Walking)
+        self.activate_state(Entity.Walking)
 
     def update(self):
-        if self.killed():
-            self.velocity = [0, 0, 0]
-        elif self.state == Entity.Walking:
-            if self.platform:
-                if abs(self.velocity[self.direction]) != self.speed:
-                    self.velocity[self.direction] = self.speed
+        if self.platform:
+            self_pos = self.box.position[self.direction]
+            platform_pos = self.platform.box.position[self.direction]
 
-                self_pos = self.box.position[self.direction]
-                platform_pos = self.platform.box.position[self.direction]
+            # distances
+            distances = [
+                self_pos - platform_pos,
+                platform_pos + self.platform.box.size[self.direction] - self_pos - self.box.size[self.direction]
+            ]
 
-                # distances
-                distances = [
-                    self_pos - platform_pos,
-                    platform_pos + self.platform.box.size[self.direction] - self_pos - self.box.size[self.direction]
-                ]
-
-                if distances[1-sgn(self.velocity[self.direction])] < abs(self.velocity[self.direction]):
-                    self.velocity[self.direction] *= -1
-        elif self.state == Entity.Punched or self.state == Entity.Kicked:
-            self.velocity = [0, 0, 0]
+            if distances[1-sgn(self.velocity[self.direction])] < abs(self.velocity[self.direction]):
+                self.velocity[self.direction] *= -1
 
         super().update()
 
     def entity_type(self):
         return "F"
+
+    def on_state_transition(self, old_state, new_state):
+        if new_state == Entity.Walking:
+            self.velocity[self.direction] = self.speed
+        elif new_state in {Entity.Dead, Entity.Punched, Entity.Kicked}:
+            self.velocity = [0, 0, 0]
+
 
 """
 class ShootingEnemy(PatrollingEnemy):
