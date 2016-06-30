@@ -7,7 +7,7 @@ from potg_entity import *
 
 class Player(Entity):
 
-    size = [349/3, 374/3, 10]
+    size = [349/3, 374/3, 50]
     concentrate = 0
     punch_strength = 5
     kick_strength = 5

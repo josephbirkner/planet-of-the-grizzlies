@@ -6,12 +6,11 @@ from potg_functions import sgn
 class Enemy(Entity):
 
     # two dimensional image but depth of 10
-    size = [300/2.5, 300/2.5, 10]
+    size = [300/2.5, 300/2.5, 40]
 
     def __init__(self, id, pos, world, image):
         super().__init__(id, pos, world, image)
 
-    # if collide with player, kill player
     def collision(self, colliding_entity):
         if colliding_entity.entity_type() == "P":
             if colliding_entity.event() == Entity.Punching:
@@ -70,6 +69,25 @@ class PatrollingEnemy(Enemy):
             self.velocity[self.direction] = self.speed
         elif new_state in {Entity.Dead, Entity.Punched, Entity.Kicked}:
             self.velocity = [0, 0, 0]
+
+
+
+class Bullet(Entity):
+
+    # two dimensional image but depth of 10
+    size = [50, 17, 10]
+    damage = 10
+
+    def __init__(self, id, pos, world, image):
+        super().__init__(id, pos, world, image)
+
+    # if collide with player, kill player
+    def collision(self, colliding_entity):
+        if colliding_entity.entity_type() == "P":
+            colliding_entity.hurt(self.damage)
+
+    def entity_type(self):
+        return "b"
 
 
 """

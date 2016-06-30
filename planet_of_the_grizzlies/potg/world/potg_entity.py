@@ -49,7 +49,7 @@ class Entity(QGraphicsPixmapItem):
     2: The number of updates that have passed since the state was activated
     """
     states = None
-    state = -1
+    state = None
     state_just_changed = 0
 
     def __init__(self, id, pos, world, filename):
@@ -126,19 +126,19 @@ class Entity(QGraphicsPixmapItem):
 
         # put the new state on top of the states stack
         self.states.insert(0, [state, duration, 0])
-        print(state)
 
         if not old_state and len(self.states) > 1:
             old_state = self.states[1][0]
 
-        if self.state != old_state:
+        if state != old_state:
+            self.current_sprite_list = self.sprites[state]
+            if not self.current_sprite_list:
+                print("warning: attempt to set nonexisting sprite for state",state)
             self.state_just_changed = 2
             self.state = state
             self.setPixmap(self.sprites[state][0])
-            self.current_sprite_list = self.sprites[state]
             self.current_sprite_list_index = 0
-            if not self.current_sprite_list:
-                print("warning: attempt to set nonexsiting sprite for state",state)
+            print(old_state, state)
             self.on_state_transition(old_state, self.state)
 
         self.is_mirrored = False
@@ -163,6 +163,8 @@ class Entity(QGraphicsPixmapItem):
                     else:
                         print("warning: transitioning to null state!")
                 break
+            else:
+                i += 1
 
     def update_state(self):
         i = 0
@@ -209,6 +211,7 @@ class Entity(QGraphicsPixmapItem):
         if not self.platform or not self.platform.box.intersectsVerticalRay(self.logic_pos[0], self.logic_pos[2]):
             self.update_platform()
         self.update_screen_pos()
+
         self.activate_state(json_data["state"])
 
     def load_images(self):

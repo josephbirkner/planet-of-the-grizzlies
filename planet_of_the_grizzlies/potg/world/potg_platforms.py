@@ -102,7 +102,7 @@ class Water(Platform):
 
     def collision(self, ent):
         if ent.entity_type() == "P":
-            ent.kill()
+            ent.activate_state(Entity.Dead)
         pass
 
     def item_type(self):
