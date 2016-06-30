@@ -116,7 +116,7 @@ class TargetPlatform(Platform):
 
     def collision(self, ent):
         if ent.entity_type() == "P":
-            ent.set_state(Entity.Won)
+            ent.activate_state(Entity.Won)
 
     def item_type(self):
         return "T"

@@ -15,61 +15,52 @@ class Player(Entity):
     def __init__(self, pos, world):
         super().__init__(0, pos, world, "gfx/walk_player.png")
 
-    def set_state(self, state):
-        super(Player, self).set_state(state)
-        if self.event():
-            self.world.signalPlayerStatusChanged.emit(self.state)
-
     def process_input(self, key, key_status):
         if key_status:
             if key == Qt.Key_Space and self.on_ground:
                 self.velocity[1] += self.jump_strength
                 self.on_ground = False
-                self.set_state(Entity.Jumping)
+                self.activate_state(Entity.Jumping)
             elif key == Qt.Key_A:
                 self.velocity[0] = -self.speed
-                self.set_state(Entity.Walking)
+                self.activate_state(Entity.Walking)
             elif key == Qt.Key_D:
                 self.velocity[0] = self.speed
-                self.set_state(Entity.Walking)
+                self.activate_state(Entity.Walking)
             elif key == Qt.Key_W:
                 self.velocity[2] = -self.speed
-                self.set_state(Entity.Walking)
+                self.activate_state(Entity.Walking)
             elif key == Qt.Key_S:
                 self.velocity[2] = self.speed
-                self.set_state(Entity.Walking)
+                self.activate_state(Entity.Walking)
             elif key == Qt.Key_Up:
-                self.set_state(Entity.Punching)
+                self.activate_state(Entity.Punching)
             elif key == Qt.Key_Down:
-                self.set_state(Entity.Kicking)
+                self.activate_state(Entity.Kicking)
             elif key == Qt.Key_E:
                 self.using = True
         else:
-            if key == Qt.Key_Space and self.state == Entity.Jumping:
-                self.set_state(Entity.Idle)
+            if key == Qt.Key_Space:
+                self.deactivate_state(Entity.Jumping)
             elif key == Qt.Key_A and self.velocity[0] < 0:
                 self.velocity[0] = 0
-                if self.state == Entity.Walking:
-                    self.set_state(Entity.Idle)
+                self.deactivate_state(Entity.Walking)
             elif key == Qt.Key_D and self.velocity[0] > 0:
                 self.velocity[0] = 0
-                if self.state == Entity.Walking:
-                    self.set_state(Entity.Idle)
+                self.deactivate_state(Entity.Walking)
             elif key == Qt.Key_W and self.velocity[2] < 0:
                 self.velocity[2] = 0
-                if self.state == Entity.Walking:
-                    self.set_state(Entity.Idle)
+                self.deactivate_state(Entity.Walking)
             elif key == Qt.Key_S and self.velocity[2] > 0:
                 self.velocity[2] = 0
-                if self.state == Entity.Walking:
-                    self.set_state(Entity.Idle)
+                self.deactivate_state(Entity.Walking)
             elif key == Qt.Key_E:
                 self.using = False
             # stopping punching upon punching
-            elif key == Qt.Key_Up and self.state == Entity.Punching:
-                self.set_state(Entity.Idle)
+            elif key == Qt.Key_Up:
+                self.deactivate_state(Entity.Punching)
             elif key == Qt.Key_Down and self.state == Entity.Kicking:
-                self.set_state(Entity.Idle)
+                self.deactivate_state(Entity.Kicking)
 
 
     def entity_type(self):
@@ -86,3 +77,7 @@ class Player(Entity):
         self.sprites[Entity.Kicking] = [QPixmap("gfx/player_kick.png").scaled(self.size[0], self.size[1])]
         #self.sprites[Entity.Kicked] = [QPixmap("gfx/kick_enemy.png").scaled(self.size[0], self.size[1])]
         self.sprites[Entity.Dead] = [QPixmap("gfx/evil.png").scaled(self.size[0], self.size[1])]
+
+    def on_state_transition(self, old_state, new_state):
+        self.world.signalPlayerStatusChanged.emit(new_state)
+

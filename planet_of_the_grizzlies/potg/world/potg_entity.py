@@ -21,6 +21,12 @@ class Entity(QGraphicsPixmapItem):
     box = None
     platform = None
 
+    sprites = None
+    sprite_cycle_timer_interval = 8  # change image every 15 updates
+    current_sprite_list = None
+    current_sprite_list_index = 0
+    update_count = 0
+
     health = 100
 
     Idle = 0
@@ -35,19 +41,16 @@ class Entity(QGraphicsPixmapItem):
     Dead = 9
     Won = 10
 
+    """
+    The states list is a stack of tuples. Every tuple contains
+    exactly three values:
+    0: The name of the state (see constants above)
+    1: The maximum duration of the state (-1 if infinite)
+    2: The number of updates that have passed since the state was activated
+    """
+    states = None
     state = -1
-    old_state = -1
-    preserve_old_state_for_next_update = False
-
-    sprites = None
-    sprite_cycle_timer_interval = 8 # change image every 15 updates
-    current_sprite_list = None
-    current_sprite_list_index = 0
-    update_count = 0
-
-    state_updates = 0
-    state_duration = 0
-    fall_back_to_this_state_after_temporary_expired = Idle
+    state_just_changed = 0
 
     def __init__(self, id, pos, world, filename):
         super().__init__(QPixmap(filename).scaled(self.size[0], self.size[1]), world.root)
@@ -55,13 +58,15 @@ class Entity(QGraphicsPixmapItem):
         self.world = world
         self.logic_pos = [pos[0], pos[1], 0]
 
+        self.states = []
         self.velocity = [0, 0, 0]
         self.update_screen_pos()
         self.setFlag(QGraphicsItem.ItemIsFocusable)
         # dictionary from the state of the entity to the its image
         self.sprites = {}
+
         self.load_images()
-        self.set_state(Entity.Idle)
+        self.activate_state(Entity.Idle)
 
     def killed(self):
         return self.state == Entity.Dead
@@ -73,10 +78,8 @@ class Entity(QGraphicsPixmapItem):
         self.update_count += 1
         self.update_count %= self.sprite_cycle_timer_interval
 
-        if self.preserve_old_state_for_next_update:
-            self.preserve_old_state_for_next_update = False
-        else:
-            self.old_state = self.state
+        if self.state_just_changed > 0:
+            self.state_just_changed -= 1
 
         self.velocity[1] += self.world.gravity
         self.logic_pos[0] += self.velocity[0]
@@ -113,20 +116,30 @@ class Entity(QGraphicsPixmapItem):
         self.platform = best_platform
 
     # state of the movement
-    def set_state(self, state, duration=-1):
-        self.state_updates = 0
-        self.state_duration = duration
+    def activate_state(self, state, duration=-1, old_state=None):
+        # search state in the current states, remove if necessary
+        i = 0
+        for i in range(0, len(self.states)):
+            if self.states[i][0] == state:
+                del self.states[i]
+                break
 
-        if self.state != state:
-            self.preserve_old_state_for_next_update = True
-            self.old_state = self.state
-            self.fall_back_to_this_state_after_temporary_expired = self.state
+        # put the new state on top of the states stack
+        self.states.insert(0, [state, duration, 0])
+        print(state)
+
+        if not old_state and len(self.states) > 1:
+            old_state = self.states[1][0]
+
+        if self.state != old_state:
+            self.state_just_changed = 2
             self.state = state
             self.setPixmap(self.sprites[state][0])
             self.current_sprite_list = self.sprites[state]
             self.current_sprite_list_index = 0
             if not self.current_sprite_list:
                 print("warning: attempt to set nonexsiting sprite for state",state)
+            self.on_state_transition(old_state, self.state)
 
         self.is_mirrored = False
         self.resetTransform()
@@ -137,10 +150,34 @@ class Entity(QGraphicsPixmapItem):
             self.setTransform(current_transform)
             self.is_mirrored = not self.is_mirrored
 
+    def deactivate_state(self, state):
+        i = 0
+        while i < len(self.states):
+            if self.states[i][0] == state:
+                del self.states[i]
+                if i == 0:
+                    if i < len(self.states):
+                        self.activate_state(self.states[i][0],
+                                            self.states[i][1] - self.states[i][2] if self.states[i][1] > 0 else -1,
+                                            state)
+                    else:
+                        print("warning: transitioning to null state!")
+                break
+
     def update_state(self):
-        self.state_updates += 1
-        if self.state_updates >= self.state_duration and self.state_duration > 0:
-            self.set_state(self.fall_back_to_this_state_after_temporary_expired)
+        i = 0
+        while i < len(self.states):
+            self.states[i][2] += 1
+            if self.states[i][2] > self.states[i][1] and self.states[i][1] > 0:
+                old_state = self.states[i][0]
+                del self.states[i]
+                if i == 0:
+                    if i < len(self.states):
+                        self.activate_state(self.states[i][0], self.states[i][1] - self.states[i][2] if self.states[i][1] > 0 else -1, old_state)
+                    else:
+                        print("warning: transitioning to null state!")
+            else:
+                i += 1
 
     def update_sprite(self):
         if self.update_count == 0:
@@ -172,13 +209,13 @@ class Entity(QGraphicsPixmapItem):
         if not self.platform or not self.platform.box.intersectsVerticalRay(self.logic_pos[0], self.logic_pos[2]):
             self.update_platform()
         self.update_screen_pos()
-        self.set_state(json_data["state"])
+        self.activate_state(json_data["state"])
 
     def load_images(self):
         pass
 
     def event(self):
-        if self.state != self.old_state:
+        if self.state_just_changed > 0:
             return self.state
         else:
             return None
@@ -186,4 +223,7 @@ class Entity(QGraphicsPixmapItem):
     def hurt(self, severity):
         self.health -= severity
         if self.health <= 0:
-            self.set_state(Entity.Dead)
+            self.activate_state(Entity.Dead)
+
+    def on_state_transition(self, old_state, new_state):
+        pass
