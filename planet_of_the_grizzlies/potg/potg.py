@@ -29,8 +29,8 @@ class PlanetOfTheGrizzlies(QWidget):
 
     world = None
 
-    local_server = None
-    local_client = None
+    server = None
+    client = None
 
     main_menu = None
     ingame_menu = None
@@ -39,6 +39,8 @@ class PlanetOfTheGrizzlies(QWidget):
     def __init__(self):
         super().__init__()
         self.initUI()
+        self.client = Client()
+        self.client.signalLevelChanged.connect(self.onClientLevelChanged)
 
     # user interface
     def initUI(self):
@@ -64,6 +66,7 @@ class PlanetOfTheGrizzlies(QWidget):
         self.main_menu = MainMenu(self.graphics)
         self.main_menu.signalExit.connect(self.deleteLater)
         self.main_menu.signalCreateServer.connect(self.onCreateServer)
+        self.main_menu.signalJoinServer.connect(self.onJoinServer)
         self.main_menu.show()
 
         self.setLayout(layout)
@@ -79,7 +82,10 @@ class PlanetOfTheGrizzlies(QWidget):
         self.world.signalPlayerStatusChanged.connect(self.onPlayerStatusChanged)
         self.world.signalPlayerPosChanged.connect(self.onPlayerPosChanged)
 
-    def onPlayerPosChanged(self, pos: QPointF):
+    def onPlayerPosChanged(self, clientid, pos: QPointF):
+        if clientid != self.client.id:
+            return
+
         view_center = self.graphics.rect().center()
         pos_in_view_coords = self.graphics.mapFromScene(self.world.root.mapToScene(pos))
         dCx = pos_in_view_coords.x() - view_center.x()
@@ -109,9 +115,9 @@ class PlanetOfTheGrizzlies(QWidget):
 
         if abs(dCx) > 0 or abs(dCy) > 0:
             self.world.root.moveBy(-dCx, -dCy)
-            self.world.scroll_background(self.world.player_for_client(self.local_client.id))
+            self.world.scroll_background(self.world.player_for_client(self.client.id))
 
-    def onPlayerStatusChanged(self, status):
+    def onPlayerStatusChanged(self, clientid, status):
         banner = None
 
         if status == Entity.Won:
@@ -125,33 +131,41 @@ class PlanetOfTheGrizzlies(QWidget):
             banner.setPos(self.graphics.viewport().width()/2-banner.pixmap().width()/2, self.graphics.viewport().height()/2-banner.pixmap().height()/2)
 
     def onClientLevelChanged(self):
-        self.set_world(self.local_client.world)
-
-    def onCreateServer(self):
-        self.local_server = LocalServer()
-        self.local_client = Client(self.local_server)
-        self.local_client.signalLevelChanged.connect(self.onClientLevelChanged)
-        view.local_server.request_level("grizzlycity_with_background")
+        self.set_world(self.client.world)
         self.ingame_menu.show()
         self.main_menu.hide()
         self.resize_widgets()
+
+    def onCreateServer(self):
+        self.server = LocalServer()
+        self.client.attach_to_server(self.server)
+        self.server.request_level("grizzlycity_with_background")
+        self.server.request_new_player(self.client.id)
+
+    def onJoinServer(self):
+        self.server = RemoteServer("127.0.0.1", 27030)
+        self.client.attach_to_server(self.server)
+        app.thread().wait(100)
+        self.server.request_new_player(self.client.id)
 
     def eventFilter(self, obj, e):
         if e.type() == QEvent.KeyPress:
             if e.key() == Qt.Key_Escape:
                 self.close()
                 self.deleteLater()
-            elif self.local_server:
-                self.local_server.notify_input(self.local_client.id, e.key(), True)
+            elif e.key() == Qt.Key_Backspace and self.server:
+                self.server.request_new_player(self.client.id)
+            elif self.server:
+                self.server.notify_input(self.client.id, e.key(), True)
                 # immediate application to the client in order to mitigate the lag of the server
-                player = self.world.player_for_client(self.local_client.id)
+                player = self.world.player_for_client(self.client.id)
                 if player:
                     player.process_input(e.key, True)
             return True
         elif e.type() == QEvent.KeyRelease:
-            self.local_server.notify_input(self.local_client.id, e.key(), False)
+            self.server.notify_input(self.client.id, e.key(), False)
             # immediate application to the client in order to mitigate the lag of the server
-            player = self.world.player_for_client(self.local_client.id)
+            player = self.world.player_for_client(self.client.id)
             if player:
                 player.process_input(e.key, False)
             return True

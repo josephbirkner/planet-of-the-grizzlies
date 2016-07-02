@@ -13,13 +13,16 @@ from potg_enemy import *
 
 class World(QGraphicsScene):
 
+    name = ""
     platforms = []
     entities = {}
 
     grid = []
     grid_cell_size = (10, 10)
 
-    player = None
+    players = None
+    spawnlocation = None
+
     gravity = .8
     depth_vec = (0, 0)
     depth = 0
@@ -30,11 +33,13 @@ class World(QGraphicsScene):
     background_image = None
 
     # signals
-    signalPlayerPosChanged = pyqtSignal(QPointF)
-    signalPlayerStatusChanged = pyqtSignal(int)
+    signalPlayerPosChanged = pyqtSignal(str, QPointF)
+    signalPlayerStatusChanged = pyqtSignal(str, int)
 
     def __init__(self, level, depth_vec=[122, 72], depth=10):
         super().__init__()
+        self.name = level
+        self.players = {}
         self.platforms = []
         self.entities = {}
         self.grid = []
@@ -83,7 +88,7 @@ class World(QGraphicsScene):
                         self.platforms.append(Lever(pos[0:], self))
                         last = self.platforms[-1]
                     elif block == "P":
-                        self.player = Player(pos[0:], self)
+                        self.spawnlocation = pos[0:]
                         last = None
                     #elif block == "E":
                     #    self.entities.append(Enemy(pos[0:], self))
@@ -121,8 +126,6 @@ class World(QGraphicsScene):
         self.platforms.sort(key=lambda block: (block.logic_pos[1], block.logic_pos[0]), reverse=True)
         for z in range(0, len(self.platforms)):
             self.platforms[z].setZValue(z)
-
-        self.setFocusItem(self.player)
 
         # convert grid cell size from blocks into pixels
         self.grid_cell_size = (self.grid_cell_size[0] * self.block_size[0], self.grid_cell_size[1] * self.block_size[1])
@@ -204,17 +207,21 @@ class World(QGraphicsScene):
         return result
 
     def entities_and_players(self):
-        return list(self.entities.items())+[(self.player.id, self.player)]
+        return list(self.entities.items())+list(self.players.items())
 
     def timerEvent(self, e):
         # update all entities
         for entid, ent in self.entities.items():
             ent.update()
-        self.player.update()
+
+        # update players
+        for clientid, player in self.players.items():
+            player.update()
 
         # check collision between player and entities
         for entid, ent in self.entities.items():
-            self.player.check_collision(ent)
+            for clientid, player in self.players.items():
+                player.check_collision(ent)
 
         # check collision between entities and blocks
         for entid, ent in self.entities_and_players():
@@ -222,7 +229,8 @@ class World(QGraphicsScene):
                 ent.check_collision(block)
 
         self.update_entity_zorder()
-        self.signalPlayerPosChanged.emit(self.player.pos())
+        for clientid, player in self.players.items():
+            self.signalPlayerPosChanged.emit(clientid, player.pos())
 
     def update_entity_zorder(self):
         for entid, ent in self.entities_and_players():
@@ -237,16 +245,21 @@ class World(QGraphicsScene):
     # these are used for sever-client interaction
 
     def add_player(self, clientid):
-        pass
+        self.players[clientid] = Player(self.spawnlocation[0:], self, clientid)
+        return self.players[clientid]
 
     def player_for_client(self, clientid):
-        return self.player
+        if clientid in self.players.keys():
+            return self.players[clientid]
+        else:
+            return None
 
     def changed_entities(self):
         result = []
         for entityid, entity in self.entities.items():
             result.append(entity.serialize())
-        result.append(self.player.serialize())
+        for clientid, player in self.players.items():
+            result.append(player.serialize())
         return result
 
     def reset_changed_entities(self):
@@ -257,8 +270,13 @@ class World(QGraphicsScene):
             if entity_info["type"] != "P":
                 self.entities[entity_info["id"]].deserialize(entity_info)
             else:
-                self.player.deserialize(entity_info)
-        pass
+                # create player if it doesnt exist yet
+                player = None
+                if entity_info["clientid"] in self.players.keys():
+                    player = self.players[entity_info["clientid"]]
+                else:
+                    player = self.add_player(entity_info["clientid"])
+                player.deserialize(entity_info)
 
     # scrolling of the background
     def scroll_background(self, player):

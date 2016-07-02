@@ -4,13 +4,13 @@ from PyQt5.QtGui import *
 
 from potg_box import *
 
+from json import *
 
 class Entity(QGraphicsPixmapItem):
 
     id = 0
     size = [0, 0, 0]
     logic_pos = [0, 0, 0]
-    is_mirrored = False
     sprite = None
     velocity = [0, 0, 0]
     jump_strength = -18
@@ -22,7 +22,7 @@ class Entity(QGraphicsPixmapItem):
     platform = None
 
     sprites = None
-    sprite_cycle_timer_interval = 8  # change image every 15 updates
+    sprite_cycle_timer_interval = 8  # change image every 8 updates
     current_sprite_list = None
     current_sprite_list_index = 0
     update_count = 0
@@ -138,17 +138,17 @@ class Entity(QGraphicsPixmapItem):
             self.state = state
             self.setPixmap(self.sprites[state][0])
             self.current_sprite_list_index = 0
-            print(old_state, state)
             self.on_state_transition(old_state, self.state)
 
-        self.is_mirrored = False
+        self.reorientate()
+
+    def reorientate(self):
         self.resetTransform()
-        if self.is_mirrored != (self.velocity[0] < 0):
+        if self.velocity[0] < 0:
             current_transform = self.transform()
             current_transform.scale(-1, 1)
             current_transform.translate(-self.boundingRect().width(), 0)
             self.setTransform(current_transform)
-            self.is_mirrored = not self.is_mirrored
 
     def deactivate_state(self, state):
         i = 0
@@ -201,7 +201,7 @@ class Entity(QGraphicsPixmapItem):
         result["velocity"] = self.velocity[0:]
         result["type"] = self.entity_type()
         result["id"] = self.id
-        result["state"] = self.state
+        result["state"] = [state[0:] for state in self.states]
         return result
 
     def deserialize(self, json_data):
@@ -211,8 +211,11 @@ class Entity(QGraphicsPixmapItem):
         if not self.platform or not self.platform.box.intersectsVerticalRay(self.logic_pos[0], self.logic_pos[2]):
             self.update_platform()
         self.update_screen_pos()
-
-        self.activate_state(json_data["state"])
+        self.states = json_data["state"]
+        if self.states[0][0] != self.state:
+            self.activate_state(self.states[0][0])
+        else:
+            self.reorientate()
 
     def load_images(self):
         pass

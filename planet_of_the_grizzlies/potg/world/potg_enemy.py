@@ -16,7 +16,7 @@ class Enemy(Entity):
             if colliding_entity.event() == Entity.Punching:
                 self.hurt(colliding_entity.punch_strength)
                 if not self.killed():
-                    self.activate_state(Entity.Punched, 25)
+                    self.activate_state(Entity.Punched, 12)
 
     def entity_type(self):
         return "E"
@@ -28,10 +28,10 @@ class Enemy(Entity):
         self.sprites[Entity.Dodging] = [QPixmap("gfx/soldier_idle.png").scaled(self.size[0], self.size[1])]
         self.sprites[Entity.Jumping] = [QPixmap("gfx/soldier_idle.png").scaled(self.size[0], self.size[1])]
         #self.sprites[Entity.Punching] = [QPixmap("gfx/punch_player.png").scaled(self.size[0], self.size[1])]
-        self.sprites[Entity.Punched] = [QPixmap("gfx/ninja.png").scaled(self.size[0], self.size[1])]
+        self.sprites[Entity.Punched] = [QPixmap("gfx/soldier_hit.png").scaled(self.size[0], self.size[1])]
         #self.sprites[Entity.Kicking] = [QPixmap("gfx/kick_player.png").scaled(self.size[0], self.size[1])]
-        self.sprites[Entity.Kicked] = [QPixmap("gfx/soldier_idle.png").scaled(self.size[0], self.size[1])]
-        self.sprites[Entity.Dead] = [QPixmap("gfx/evil.png").scaled(self.size[0], self.size[1])]
+        self.sprites[Entity.Kicked] = [QPixmap("gfx/soldier_hit.png").scaled(self.size[0], self.size[1])]
+        self.sprites[Entity.Dead] = [QPixmap("gfx/soldier_dead.png").scaled(self.size[0], self.size[1])]
 
 
 class PatrollingEnemy(Enemy):
@@ -68,7 +68,7 @@ class PatrollingEnemy(Enemy):
         if new_state == Entity.Walking:
             self.velocity[self.direction] = self.speed
         elif new_state in {Entity.Dead, Entity.Punched, Entity.Kicked}:
-            self.velocity = [0, 0, 0]
+            self.velocity[self.direction] = 0
 
 
 

@@ -11,9 +11,11 @@ class Player(Entity):
     concentrate = 0
     punch_strength = 5
     kick_strength = 5
+    clientid = ""
 
-    def __init__(self, pos, world):
+    def __init__(self, pos, world, clientid):
         super().__init__(0, pos, world, "gfx/walk_player.png")
+        self.clientid = clientid
 
     def process_input(self, key, key_status):
         if key_status:
@@ -62,7 +64,6 @@ class Player(Entity):
             elif key == Qt.Key_Down and self.state == Entity.Kicking:
                 self.deactivate_state(Entity.Kicking)
 
-
     def entity_type(self):
         return "P"
 
@@ -79,5 +80,9 @@ class Player(Entity):
         self.sprites[Entity.Dead] = [QPixmap("gfx/evil.png").scaled(self.size[0], self.size[1])]
 
     def on_state_transition(self, old_state, new_state):
-        self.world.signalPlayerStatusChanged.emit(new_state)
+        self.world.signalPlayerStatusChanged.emit(self.clientid, new_state)
 
+    def serialize(self):
+        result = super().serialize()
+        result["clientid"] = self.clientid
+        return result

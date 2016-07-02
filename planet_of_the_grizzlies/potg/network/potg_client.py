@@ -11,18 +11,27 @@ class Client(QObject):
 
     signalLevelChanged = pyqtSignal()
 
-    def __init__(self, server):
+    def __init__(self):
         super().__init__()
         self.id = str(uuid.uuid1())
-        self.server = server
-        server.add_client(self)
 
-    def notify_world_update(self, updated_objects):
-        assert self.world
+    def notify_world_update(self, updated_objects, level):
+        if not self.world:
+            self.notify_level(level)
+        assert self.world and self.world.name == level
         self.world.update_entities_from_list(updated_objects)
 
     def notify_level(self, level):
+        if self.world and self.world.name == level:
+            return
         self.world = World(level)
         self.signalLevelChanged.emit()
+
+    def attach_to_server(self, server):
+        if self.server and self.server != server:
+            self.server.remove_client(self.id)
+        self.server = server
+        if self.server:
+            self.server.add_client(self)
 
 

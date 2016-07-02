@@ -17,3 +17,4 @@ class MainMenu(QWidget, Ui_potg_main):
         self.setupUi(self)
         self.exit_game_button.mouseReleaseEvent = lambda e: self.signalExit.emit()
         self.create_server_button.mouseReleaseEvent = lambda e: self.signalCreateServer.emit()
+        self.join_server_button.mouseReleaseEvent = lambda e: self.signalJoinServer.emit()
