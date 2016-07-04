@@ -153,9 +153,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.49497475"
-     inkscape:cx="-627.07044"
-     inkscape:cy="620.29048"
+     inkscape:zoom="0.7"
+     inkscape:cx="-97.228636"
+     inkscape:cy="611.98286"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -192,7 +192,7 @@
      inkscape:groupmode="layer"
      id="layer1">
     <ellipse
-       style="opacity:0.77520004;fill:#c87137;fill-opacity:1;stroke:#000000;stroke-width:5.00000048;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="opacity:0.77520004;fill:#c87137;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path6913"
        cx="300.63785"
        cy="375.48889"
@@ -222,7 +222,7 @@
        inkscape:export-xdpi="41.939999"
        inkscape:export-ydpi="41.939999" />
     <ellipse
-       style="opacity:0.77520004;fill:#784421;fill-opacity:1;stroke:#000000;stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="opacity:0.77520004;fill:#784421;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path6930"
        cx="463.66"
        cy="133.1234"
@@ -401,7 +401,7 @@
        inkscape:export-xdpi="41.939999"
        inkscape:export-ydpi="41.939999" />
     <ellipse
-       style="opacity:0.77520004;fill:#d38d5f;fill-opacity:1;stroke:#000000;stroke-width:5.00000048;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="opacity:0.77520004;fill:#d38d5f;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path6913-8"
        cx="268.70059"
        cy="190.70207"
@@ -411,7 +411,7 @@
        inkscape:export-xdpi="41.939999"
        inkscape:export-ydpi="41.939999" />
     <ellipse
-       style="opacity:0.77520004;fill:#784421;fill-opacity:1;stroke:#000000;stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="opacity:0.77520004;fill:#784421;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path6930-3"
        cx="278.80212"
        cy="183.63103"
