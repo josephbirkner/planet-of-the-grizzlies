@@ -13,6 +13,7 @@ class Entity(QGraphicsPixmapItem):
     logic_pos = [0, 0, 0]
     sprite = None
     velocity = [0, 0, 0]
+    orientation = 1 # 1 for right, -1 for left
     jump_strength = -18
     speed = 12
     on_ground = False
@@ -31,6 +32,7 @@ class Entity(QGraphicsPixmapItem):
 
     Idle = 0
     Walking = 1
+    Flying = 1
     Running = 2
     Dodging = 3
     Jumping = 4
@@ -40,6 +42,7 @@ class Entity(QGraphicsPixmapItem):
     Kicked = 8
     Dead = 9
     Won = 10
+    __HighestState__ = 10
 
     """
     The states list is a stack of tuples. Every tuple contains
@@ -96,6 +99,7 @@ class Entity(QGraphicsPixmapItem):
         self.update_screen_pos()
         self.update_sprite()
         self.update_state()
+        self.update_orientation()
 
     def update_screen_pos(self):
         screen_pos = self.logic_pos[0:]
@@ -142,9 +146,15 @@ class Entity(QGraphicsPixmapItem):
 
         self.reorientate()
 
+    def update_orientation(self):
+        if self.velocity[0] < 0:
+            self.orientation = -1
+        else:
+            self.orientation = 1
+
     def reorientate(self):
         self.resetTransform()
-        if self.velocity[0] < 0:
+        if self.orientation < 0:
             current_transform = self.transform()
             current_transform.scale(-1, 1)
             current_transform.translate(-self.boundingRect().width(), 0)

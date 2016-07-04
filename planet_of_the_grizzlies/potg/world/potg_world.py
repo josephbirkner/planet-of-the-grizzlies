@@ -16,6 +16,7 @@ class World(QGraphicsScene):
     name = ""
     platforms = []
     entities = {}
+    next_entity_id = 0
 
     grid = []
     grid_cell_size = (10, 10)
@@ -90,15 +91,8 @@ class World(QGraphicsScene):
                     elif block == "P":
                         self.spawnlocation = pos[0:]
                         last = None
-                    #elif block == "E":
-                    #    self.entities.append(Enemy(pos[0:], self))
-                    #    last = None
-                    elif block == "F":
-                        self.entities[next_entity_id] = PatrollingEnemy(next_entity_id, pos[0:], self, 0)
-                        last = None
-                    elif block == "H":
-                        self.entities[next_entity_id] = PatrollingEnemy(next_entity_id, pos[0:], self, 2)
-                        self.entities[next_entity_id].velocity[2] = 2
+                    elif block != " ":
+                        self.add_entity(block, pos)
                         last = None
                     else:
                         last = None
@@ -134,6 +128,11 @@ class World(QGraphicsScene):
 
         # begin updates
         self.update_timer_id = self.startTimer(20)
+
+    def get_next_entity_id(self):
+        result = self.next_entity_id
+        self.next_entity_id += 1
+        return result
 
     def insert_into_grid(self, x, y, platform):
         assert(x >= 0 and y >= 0)
@@ -219,7 +218,7 @@ class World(QGraphicsScene):
             player.update()
 
         # check collision between player and entities
-        for entid, ent in self.entities.items():
+        for ent in [ent for entid, ent in self.entities.items()]:
             for clientid, player in self.players.items():
                 player.check_collision(ent)
 
@@ -265,10 +264,32 @@ class World(QGraphicsScene):
     def reset_changed_entities(self):
         pass
 
+    def add_entity(self, ent_type, ent_position, ent_id=-1):
+        if ent_id < 0:
+            ent_id = self.get_next_entity_id()
+        if ent_type == "F":
+            self.entities[ent_id] = Soldier(ent_id, ent_position[0:], self, 0)
+        # elif block == "E":
+        #    self.entities.append(Enemy(pos[0:], self))
+        #    last = None
+        elif ent_type == "H":
+            self.entities[ent_id] = Soldier(ent_id, ent_position[0:], self, 2)
+            self.entities[ent_id].velocity[2] = 2
+        elif ent_type == "b":
+            self.entities[ent_id] = Bullet(ent_id, ent_position[0:], self)
+        return self.entities[ent_id]
+
+    def remove_entity(self, ent):
+            self.entities.pop(ent.id)
+            self.removeItem(ent)
+
     def update_entities_from_list(self, entity_json_objects):
         for entity_info in entity_json_objects:
             if entity_info["type"] != "P":
-                self.entities[entity_info["id"]].deserialize(entity_info)
+                if entity_info["id"] in self.entities.keys():
+                    self.entities[entity_info["id"]].deserialize(entity_info)
+                else:
+                    self.add_entity(entity_info["type"], entity_info["pos"], entity_info["id"])
             else:
                 # create player if it doesnt exist yet
                 player = None
