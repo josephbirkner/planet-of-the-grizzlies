@@ -81,6 +81,8 @@ class PlanetOfTheGrizzlies(QWidget):
         self.graphics.setScene(world)
         self.world.signalPlayerStatusChanged.connect(self.onPlayerStatusChanged)
         self.world.signalPlayerPosChanged.connect(self.onPlayerPosChanged)
+        if not self.world.player_for_client(self.client.id):
+            self.server.request_new_player(self.client.id)
 
     def onPlayerPosChanged(self, clientid, pos: QPointF):
         if clientid != self.client.id:
@@ -145,7 +147,6 @@ class PlanetOfTheGrizzlies(QWidget):
     def onJoinServer(self):
         self.server = RemoteServer("127.0.0.1", 27030)
         self.client.attach_to_server(self.server)
-        app.thread().wait(100)
         self.server.request_new_player(self.client.id)
 
     def eventFilter(self, obj, e):
