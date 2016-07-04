@@ -21,6 +21,7 @@ class Platform(QGraphicsPixmapItem):
     brush = None
     tiles = []
     buffer = None
+    depth_factor = 1.0
 
     def __init__(self, pos, world, sprite=None):
         super().__init__(world.root)
@@ -53,7 +54,7 @@ class Platform(QGraphicsPixmapItem):
     def notify_blocks_changed(self):
         self.rect = QRectF(0, 0, (self.width_blocks-1)*self.world.block_size[0], (self.height_blocks-1)*self.world.block_size[1])
         self.rect.adjust(0, 0, self.sprite_width, self.sprite_height)
-        self.box = Box(self.logic_pos, [self.width_blocks * self.world.block_size[0], self.height_blocks * self.world.block_size[1], self.world.depth])
+        self.box = Box(self.logic_pos, [self.width_blocks * self.world.block_size[0], self.height_blocks * self.world.block_size[1], self.world.depth*self.depth_factor])
         # self.setRect(self.rect)
 
         # update tiles
@@ -150,3 +151,13 @@ class Lever(Platform):
     def item_type(self):
         return "L"
 
+
+class SuperwidePlatform(Platform):
+
+    depth_factor = 2
+
+    def __init__(self, pos, world):
+        super().__init__(pos, world, QPixmap("gfx/platform_superwide.png"))
+
+    def item_type(self):
+        return "S"

@@ -88,8 +88,8 @@ class Entity(QGraphicsPixmapItem):
         self.logic_pos[0] += self.velocity[0]
         self.logic_pos[1] += self.velocity[1]
         self.logic_pos[2] += self.velocity[2]
-        if self.logic_pos[2] > self.world.depth - self.box.depth():
-            self.logic_pos[2] = self.world.depth - self.box.depth()
+        if self.platform and self.logic_pos[2] > self.platform.box.depth() - self.box.depth():
+            self.logic_pos[2] = self.platform.box.depth() - self.box.depth()
         elif self.logic_pos[2] < 0:
             self.logic_pos[2] = 0
 

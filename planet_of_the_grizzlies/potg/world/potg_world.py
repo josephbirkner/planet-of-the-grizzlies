@@ -79,6 +79,9 @@ class World(QGraphicsScene):
                     if block == "_":
                         self.platforms.append(Platform(pos[0:], self))
                         last = self.platforms[-1]
+                    elif block == "S":
+                        self.platforms.append(SuperwidePlatform(pos[0:], self))
+                        last = self.platforms[-1]
                     elif block == "T":
                         self.platforms.append(TargetPlatform(pos[0:], self))
                         last = self.platforms[-1]
