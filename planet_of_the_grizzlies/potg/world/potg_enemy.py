@@ -58,7 +58,10 @@ class Soldier(Enemy):
     def update(self):
         if self.state == Entity.Walking:
             self.update_target()
-            if self.platform:
+            if self.current_target:
+                self.bullet_burst_count = 0
+                self.activate_state(Soldier.Aiming, 70)
+            elif self.platform:
                 self_pos = self.box.position[self.direction]
                 platform_pos = self.platform.box.position[self.direction]
 
@@ -81,17 +84,16 @@ class Soldier(Enemy):
             dy = abs(player.logic_pos[1] - self.logic_pos[1])
             if dx < self.range_x and dy < self.range_y:
                 self.current_target = player
-                if self.state != Soldier.Aiming:
-                    self.activate_state(Soldier.Aiming, 70)
+                break
 
     def update_orientation(self):
-        if self.state == Soldier.Walking:
-            super().update_orientation()
-        elif self.current_target:
-            if (self.logic_pos[0] - self.current_target.logic_pos[0]) < 0:
+        if self.current_target:
+            if (self.current_target.logic_pos[0] - self.logic_pos[0]) < 0:
                 self.orientation = -1
             else:
                 self.orientation = 1
+        else:
+            super().update_orientation()
 
     def entity_type(self):
         return "F"
@@ -129,6 +131,7 @@ class Soldier(Enemy):
         for i in range(0, 3):
             bullet_velocity[i] = bullet_velocity[i]/bullet_velocity_length * bullet.speed
 
+        self.bullet_burst_count += 1
         bullet.velocity = bullet_velocity
 
     def load_images(self):
@@ -136,16 +139,21 @@ class Soldier(Enemy):
         self.sprites[Soldier.Happy] = [QPixmap("gfx/soldier_happy.png").scaled(self.size[0], self.size[1])]
         super().load_images()
 
+
 class Bullet(Entity):
 
     # two dimensional image but depth of 10
-    size = [50, 17, 10]
+    size = [50/2, 17/2, 10]
     damage = 10
-    speed = 5
+    speed = 10
 
     def __init__(self, id, pos, world):
-        super().__init__(id, pos, world, None)
-        self.activate_state(Entity.Flying)
+        super().__init__(id, pos, world, QPixmap("gfx/bullet.png").scaled(self.size[0], self.size[1]))
+        self.activate_state(Entity.Flying, 100)
+
+    def update(self):
+        super().update()
+        self.velocity[1] -= self.world.gravity
 
     # if collide with player, kill player
     def collision(self, colliding_entity):
@@ -159,10 +167,10 @@ class Bullet(Entity):
     def load_images(self):
         self.sprites[Entity.Idle] = [QPixmap("gfx/bullet.png").scaled(self.size[0], self.size[1])]
         self.sprites[Entity.Walking] = [QPixmap("gfx/bullet.png").scaled(self.size[0], self.size[1])]
-        self.sprites[Entity.Idle] = [QPixmap("gfx/bullet.png").scaled(self.size[0], self.size[1])]
+        self.sprites[Entity.Dead] = [QPixmap("gfx/bullet.png").scaled(self.size[0], self.size[1])]
 
     def on_state_transition(self, old_state, new_state):
-        if new_state == Entity.Dead:
+        if new_state == Entity.Dead or (new_state == Entity.Idle and old_state == Bullet.Flying):
             self.world.remove_entity(self)
 
 """

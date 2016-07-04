@@ -209,8 +209,12 @@ class World(QGraphicsScene):
         return list(self.entities.items())+list(self.players.items())
 
     def timerEvent(self, e):
+        # maintain a copy of the entities list, because
+        # self.entities will be manipulated during the update
+        entities = [ent for entid, ent in self.entities.items()]
+
         # update all entities
-        for entid, ent in self.entities.items():
+        for ent in entities:
             ent.update()
 
         # update players
@@ -218,7 +222,7 @@ class World(QGraphicsScene):
             player.update()
 
         # check collision between player and entities
-        for ent in [ent for entid, ent in self.entities.items()]:
+        for ent in entities:
             for clientid, player in self.players.items():
                 player.check_collision(ent)
 
@@ -280,8 +284,8 @@ class World(QGraphicsScene):
         return self.entities[ent_id]
 
     def remove_entity(self, ent):
-            self.entities.pop(ent.id)
-            self.removeItem(ent)
+        self.entities.pop(ent.id)
+        self.removeItem(ent)
 
     def update_entities_from_list(self, entity_json_objects):
         for entity_info in entity_json_objects:
