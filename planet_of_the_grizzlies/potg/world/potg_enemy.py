@@ -118,18 +118,7 @@ class Soldier(Enemy):
         if self.orientation < 0:
             nozzle_pos[0] = self.box.left()
         bullet = self.world.add_entity("b", nozzle_pos)
-        bullet_velocity = [
-            self.current_target.logic_pos[0] - self.logic_pos[0],
-            self.current_target.logic_pos[1] - self.logic_pos[1],
-            self.current_target.logic_pos[2] - self.logic_pos[2]
-        ]
-        bullet_velocity_length = math.sqrt(
-            bullet_velocity[0] * bullet_velocity[0] +
-            bullet_velocity[1] * bullet_velocity[1] +
-            bullet_velocity[2] * bullet_velocity[2]
-        )
-        for i in range(0, 3):
-            bullet_velocity[i] = bullet_velocity[i]/bullet_velocity_length * bullet.speed
+        bullet_velocity = bullet.vector_to(self.current_target.logic_pos, bullet.speed)
 
         self.bullet_burst_count += 1
         bullet.velocity = bullet_velocity
@@ -146,6 +135,7 @@ class Bullet(Entity):
     size = [50/2, 17/2, 10]
     damage = 10
     speed = 10
+    weight = .0
 
     def __init__(self, id, pos, world):
         super().__init__(id, pos, world, QPixmap("gfx/bullet.png").scaled(self.size[0], self.size[1]))
@@ -153,7 +143,6 @@ class Bullet(Entity):
 
     def update(self):
         super().update()
-        self.velocity[1] -= self.world.gravity
 
     # if collide with player, kill player
     def collision(self, colliding_entity):
@@ -173,37 +162,18 @@ class Bullet(Entity):
         if new_state == Entity.Dead or (new_state == Entity.Idle and old_state == Bullet.Flying):
             self.world.remove_entity(self)
 
-"""
-class ShootingEnemy(PatrollingEnemy):
 
-    speed = 0
-    direction = 0
-    shots = 3
+class DrEvil(Enemy):
 
-    def __init__(self):
-        super().__init__(id, pos, world, "gfx/soldat.png")
+    size = [328/3, 375/3, 20]
 
-    def shoot(self):
-        pass
-
-    def update(self):
-        super().update()
-
-        while self.pos.z == player.logic_pos[2]:
-            shoot()
+    def __init__(self, id, pos, world):
+        super().__init__(id, pos, world, "gfx/doc_idle.png")
+        self.logic_pos[2] += self.world.depth * .5
 
     def entity_type(self):
-        return "S"
+        return "D"
 
+    def load_images(self):
+        self.sprites[Entity.Idle] = [QPixmap("gfx/doc_idle.png").scaled(self.size[0], self.size[1])]
 
-class boss(ShootingEnemy, PatrollingEnemy):
-
-    health = 100
-    alive = True
-
-    def __init__(self):
-        super().__init__(id, pos, world, "gfx/doktor.png")
-
-    def entity_type(self):
-        return "B"
-"""

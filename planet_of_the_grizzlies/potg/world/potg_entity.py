@@ -3,16 +3,20 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 
 from potg_box import *
+from potg_object import *
 
 from json import *
+import math
 
-class Entity(QGraphicsPixmapItem):
+class Entity(QGraphicsPixmapItem, SceneObject):
 
     id = 0
     size = [0, 0, 0]
     logic_pos = [0, 0, 0]
     sprite = None
+    image_offset = [0, 0]
     velocity = [0, 0, 0]
+    weight = 1.0 # factor on gravity
     orientation = 1 # 1 for right, -1 for left
     jump_strength = -18
     speed = 12
@@ -42,7 +46,8 @@ class Entity(QGraphicsPixmapItem):
     Kicked = 8
     Dead = 9
     Won = 10
-    __HighestState__ = 10
+    Captive = 11 # activated if the cage collides with the entity while being lowered
+    __HighestState__ = 11
 
     """
     The states list is a stack of tuples. Every tuple contains
@@ -71,6 +76,10 @@ class Entity(QGraphicsPixmapItem):
         self.load_images()
         self.activate_state(Entity.Idle)
 
+        self.size = self.size[0:]
+        self.size[0] -= self.image_offset[0]
+        self.size[1] -= self.image_offset[1]
+
     def killed(self):
         return self.state == Entity.Dead
 
@@ -84,7 +93,7 @@ class Entity(QGraphicsPixmapItem):
         if self.state_just_changed > 0:
             self.state_just_changed -= 1
 
-        self.velocity[1] += self.world.gravity
+        self.velocity[1] += self.world.gravity * self.weight
         self.logic_pos[0] += self.velocity[0]
         self.logic_pos[1] += self.velocity[1]
         self.logic_pos[2] += self.velocity[2]
@@ -113,11 +122,17 @@ class Entity(QGraphicsPixmapItem):
         best_platform = None
         for platform in self.world.platforms:
             if platform.box.intersectsVerticalRay(self.logic_pos[0], self.logic_pos[2]):
-                delta_y = platform.box.top() - self.logic_pos[1]
+                delta_y = platform.box.top() - self.box.bottom()
                 if delta_y > 0 and (delta_y < best_delta_y or best_delta_y == -1):
                     best_delta_y = delta_y
                     best_platform = platform
+
+        if self.platform and self.platform != best_platform:
+            self.platform.entities -= {self}
+
         self.platform = best_platform
+        if self.platform:
+            self.platform.entities.add(self)
 
     # state of the movement
     def activate_state(self, state, duration=-1, old_state=None):
@@ -135,16 +150,18 @@ class Entity(QGraphicsPixmapItem):
             old_state = self.states[1][0]
 
         if state != old_state:
-            self.current_sprite_list = self.sprites[state]
-            if not self.current_sprite_list:
+            if state in self.sprites.keys():
+                self.current_sprite_list = self.sprites[state]
+            else:
                 print("warning: attempt to set nonexisting sprite for state",state)
+                self.current_sprite_list = self.sprites[Entity.Idle]
             self.state_just_changed = 2
             self.state = state
-            self.setPixmap(self.sprites[state][0])
+            self.setPixmap(self.current_sprite_list[0])
             self.current_sprite_list_index = 0
             self.on_state_transition(old_state, self.state)
 
-        self.reorientate()
+        self.retransform()
 
     def update_orientation(self):
         if self.velocity[0] < 0:
@@ -152,13 +169,14 @@ class Entity(QGraphicsPixmapItem):
         else:
             self.orientation = 1
 
-    def reorientate(self):
+    def retransform(self):
         self.resetTransform()
+        current_transform = self.transform()
         if self.orientation < 0:
-            current_transform = self.transform()
             current_transform.scale(-1, 1)
             current_transform.translate(-self.boundingRect().width(), 0)
-            self.setTransform(current_transform)
+        current_transform.translate(-self.image_offset[0], -self.image_offset[1])
+        self.setTransform(current_transform)
 
     def deactivate_state(self, state):
         i = 0
@@ -225,7 +243,7 @@ class Entity(QGraphicsPixmapItem):
         if self.states[0][0] != self.state:
             self.activate_state(self.states[0][0])
         else:
-            self.reorientate()
+            self.retransform()
 
     def load_images(self):
         pass
@@ -243,3 +261,18 @@ class Entity(QGraphicsPixmapItem):
 
     def on_state_transition(self, old_state, new_state):
         pass
+
+    def vector_to(self, pos, speed):
+        result = [
+            pos[0] - self.logic_pos[0],
+            pos[1] - self.logic_pos[1],
+            pos[2] - self.logic_pos[2]
+        ]
+        result_length = math.sqrt(
+            result[0] * result[0] +
+            result[1] * result[1] +
+            result[2] * result[2]
+        )
+        for i in range(0, 3):
+            result[i] = result[i]/result_length * speed
+        return result

@@ -9,7 +9,7 @@ import json
 from potg_platforms import *
 from potg_player import *
 from potg_enemy import *
-
+from potg_misc import *
 
 class World(QGraphicsScene):
 
@@ -91,6 +91,9 @@ class World(QGraphicsScene):
                     elif block == "L":
                         self.platforms.append(Lever(pos[0:], self))
                         last = self.platforms[-1]
+                    elif block == "c":
+                        self.platforms.append(CagePlatform(pos[0:], self))
+                        last = self.platforms[-1]
                     elif block == "P":
                         self.spawnlocation = pos[0:]
                         last = None
@@ -120,9 +123,9 @@ class World(QGraphicsScene):
         self.background_image.setZValue(-1)
 
         # sort platforms by distance from camera
-        self.platforms.sort(key=lambda block: (block.logic_pos[1], block.logic_pos[0]), reverse=True)
-        for z in range(0, len(self.platforms)):
-            self.platforms[z].setZValue(z)
+        # self.platforms.sort(key=lambda block: (block.logic_pos[1], block.logic_pos[0]), reverse=True)
+        # for z in range(0, len(self.platforms)):
+        #    self.platforms[z].setZValue(z)
 
         # convert grid cell size from blocks into pixels
         self.grid_cell_size = (self.grid_cell_size[0] * self.block_size[0], self.grid_cell_size[1] * self.block_size[1])
@@ -141,7 +144,7 @@ class World(QGraphicsScene):
         assert(x >= 0 and y >= 0)
 
         if len(self.grid) <= y:
-            self.grid += [[] for i in range(len(self.grid), y+1)]
+            self.grid += [[[] for j in range(0, 0 if len(self.grid) < 1 else len(self.grid[0]))] for i in range(len(self.grid), y+1)]
 
         if len(self.grid[0]) <= x:
             for line in self.grid:
@@ -239,11 +242,12 @@ class World(QGraphicsScene):
             self.signalPlayerPosChanged.emit(clientid, player.pos())
 
     def update_entity_zorder(self):
-        for entid, ent in self.entities_and_players():
-            for block in self.platforms:
-                if (ent.logic_pos[1], ent.logic_pos[0]) > (block.logic_pos[1], block.logic_pos[0]):
-                    ent.setZValue(block.zValue()-.5)
-                    break
+        scene_objects = [o for k, o in self.entities_and_players()]+self.platforms
+        scene_objects.sort(reverse=True)
+        i = 0
+        for object in scene_objects:
+            object.setZValue(i)
+            i += 1
 
     def stop_updates(self):
         self.killTimer(self.update_timer_id)
@@ -284,6 +288,12 @@ class World(QGraphicsScene):
             self.entities[ent_id].velocity[2] = 2
         elif ent_type == "b":
             self.entities[ent_id] = Bullet(ent_id, ent_position[0:], self)
+        elif ent_type == "D":
+            self.entities[ent_id] = DrEvil(ent_id, ent_position[0:], self)
+        elif ent_type == "g":
+            self.entities[ent_id] = Berry(ent_id, ent_position[0:], self)
+        elif ent_type == "C":
+            self.entities[ent_id] = Cage(ent_id, ent_position[0:], self)
         return self.entities[ent_id]
 
     def remove_entity(self, ent):
@@ -318,3 +328,12 @@ class World(QGraphicsScene):
             player.logic_pos[0] / self.root.rect().width() * background_dx,
             player.logic_pos[1] / self.root.rect().height() * background_dy
         )
+
+    def entity_for_type(self, ent_type):
+        for entid, ent in self.entities.items():
+            if ent.entity_type() == ent_type:
+                return ent
+        return None
+
+    def platforms_for_type(self, platform_type):
+        return [p for p in self.platforms if p.item_type() == platform_type]

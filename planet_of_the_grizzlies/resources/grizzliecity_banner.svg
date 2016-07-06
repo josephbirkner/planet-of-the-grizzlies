@@ -1,0 +1,861 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="297mm"
+   height="210mm"
+   viewBox="0 0 1052.3622 744.09448"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="grizzliecity_banner.svg"
+   inkscape:export-filename="/Users/joseph/Documents/Stud 4. Semester/PyRasp/repository/planet_of_the_grizzlies/resources/grizzliecity.png"
+   inkscape:export-xdpi="164.2"
+   inkscape:export-ydpi="164.2">
+  <defs
+     id="defs4">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient4541">
+      <stop
+         style="stop-color:#aa0000;stop-opacity:1;"
+         offset="0"
+         id="stop4543" />
+      <stop
+         style="stop-color:#000000;stop-opacity:1"
+         offset="1"
+         id="stop4545" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient4464">
+      <stop
+         style="stop-color:#000000;stop-opacity:1"
+         offset="0"
+         id="stop4466" />
+      <stop
+         style="stop-color:#ff0000;stop-opacity:1"
+         offset="1"
+         id="stop4468" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient4426"
+       inkscape:collect="always">
+      <stop
+         id="stop4428"
+         offset="0"
+         style="stop-color:#ffcc00;stop-opacity:1" />
+      <stop
+         id="stop4430"
+         offset="1"
+         style="stop-color:#ff0000;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient4182">
+      <stop
+         style="stop-color:#ff2a2a;stop-opacity:1"
+         offset="0"
+         id="stop4184" />
+      <stop
+         style="stop-color:#000000;stop-opacity:1"
+         offset="1"
+         id="stop4186" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4182"
+       id="linearGradient4180"
+       x1="616.87518"
+       y1="932.44238"
+       x2="620.46783"
+       y2="430.88895"
+       gradientUnits="userSpaceOnUse" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect6272"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect6266"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect6109"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="skeletal"
+       id="path-effect6111"
+       is_visible="true"
+       pattern="m 71.821174,137.47883 c 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 z"
+       copytype="single_stretched"
+       prop_scale="1"
+       scale_y_rel="false"
+       spacing="0"
+       normal_offset="0"
+       tang_offset="0"
+       prop_units="false"
+       vertical_pattern="false"
+       fuse_tolerance="0" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4426"
+       id="linearGradient4424"
+       x1="-613.14294"
+       y1="1064.7046"
+       x2="-606.98846"
+       y2="880.39172"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(3.0772544,-10.432799)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4464"
+       id="linearGradient4434"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.9206085,0,0,0.92060852,1400.1799,-473.84179)"
+       x1="-725.50073"
+       y1="764.51154"
+       x2="-709.98315"
+       y2="889.60809" />
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter4535"
+       x="-0.020212487"
+       width="1.040425"
+       y="-0.22945093"
+       height="1.4589019">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="7.7597824"
+         id="feGaussianBlur4537" />
+    </filter>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4541"
+       id="linearGradient4547"
+       x1="847.13617"
+       y1="393.07596"
+       x2="838.82208"
+       y2="993.0838"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.97832047"
+     inkscape:cx="451.67817"
+     inkscape:cy="298.32449"
+     inkscape:document-units="px"
+     inkscape:current-layer="g4229"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1102"
+     inkscape:window-x="15"
+     inkscape:window-y="68"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-308.26772)">
+    <rect
+       style="fill:url(#linearGradient4180);stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;fill-opacity:1"
+       id="rect4172"
+       width="1052.3622"
+       height="745.90509"
+       x="0"
+       y="307.90268" />
+    <rect
+       style="fill:#000000;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect4178"
+       width="113.77742"
+       height="90.012016"
+       x="156.80716"
+       y="963.95496"
+       inkscape:export-filename="/Users/joseph/Documents/Stud 4. Semester/PyRasp/repository/planet_of_the_grizzlies/potg/gfx/skyline.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#000000;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 240.73065,1056.5314 0,-79.69332 21.89123,-25.0464 -0.41304,104.73972 z"
+       id="path4136"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc"
+       inkscape:export-filename="/Users/joseph/Documents/Stud 4. Semester/PyRasp/repository/planet_of_the_grizzlies/potg/gfx/skyline.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       style="fill:#000000;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect4138"
+       width="22.398403"
+       height="64.453568"
+       x="266.70523"
+       y="992.1427"
+       inkscape:export-filename="/Users/joseph/Documents/Stud 4. Semester/PyRasp/repository/planet_of_the_grizzlies/potg/gfx/skyline.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:nodetypes="ccccccccc"
+       inkscape:connector-curvature="0"
+       id="path4140"
+       d="m 317.14342,1054.8236 0,-79.69322 5.49533,-6.1693 -0.47595,-76.2664 12.12579,19.6111 0.26114,42.9418 4.48491,-5.1636 -0.41304,104.73962 z"
+       style="fill:#000000;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-filename="/Users/joseph/Documents/Stud 4. Semester/PyRasp/repository/planet_of_the_grizzlies/potg/gfx/skyline.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#000000;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 290.91526,1056.2467 0,-36.1466 4.87576,-5.8846 -0.13266,-31.39802 -4.49913,-8.8253 0.43846,-60.2357 16.46274,-0.028 0.26114,42.9417 4.48491,-5.1636 -0.41305,104.73962 z"
+       id="path4142"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccccc"
+       inkscape:export-filename="/Users/joseph/Documents/Stud 4. Semester/PyRasp/repository/planet_of_the_grizzlies/potg/gfx/skyline.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:nodetypes="ccccccccccc"
+       inkscape:connector-curvature="0"
+       id="path4144"
+       d="m 343.16506,1055.1083 0,-36.1466 2.81056,0.092 0.0739,-76.36782 3.55519,0 -0.1811,-70.1972 24.51705,60.5962 -0.56494,46.9264 4.72731,-0.033 -0.0359,75.13132 z"
+       style="fill:#000000;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-filename="/Users/joseph/Documents/Stud 4. Semester/PyRasp/repository/planet_of_the_grizzlies/potg/gfx/skyline.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       y="986.79724"
+       x="99.266144"
+       height="64.453568"
+       width="22.398403"
+       id="rect4146"
+       style="fill:#000000;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-filename="/Users/joseph/Documents/Stud 4. Semester/PyRasp/repository/planet_of_the_grizzlies/potg/gfx/skyline.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#000000;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 470.09317,1051.7868 20.44453,-34.616 -0.58413,-154.56452 -34.46364,-10.4653 -0.58413,-8.8552 34.46364,-12.8804 2.33652,-61.9868 4.08891,-0.805 4.08891,62.7918 32.71125,8.8553 0.58413,12.8803 -30.37474,10.4653 4.08891,154.56452 22.19692,34.616 z"
+       id="path4150"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccccccccc"
+       inkscape:export-filename="/Users/joseph/Documents/Stud 4. Semester/PyRasp/repository/planet_of_the_grizzlies/potg/gfx/skyline.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:nodetypes="ccccccccccccccccccccc"
+       inkscape:connector-curvature="0"
+       id="path4152"
+       d="m 64.249103,1057.9227 35.20702,-51.6926 -1.00592,-230.81372 -59.34897,-15.6279 -1.00591,-13.2237 59.34896,-19.2346 1.35769,-31.2341 -38.50377,-27.542 40.069917,-8.4879 0.0939,-101.0376 7.04141,-1.2021 3.00019,102.2929 39.64957,11.7608 -37.2236,20.5451 2.62115,34.9049 56.33123,13.2237 1.00591,19.2346 -52.30756,15.6279 7.0414,230.81372 38.22476,51.6926 z"
+       style="fill:#000000;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-filename="/Users/joseph/Documents/Stud 4. Semester/PyRasp/repository/planet_of_the_grizzlies/potg/gfx/skyline.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#000000;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 579.39841,1051.7868 16.35563,-41.0562 -16.35563,-30.59092 15.18737,-51.5215 -17.52388,-28.1758 21.61279,-60.3767 -0.58413,52.3265 21.61278,-0.8051 -3.50476,79.6974 15.18738,0 -4e-5,79.69732 z"
+       id="path4154"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccccccc"
+       inkscape:export-filename="/Users/joseph/Documents/Stud 4. Semester/PyRasp/repository/planet_of_the_grizzlies/potg/gfx/skyline.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 535.82579,864.87078 -16.93944,0 2.33677,1.6102 6.42485,11.2704 3.5051,19.3202 -16.35563,0.8046 8.76163,19.3213 7.00941,24.1498 4.0889,33.8109 -40.30447,0 10.51456,10.4658 11.09833,23.34522 10.51377,42.6666 35.20455,0 10.51454,-42.6666 11.09836,-23.34522 10.51376,-10.4658 -40.30448,0 4.08891,-33.8109 7.00945,-24.1498 8.76159,-19.3213 -16.35563,-0.8046 3.50513,-19.3202 6.42564,-11.2704 2.33595,-1.6102 -16.9394,0 -7.74979,-119.9486 z"
+       id="path4156"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccccccccccccccccccccccc"
+       inkscape:export-filename="/Users/joseph/Documents/Stud 4. Semester/PyRasp/repository/planet_of_the_grizzlies/potg/gfx/skyline.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#000000;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 477.73635,1053.9465 0,-79.69652 -5.4008,-6.1695 0.46776,-76.2696 -11.9172,19.612 -0.25664,42.9435 -4.40777,-5.1639 0.13744,35.4627 -9.75208,-7.0305 -1.06294,30.31382 -13.52726,-8.30432 -0.10864,19.38402 -17.9512,-8.8201 -0.72992,43.7384 z"
+       id="path4161"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccccccccc"
+       inkscape:export-filename="/Users/joseph/Documents/Stud 4. Semester/PyRasp/repository/planet_of_the_grizzlies/potg/gfx/skyline.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:nodetypes="ccccccccccccccc"
+       inkscape:connector-curvature="0"
+       id="path4163"
+       d="m 179.83761,1074.0683 1.03577,-307.12392 8.90904,-7.1134 -0.77161,-87.939 19.65835,22.6126 0.42336,49.514 7.27095,-5.9539 -1.26248,141.3985 16.0868,-8.1061 0.71764,102.9738 22.31426,-9.5749 1.21499,69.05152 29.6119,-10.1697 1.20407,50.4305 z"
+       style="fill:#000000;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-filename="/Users/joseph/Documents/Stud 4. Semester/PyRasp/repository/planet_of_the_grizzlies/potg/gfx/skyline.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:nodetypes="ccccccccccccccc"
+       inkscape:connector-curvature="0"
+       id="path4167"
+       d="m 302.06426,1060.9338 0,-40.1656 4.47224,-10.5659 -4.47224,-9.6854 0,-29.05632 5.75003,-7.9245 -5.75003,-8.8049 0,-24.6539 5.11114,-8.8049 -5.11114,-8.8049 0,-40.4082 21.89122,-25.0465 -0.11108,57.5296 -0.30196,156.39142 z"
+       style="fill:#000000;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-filename="/Users/joseph/Documents/Stud 4. Semester/PyRasp/repository/planet_of_the_grizzlies/potg/gfx/skyline.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       y="790.5094"
+       x="632.15131"
+       height="273.13071"
+       width="40.926258"
+       id="rect4176"
+       style="fill:#000000;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-filename="/Users/joseph/Documents/Stud 4. Semester/PyRasp/repository/planet_of_the_grizzlies/potg/gfx/skyline.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#000000;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 744.05443,1069.2039 -1.09149,-116.38092 -9.38842,-2.6956 0.81312,-33.3234 -20.71608,8.5688 -0.44618,18.7627 -7.66216,-2.2562 1.33045,53.5814 -16.95241,-3.0718 -0.75628,39.02072 -23.51492,-3.6282 -1.28036,26.1662 -31.20524,-3.8537 -1.26888,19.11 z"
+       id="path4192"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccccccccc"
+       inkscape:export-filename="/Users/joseph/Documents/Stud 4. Semester/PyRasp/repository/planet_of_the_grizzlies/potg/gfx/skyline.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#000000;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 605.01719,835.68908 0.29125,234.07572 43.7544,0 0,-72.09122 -9.11074,-18.9641 9.11074,-17.3837 0,-52.1513 -11.7138,-14.223 11.7138,-15.8034 0,-44.2496 -10.41228,-15.8033 10.41228,-15.8035 0,-72.5257 -44.59553,-44.9528 0.18899,86.2705 -22.16069,-0.793 0.18723,-85.4775 -44.59713,44.9528 0,72.5257 10.41229,15.8035 -10.41229,15.8033 0,44.2496 11.71383,15.8034 -11.71383,14.223 0,52.1513 9.11075,17.3837 -9.11075,18.9641 0,72.09122 43.75605,0 0.9377,-234.07642 z"
+       id="path4169"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccccccccccccccccccccccccc"
+       inkscape:export-filename="/Users/joseph/Documents/Stud 4. Semester/PyRasp/repository/planet_of_the_grizzlies/potg/gfx/skyline.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#000000;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 360.20341,1082.0657 9.90282,-13.3105 -9.58338,-6.1634 -0.31944,-20.6917 9.58337,-11.8866 -9.58337,-10.1257 0,-27.29542 11.50005,-14.9684 -11.50005,-1.761 0,-24.6538 9.58337,-11.8866 -9.58337,-5.7233 0,-40.4082 21.89122,-25.0464 -0.11108,57.5296 12.07034,-22.2256 0.015,45.5596 -12.16615,18.4904 -0.102,52.82922 11.79825,-15.4111 -0.166,39.0949 -11.70535,14.1772 13.05118,23.8768 z"
+       id="path4174"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccccccccccccccccccc"
+       inkscape:export-filename="/Users/joseph/Documents/Stud 4. Semester/PyRasp/repository/planet_of_the_grizzlies/potg/gfx/skyline.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:nodetypes="ccccccccccccccccccccccccccccccc"
+       inkscape:connector-curvature="0"
+       id="path4194"
+       d="m 779.86336,934.30838 0.19958,128.18612 29.9858,0 0,-39.4791 -6.24376,-10.3852 6.24376,-9.5198 0,-28.55942 -8.02771,-7.7889 8.02771,-8.6544 0,-24.2323 -7.13576,-8.6543 7.13576,-8.6543 0,-39.7171 -30.56221,-24.6174 0.12949,47.2441 -15.18714,-0.4343 0.12831,-46.8098 -30.56331,24.6174 0,39.7171 7.13576,8.6543 -7.13576,8.6543 0,24.2323 8.02771,8.6544 -8.02771,7.7889 0,28.55942 6.2438,9.5198 -6.2438,10.3852 0,39.4791 29.9869,0 0.64261,-128.18652 z"
+       style="fill:#000000;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-filename="/Users/joseph/Documents/Stud 4. Semester/PyRasp/repository/planet_of_the_grizzlies/potg/gfx/skyline.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:nodetypes="cccccccccccccccccccccccccccc"
+       inkscape:connector-curvature="0"
+       id="path4182"
+       d="m 883.68455,884.79408 -16.93944,0 2.33677,1.6102 6.42486,11.2703 3.50509,19.3203 -16.35563,0.8045 8.76163,19.3214 7.00941,24.1498 4.08891,33.8109 -40.30448,0 10.51458,10.46582 11.09832,23.3452 10.51376,42.6665 35.20455,0 10.51455,-42.6665 11.09835,-23.3452 10.51377,-10.46582 -40.30448,0 4.08891,-33.8109 7.00945,-24.1498 8.76158,-19.3214 -16.35562,-0.8045 3.50513,-19.3203 6.42563,-11.2703 2.33596,-1.6102 -16.93941,0 -7.74978,-119.9486 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-filename="/Users/joseph/Documents/Stud 4. Semester/PyRasp/repository/planet_of_the_grizzlies/potg/gfx/skyline.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:nodetypes="ccccccccccccccc"
+       inkscape:connector-curvature="0"
+       id="path4186"
+       d="m 959.40411,1061.5583 32.7791,-58.0692 -0.93657,-259.28525 -55.25615,-17.55583 -0.93657,-14.85483 55.25616,-21.60715 3.74626,-103.98417 6.55576,-1.35046 6.5558,105.33463 52.4466,14.8549 0.9366,21.60708 -48.7004,17.55583 6.5559,259.28525 35.5886,58.0692 z"
+       style="fill:#000000;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-filename="/Users/joseph/Documents/Stud 4. Semester/PyRasp/repository/planet_of_the_grizzlies/potg/gfx/skyline.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:nodetypes="ccccccccccccccc"
+       inkscape:connector-curvature="0"
+       id="path4188"
+       d="m 75.665783,1056.4369 0,-79.69652 -5.40079,-6.1695 0.46776,-76.2696 -11.9172,19.612 -0.25665,42.9435 -4.40776,-5.1639 0.13744,35.4627 -9.75208,-7.0305 -1.06294,30.31382 -13.52726,-8.3043 -0.10864,19.3841 -17.9512,-8.8202 -0.72993,43.7384 z"
+       style="fill:#000000;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-filename="/Users/joseph/Documents/Stud 4. Semester/PyRasp/repository/planet_of_the_grizzlies/potg/gfx/skyline.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path4190"
+       d="m 722.531,1071.8975 0.61296,-162.11822 5.51684,-8.2902 -3.06488,-140.0113 5.51683,-9.2113 -1.22597,-122.5098 3.06496,-0.9212 2.45195,122.5099 6.74282,9.2113 0.613,139.0901 6.12981,7.3691 0,164.88162 z"
+       style="fill:#000000;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-filename="/Users/joseph/Documents/Stud 4. Semester/PyRasp/repository/planet_of_the_grizzlies/potg/gfx/skyline.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:nodetypes="ccccc"
+       inkscape:connector-curvature="0"
+       id="path4198"
+       d="m 318.34478,1055.6367 0,-79.69333 21.8912,-25.0464 -0.413,104.73973 z"
+       style="fill:#000000;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-filename="/Users/joseph/Documents/Stud 4. Semester/PyRasp/repository/planet_of_the_grizzlies/potg/gfx/skyline.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       y="991.24792"
+       x="344.31943"
+       height="64.453568"
+       width="22.398403"
+       id="rect4200"
+       style="fill:#000000;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-filename="/Users/joseph/Documents/Stud 4. Semester/PyRasp/repository/planet_of_the_grizzlies/potg/gfx/skyline.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#000000;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 394.75758,1053.929 0,-79.69323 5.4953,-6.1693 -0.4759,-76.2665 12.1258,19.6112 0.2611,42.9417 4.4849,-5.1636 -0.413,104.73973 z"
+       id="path4202"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccc"
+       inkscape:export-filename="/Users/joseph/Documents/Stud 4. Semester/PyRasp/repository/planet_of_the_grizzlies/potg/gfx/skyline.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:nodetypes="cccccccccccc"
+       inkscape:connector-curvature="0"
+       id="path4173"
+       d="m 216.12503,1057.2236 34.56214,-92.35854 -34.56214,-68.81611 32.09337,-115.90081 -37.03083,-63.38319 45.67136,-135.8212 -1.23429,117.71169 45.67137,-1.81089 -7.40615,179.2839 32.09345,0 -8e-5,179.28425 z"
+       style="fill:#000000;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-filename="/Users/joseph/Documents/Stud 4. Semester/PyRasp/repository/planet_of_the_grizzlies/potg/gfx/skyline.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:nodetypes="ccccccccccc"
+       inkscape:connector-curvature="0"
+       id="path4204"
+       d="m 368.52938,1055.3521 0,-36.1466 4.8758,-5.8846 -0.1327,-31.39803 -4.4991,-8.8254 0.4385,-60.2357 16.4627,-0.028 0.2611,42.9418 4.485,-5.1637 -0.4131,104.73973 z"
+       style="fill:#000000;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-filename="/Users/joseph/Documents/Stud 4. Semester/PyRasp/repository/planet_of_the_grizzlies/potg/gfx/skyline.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#000000;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 420.77918,1054.2136 0,-36.1466 2.8106,0.092 0.074,-76.36783 3.5552,0 -0.1811,-70.1973 24.5171,60.5962 -0.565,46.9264 4.7273,-0.033 -0.036,75.13123 z"
+       id="path4206"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccccc"
+       inkscape:export-filename="/Users/joseph/Documents/Stud 4. Semester/PyRasp/repository/planet_of_the_grizzlies/potg/gfx/skyline.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       style="fill:#000000;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect4208"
+       width="22.398403"
+       height="64.453568"
+       x="1009.5185"
+       y="991.68469"
+       inkscape:export-filename="/Users/joseph/Documents/Stud 4. Semester/PyRasp/repository/planet_of_the_grizzlies/potg/gfx/skyline.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#000000;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 1030.5663,1063.1153 17.1141,-24.4787 -0.4889,-109.29992 -28.8496,-7.4006 -0.489,-6.262 28.8496,-9.1083 0.66,-14.7907 -18.7167,-13.0423 19.478,-4.0193 0.046,-47.8456 3.4228,-0.5693 1.4584,48.44 19.2736,5.5693 -18.0944,9.7289 1.2742,16.529 27.3826,6.262 0.489,9.1083 -25.4267,7.4006 3.4228,109.29992 18.5811,24.4787 z"
+       id="path4210"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccccccccccccccc"
+       inkscape:export-filename="/Users/joseph/Documents/Stud 4. Semester/PyRasp/repository/planet_of_the_grizzlies/potg/gfx/skyline.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#000000;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 379.67838,1060.0392 0,-40.1656 4.4723,-10.5659 -4.4723,-9.68551 0,-29.05632 5.7501,-7.9244 -5.7501,-8.805 0,-24.6538 5.1112,-8.805 -5.1112,-8.8049 0,-40.4082 21.8912,-25.0464 -0.111,57.5296 -0.302,156.39143 z"
+       id="path4214"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccccccccc"
+       inkscape:export-filename="/Users/joseph/Documents/Stud 4. Semester/PyRasp/repository/planet_of_the_grizzlies/potg/gfx/skyline.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:nodetypes="cccccccccccccccccccccccc"
+       inkscape:connector-curvature="0"
+       id="path4180"
+       d="m 782.74015,1087.4972 38.31216,-55.5061 -37.07616,-25.7022 -1.236,-86.28632 37.07621,-49.5686 -37.07621,-42.2252 0,-113.8243 44.49144,-62.4198 -44.49144,-7.3435 0,-102.8091 37.07621,-49.5687 -37.07621,-23.8664 0,-168.5062 84.69292,-104.4463 -0.42983,239.9043 46.6979,-92.6829 0.0585,189.9884 -47.06851,77.1064 -0.39454,220.3036 45.64512,-64.2658 -0.64224,163.0297 -45.28571,59.1203 50.49244,99.56872 z"
+       style="fill:url(#linearGradient4547);fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;fill-opacity:1"
+       inkscape:export-filename="/Users/joseph/Documents/Stud 4. Semester/PyRasp/repository/planet_of_the_grizzlies/potg/gfx/skyline.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <g
+       id="g4229"
+       transform="translate(-36.797758,-49.063677)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:115.29177094px;line-height:88.99999857%;font-family:'American Typewriter';-inkscape-font-specification:'American Typewriter, Bold';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;filter:url(#filter4535)"
+         x="91.421402"
+         y="479.62384"
+         id="text4410"
+         sodipodi:linespacing="88.999999%"
+         transform="matrix(1.1808908,0,0,1.6425631,114.06964,-143.85165)"><tspan
+           sodipodi:role="line"
+           x="91.421402"
+           y="479.62384"
+           id="tspan4414"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:115.29177094px;line-height:88.99999857%;font-family:'American Typewriter';-inkscape-font-specification:'American Typewriter, Bold';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ff0000;fill-opacity:1">GRIZZLIE</tspan><tspan
+           id="tspan4227"
+           sodipodi:role="line"
+           x="91.421402"
+           y="582.23352"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:115.29177094px;line-height:88.99999857%;font-family:'American Typewriter';-inkscape-font-specification:'American Typewriter, Bold';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ff0000;fill-opacity:1">CITY</tspan></text>
+      <text
+         transform="scale(0.84789841,1.1793866)"
+         sodipodi:linespacing="88.999999%"
+         id="text4519"
+         y="548.46216"
+         x="263.51245"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:160.56993103px;line-height:88.99999857%;font-family:'American Typewriter';-inkscape-font-specification:'American Typewriter, Bold';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;opacity:0.428;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:160.56993103px;line-height:88.99999857%;font-family:'American Typewriter';-inkscape-font-specification:'American Typewriter, Bold';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1"
+           id="tspan4521"
+           y="548.46216"
+           x="263.51245"
+           sodipodi:role="line">GRIZZLIE</tspan><tspan
+           id="tspan4225"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:160.56993103px;line-height:88.99999857%;font-family:'American Typewriter';-inkscape-font-specification:'American Typewriter, Bold';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1"
+           y="691.36938"
+           x="263.51245"
+           sodipodi:role="line">CITY</tspan></text>
+    </g>
+    <path
+       style="fill:#000000;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 409.95988,1053.1608 0.61066,-236.32712 5.49592,-12.0849 -3.05329,-204.1007 5.49592,-13.4277 -1.22132,-178.5882 3.05329,-1.3427 2.44263,178.5881 6.71722,13.4277 0.61066,202.7579 6.10657,10.7422 0,240.35542 z"
+       id="path4148"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/Users/joseph/Documents/Stud 4. Semester/PyRasp/repository/planet_of_the_grizzlies/potg/gfx/skyline.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:nodetypes="cccccccccccccccccccccccc"
+       inkscape:connector-curvature="0"
+       id="path4216"
+       d="m 437.81758,1081.171 9.9028,-13.3104 -9.5834,-6.1635 -0.3194,-20.6916 9.5834,-11.8867 -9.5834,-10.1257 0,-27.29533 11.5,-14.9684 -11.5,-1.761 0,-24.6539 9.5834,-11.8866 -9.5834,-5.7232 0,-40.4082 21.8912,-25.0465 -0.1111,57.5296 12.0704,-22.2255 0.015,45.5596 -12.1662,18.4903 -0.102,52.82933 11.7983,-15.4111 -0.166,39.0949 -11.7054,14.1771 13.0512,23.8768 z"
+       style="fill:#000000;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-filename="/Users/joseph/Documents/Stud 4. Semester/PyRasp/repository/planet_of_the_grizzlies/potg/gfx/skyline.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:nodetypes="cccccccccccc"
+       inkscape:connector-curvature="0"
+       id="path4184"
+       d="m 930.95481,1066.7293 16.35563,-41.0562 -16.35563,-30.59092 15.18735,-51.5215 -17.52387,-28.1758 21.61278,-60.3767 -0.5841,52.3265 21.61277,-0.8051 -3.50476,79.6974 15.18738,0 -4e-5,79.69732 z"
+       style="fill:#000000;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-filename="/Users/joseph/Documents/Stud 4. Semester/PyRasp/repository/planet_of_the_grizzlies/potg/gfx/skyline.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#000000;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 985.91815,1061.3244 0,-79.69652 -5.40079,-6.1695 0.46777,-76.2696 -11.9172,19.612 -0.25667,42.9435 -4.40776,-5.1638 0.13743,35.4626 -9.75208,-7.0304 -1.06291,30.31382 -13.52725,-8.3043 -0.10864,19.384 -17.95121,-8.8202 -0.72995,43.7384 z"
+       id="path4218"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccccccccc"
+       inkscape:export-filename="/Users/joseph/Documents/Stud 4. Semester/PyRasp/repository/planet_of_the_grizzlies/potg/gfx/skyline.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <g
+       transform="matrix(-0.51986194,0.00872064,-0.00555178,0.5130203,988.87369,506.83835)"
+       id="g4381">
+      <path
+         style="fill:#a05a2c;fill-opacity:1;stroke:#000000;stroke-width:4.99999857;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 328.33121,999.58737 c 0.21471,6.02983 25.6449,12.69983 26.44786,6.93683 0.36565,-2.6236 4.05005,-11.35758 8.18649,-19.40922 7.31846,-14.24276 7.91003,-14.5224 21.8675,-10.33137 8.15637,2.44913 14.87692,2.53737 15.5774,0.20447 0.79241,-2.63883 5.06916,-2.0753 11.98516,1.57908 8.8804,4.69231 13.27531,4.3499 25.23372,-1.96477 11.80445,-6.23362 13.94483,-8.8834 11.58184,-14.33898 -1.87898,-4.3382 0.25088,-15.3462 6.05481,-31.29345 l 8.95354,-24.60138 -15.13217,-9.26014 c -10.46832,-6.40626 -16.66953,-8.44819 -20.12017,-6.62597 -2.74324,1.44855 -10.38079,1.01448 -16.97223,-0.96471 -13.95399,-4.18998 -26.98733,-3.45262 -41.78087,2.36377 -10.00246,3.93259 -11.36999,6.7377 -26.28857,53.92304 -8.65491,27.37645 -15.67271,51.57846 -15.59399,53.78305 z"
+         id="path4321"
+         inkscape:connector-curvature="0"
+         inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\soldier_idle.png"
+         inkscape:export-xdpi="41.923172"
+         inkscape:export-ydpi="41.923172" />
+      <path
+         style="fill:#445500;fill-opacity:1;stroke:#000000;stroke-width:5.86578131;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path4323"
+         sodipodi:type="arc"
+         sodipodi:cx="-206.66803"
+         sodipodi:cy="949.12677"
+         sodipodi:rx="196.70995"
+         sodipodi:ry="183.8528"
+         sodipodi:start="0"
+         sodipodi:end="6.2678613"
+         sodipodi:open="true"
+         d="M -9.9580841,949.12677 A 196.70995,183.8528 0 0 1 -205.91444,1132.9782 196.70995,183.8528 0 0 1 -403.3722,950.53544 196.70995,183.8528 0 0 1 -208.92877,765.28611 196.70995,183.8528 0 0 1 -9.9811799,946.30952"
+         transform="scale(-1,1)"
+         inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\soldier_idle.png"
+         inkscape:export-xdpi="41.923172"
+         inkscape:export-ydpi="41.923172" />
+      <path
+         style="fill:#f2f2f2;fill-opacity:1;stroke:#000000;stroke-width:5.96076965;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path4325"
+         sodipodi:type="arc"
+         sodipodi:cx="-232.38235"
+         sodipodi:cy="747.69818"
+         sodipodi:rx="168.09105"
+         sodipodi:ry="136.66246"
+         sodipodi:start="0"
+         sodipodi:end="6.2678613"
+         sodipodi:open="true"
+         d="M -64.291306,747.69818 A 168.09105,136.66246 0 0 1 -231.7384,884.35964 168.09105,136.66246 0 0 1 -400.46847,748.74528 168.09105,136.66246 0 0 1 -234.31418,611.04475 168.09105,136.66246 0 0 1 -64.311041,745.60405"
+         transform="scale(-1,1)"
+         inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\soldier_idle.png"
+         inkscape:export-xdpi="41.923172"
+         inkscape:export-ydpi="41.923172" />
+      <path
+         style="fill:#4d4d4d;fill-opacity:1;stroke:#000000;stroke-width:7.02865505;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path4327"
+         sodipodi:type="arc"
+         sodipodi:cx="-102.77064"
+         sodipodi:cy="-758.31464"
+         sodipodi:rx="174.06514"
+         sodipodi:ry="201.56526"
+         sodipodi:start="0"
+         sodipodi:end="3.1103302"
+         sodipodi:open="true"
+         d="M 71.294502,-758.31464 A 174.06514,201.56526 0 0 1 -100.0499,-556.774 174.06514,201.56526 0 0 1 -276.75072,-752.01424"
+         transform="matrix(0.9044229,-0.42663711,-0.41862088,-0.90816109,0,0)"
+         inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\soldier_idle.png"
+         inkscape:export-xdpi="41.923172"
+         inkscape:export-ydpi="41.923172" />
+      <path
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2.95244956;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path4329"
+         sodipodi:type="arc"
+         sodipodi:cx="-289.52518"
+         sodipodi:cy="744.841"
+         sodipodi:rx="45.399612"
+         sodipodi:ry="47.645168"
+         sodipodi:start="0"
+         sodipodi:end="6.2678613"
+         sodipodi:open="true"
+         d="m -244.12556,744.841 a 45.399612,47.645168 0 0 1 -45.22569,47.64482 45.399612,47.645168 0 0 1 -45.57221,-47.27976 45.399612,47.645168 0 0 1 44.87652,-48.00708 45.399612,47.645168 0 0 1 45.91605,46.91194"
+         transform="scale(-1,1)"
+         inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\soldier_idle.png"
+         inkscape:export-xdpi="41.923172"
+         inkscape:export-ydpi="41.923172" />
+      <path
+         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:5.00000048;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path4331"
+         sodipodi:type="arc"
+         sodipodi:cx="-309.52518"
+         sodipodi:cy="746.26959"
+         sodipodi:rx="16.038931"
+         sodipodi:ry="25.546076"
+         sodipodi:start="0"
+         sodipodi:end="6.2678613"
+         sodipodi:open="true"
+         d="m -293.48625,746.26959 a 16.038931,25.546076 0 0 1 -15.97748,25.54589 16.038931,25.546076 0 0 1 -16.09991,-25.35016 16.038931,25.546076 0 0 1 15.85413,-25.74012 16.038931,25.546076 0 0 1 16.22138,25.15294"
+         transform="scale(-1,1)"
+         inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\soldier_idle.png"
+         inkscape:export-xdpi="41.923172"
+         inkscape:export-ydpi="41.923172" />
+      <path
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2.95244956;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path4333"
+         sodipodi:type="arc"
+         sodipodi:cx="-229.52521"
+         sodipodi:cy="759.12677"
+         sodipodi:rx="45.399612"
+         sodipodi:ry="47.645168"
+         sodipodi:start="0"
+         sodipodi:end="6.2678613"
+         sodipodi:open="true"
+         d="m -184.1256,759.12677 a 45.399612,47.645168 0 0 1 -45.22568,47.64482 45.399612,47.645168 0 0 1 -45.57221,-47.27977 45.399612,47.645168 0 0 1 44.87652,-48.00707 45.399612,47.645168 0 0 1 45.91604,46.91193"
+         transform="scale(-1,1)"
+         inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\soldier_idle.png"
+         inkscape:export-xdpi="41.923172"
+         inkscape:export-ydpi="41.923172" />
+      <path
+         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path4335"
+         sodipodi:type="arc"
+         sodipodi:cx="-248.09662"
+         sodipodi:cy="761.98401"
+         sodipodi:rx="17.940359"
+         sodipodi:ry="23.644644"
+         sodipodi:start="0"
+         sodipodi:end="6.2678613"
+         sodipodi:open="true"
+         d="m -230.15626,761.98401 a 17.940359,23.644644 0 0 1 -17.87163,23.64447 17.940359,23.644644 0 0 1 -18.00856,-23.46331 17.940359,23.644644 0 0 1 17.73365,-23.82424 17.940359,23.644644 0 0 1 18.14443,23.28076"
+         transform="scale(-1,1)"
+         inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\soldier_idle.png"
+         inkscape:export-xdpi="41.923172"
+         inkscape:export-ydpi="41.923172" />
+      <path
+         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:14.28571415;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 281.28094,681.96767 c 11.82615,-9.5432 20.85021,-18.54188 20.05349,-19.99705 -0.79673,-1.45519 -5.96839,-8.08379 -11.49257,-14.7302 l -10.04397,-12.08442 -9.39973,25.66713 c -5.16985,14.11691 -10.7524,28.84311 -12.40565,32.72488 -4.13532,9.70958 -1.42348,8.36109 23.28843,-11.58034 z"
+         id="path4337"
+         inkscape:connector-curvature="0"
+         inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\soldier_idle.png"
+         inkscape:export-xdpi="41.923172"
+         inkscape:export-ydpi="41.923172" />
+      <path
+         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:14.28571415;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 229.1301,691.24538 c -10.53762,-10.9494 -20.28851,-19.15482 -21.66877,-18.23433 -1.3802,0.92055 -7.53282,6.65024 -13.67246,12.73268 l -11.16306,11.05897 26.38866,7.12691 c 14.51382,3.91983 29.67052,8.19766 33.6816,9.50631 10.03304,3.27335 8.45333,0.68941 -13.56598,-22.19049 z"
+         id="path4339"
+         inkscape:connector-curvature="0"
+         inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\soldier_idle.png"
+         inkscape:export-xdpi="41.923172"
+         inkscape:export-ydpi="41.923172" />
+      <path
+         style="fill:#000000;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 341.8969,853.85193 c -1.23906,0.90785 -6.0671,-4.55568 -15.17477,-11.31885 -9.24389,-6.86433 -22.46091,-14.58329 -39.32071,-18.16935 -3.07682,-0.65443 -6.12102,-1.13547 -9.11986,-1.45475 0,0 -1e-5,0 -1e-5,0 -14.83152,-1.59754 -27.70667,0.67814 -37.06135,3.11419 -9.26327,2.41225 -14.78004,4.80789 -15.47176,3.62051 -0.55143,-0.94657 3.8289,-5.43335 13.24686,-9.7781 9.4161,-4.3439 23.51608,-8.19145 40.21958,-6.79884 0,0 0,0 0,0 3.3819,0.28579 6.81216,0.78803 10.26487,1.52186 18.96437,4.03065 33.17261,13.76386 41.89804,22.6253 8.6972,8.83276 11.46388,15.9458 10.51911,16.63803 z"
+         id="path4341"
+         inkscape:path-effect="#path-effect6109;#path-effect6111"
+         inkscape:original-d="m 341.8969,853.85193 c 0,0 -42.28705,-101.316 -63.14868,-35.86407 -20.86162,65.45192 -52.99978,11.65582 -52.99978,11.65582"
+         inkscape:connector-curvature="0"
+         inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\soldier_idle.png"
+         inkscape:export-xdpi="41.923172"
+         inkscape:export-ydpi="41.923172" />
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 203.26348,1050.4752 c -1.1077,1.0528 -2.20911,2.1112 -3.3125,3.168 -0.17198,0.09 -0.34365,0.1811 -0.51562,0.2715 0.62385,-1.1295 1.51237,-2.1135 2.59765,-2.8125 0.38831,-0.2502 0.80378,-0.4526 1.23047,-0.627 z"
+         id="path4343"
+         inkscape:connector-curvature="0"
+         inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\soldier_idle.png"
+         inkscape:export-xdpi="41.923172"
+         inkscape:export-ydpi="41.923172" />
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 118.09662,847.69818 c -0.71676,7.11151 -5.13977,13.74604 -11.42857,17.14286 -0.61901,0.33435 -1.25998,0.64285 -1.802,1.09137 -0.27101,0.22427 -0.51568,0.48328 -0.70327,0.78086 -0.18758,0.29758 -0.31697,0.63488 -0.35188,0.98491 -0.0481,0.4827 0.0825,0.96255 0.15923,1.44153 0.0384,0.23949 0.0635,0.48262 0.0459,0.72453 -0.0176,0.24191 -0.0794,0.48362 -0.20509,0.69108 -0.13195,0.21785 -0.33131,0.39156 -0.55802,0.50763 -0.2267,0.11607 -0.47997,0.1759 -0.73424,0.19064 -0.50853,0.0295 -1.01065,-0.11741 -1.48749,-0.29657 -0.47684,-0.17915 -0.9436,-0.39295 -1.440061,-0.50696 -0.496461,-0.114 -1.037786,-0.12038 -1.494465,0.10526 -0.310684,0.15351 -0.563746,0.40509 -0.771478,0.68246 -0.207732,0.27738 -0.374685,0.58255 -0.553438,0.87943 -0.178753,0.29688 -0.372207,0.58914 -0.623047,0.82824 -0.25084,0.2391 -0.565377,0.42353 -0.909177,0.46702 -0.250355,0.0317 -0.504618,-0.012 -0.747868,-0.0792 -0.243251,-0.0672 -0.479617,-0.15772 -0.723419,-0.22284 -0.243803,-0.0651 -0.49918,-0.10458 -0.748664,-0.0667 -0.124742,0.019 -0.247039,0.0574 -0.357275,0.11881 -0.110235,0.0614 -0.208205,0.14606 -0.279924,0.24987 -0.07135,0.10328 -0.115749,0.22395 -0.136408,0.34777 -0.02066,0.12382 -0.01806,0.25082 -4.86e-4,0.37512 0.03515,0.24859 0.128876,0.48442 0.215371,0.72011 0.08649,0.23569 0.167266,0.47821 0.174598,0.72916 0.0037,0.12548 -0.01146,0.25219 -0.0524,0.37086 -0.04094,0.11866 -0.10829,0.22913 -0.200676,0.31412 -0.09287,0.0854 -0.209229,0.14347 -0.331476,0.17474 -0.122247,0.0313 -0.250308,0.0364 -0.375852,0.0237 -0.251088,-0.0253 -0.489208,-0.11997 -0.724002,-0.21249 -0.234794,-0.0925 -0.474196,-0.18484 -0.72574,-0.20516 -0.125771,-0.0102 -0.253775,-0.002 -0.375032,0.0331 -0.121256,0.0349 -0.235655,0.0971 -0.325038,0.18613 -0.08936,0.089 -0.151908,0.20318 -0.187235,0.32428 -0.03533,0.12109 -0.04409,0.24904 -0.03432,0.3748 0.01954,0.25154 0.111252,0.49113 0.203496,0.72595 0.09224,0.23482 0.186932,0.47277 0.212918,0.72372 0.01299,0.12547 0.0084,0.25349 -0.02228,0.37586 -0.03064,0.12236 -0.08791,0.23902 -0.172576,0.33253 -0.08419,0.093 -0.193903,0.1613 -0.312053,0.20341 -0.118151,0.0421 -0.244588,0.0586 -0.369997,0.0562 -0.250819,-0.005 -0.493993,-0.083 -0.729951,-0.1682 -0.235958,-0.0852 -0.471474,-0.17863 -0.719584,-0.21568 -0.248109,-0.0371 -0.515147,-0.0124 -0.725555,0.12422 -0.212847,0.13819 -0.345577,0.37869 -0.392527,0.62808 -0.04695,0.24939 -0.01557,0.50773 0.04563,0.75401 0.0612,0.24628 0.151681,0.48419 0.225219,0.72707 0.07354,0.24288 0.130505,0.49436 0.121677,0.74798 -0.0102,0.29298 -0.1098,0.58067 -0.273289,0.824 -0.163489,0.24333 -0.389528,0.44259 -0.645874,0.58481 -0.512692,0.28443 -1.132724,0.33514 -1.708864,0.22643 -0.57614,-0.10872 -1.114235,-0.36681 -1.616198,-0.66977 -0.501963,-0.30297 -0.974279,-0.6525 -1.470065,-0.96547 -0.45009,-0.28413 -0.935806,-0.54325 -1.465429,-0.59625 -0.264812,-0.0265 -0.537273,7.5e-4 -0.784565,0.0991 -0.247292,0.0984 -0.468148,0.2702 -0.607146,0.49715 -0.126779,0.207 -0.182013,0.45196 -0.190137,0.69457 -0.0081,0.2426 0.02877,0.48446 0.07516,0.72273 0.09278,0.47653 0.224253,0.96683 0.114981,1.43985 -0.09038,0.39125 -0.345207,0.73562 -0.674419,0.96553 -0.329211,0.22992 -0.728432,0.34951 -1.129227,0.37411 -0.80159,0.0492 -1.579646,-0.26652 -2.292745,-0.63592 -0.7131,-0.3694 -1.404142,-0.8023 -2.177274,-1.01964 -0.386565,-0.10867 -0.792199,-0.16135 -1.191469,-0.11862 -0.399269,0.0427 -0.79232,0.18422 -1.106296,0.43454 -0.427489,0.34082 -0.688078,0.88185 -0.688078,1.42857 0,0.54672 0.260589,1.08775 0.688078,1.42857 -0.03101,-0.35314 -0.198494,-0.69256 -0.459899,-0.93201 -0.261406,-0.23946 -0.614168,-0.37661 -0.968671,-0.37661 -0.354503,0 -0.707265,0.13715 -0.968671,0.37661 -0.261405,0.23945 -0.428888,0.57887 -0.459899,0.93201 -0.0219,0.24937 0.02182,0.50017 0.08494,0.7424 0.06312,0.24224 0.145745,0.4792 0.204065,0.72264 0.05832,0.24344 0.0921,0.49666 0.05544,0.74429 -0.03666,0.24763 -0.149711,0.49052 -0.344448,0.64781 -0.189324,0.15292 -0.439157,0.21375 -0.682432,0.22049 -0.243274,0.007 -0.485052,-0.0351 -0.724478,-0.0788 -0.478853,-0.0872 -0.963504,-0.14173 -1.45024,-0.14173 l -2.85714,0 -28.571433,0 -2.85714,0 c -0.476748,0 -0.953387,0.0124 -1.429709,0.0326 -0.476321,0.0201 -0.956493,0.0416 -1.427431,-0.0326 -0.711227,-0.11206 -1.384265,-0.45464 -1.893383,-0.96376 -0.509118,-0.50912 -0.851707,-1.18215 -0.963767,-1.89338"
+         id="path4345"
+         inkscape:path-effect="#path-effect6266"
+         inkscape:original-d="m 118.09662,847.69818 c -2.70515,8.75526 -5.87985,11.59413 -11.42857,17.14286 -0.95238,0.95238 -2.25481,1.65246 -2.85715,2.85714 -0.42591,0.85184 0.67344,2.18371 0,2.85714 -1.34687,1.34687 -4.010606,-0.85183 -5.714276,0 -1.20468,0.60234 -1.65247,2.25481 -2.85714,2.85715 -0.85184,0.42591 -2.18371,-0.67344 -2.85715,0 -0.67343,0.67343 0.67344,2.1837 0,2.85714 -0.67343,0.67343 -2.1837,-0.67344 -2.85714,0 -0.67344,0.67343 0.67344,2.18371 0,2.85714 -0.67344,0.67344 -2.18371,-0.67343 -2.85714,0 -0.67344,0.67344 0.85183,2.43123 0,2.85714 -1.70367,0.85184 -3.80953,0 -5.71429,0 -0.95238,0 -2.18371,-0.67343 -2.85714,0 -0.67344,0.67344 0.67343,2.18371 0,2.85715 -1.42857,1.42857 -7.14286,-1.42857 -8.57143,0 -0.67344,0.67343 0,1.90476 0,2.85714 -0.95238,0 -2.18371,-0.67343 -2.85714,0 -0.67344,0.67344 0.67343,2.18371 0,2.85714 -0.67344,0.67344 -1.90476,0 -2.85715,0 -0.95238,0 -1.90476,0 -2.85714,0 -9.52381,0 -19.04762,0 -28.571433,0 -0.95238,0 -1.90476,0 -2.85714,0 -0.95238,0 -2.18371,0.67344 -2.85714,0 -3.80953,-3.80952 4.7619,-2.85714 -2.85715,-2.85714"
+         inkscape:connector-curvature="0"
+         inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\soldier_idle.png"
+         inkscape:export-xdpi="41.923172"
+         inkscape:export-ydpi="41.923172" />
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 280.95377,873.41247 c 11.28001,3.50731 21.41502,10.60182 28.57143,20 0.8246,1.08291 1.61236,2.19735 2.52433,3.20777 0.91198,1.01042 1.96065,1.92218 3.18996,2.50651 1.79238,0.85198 3.83327,0.95463 5.8088,1.14372 0.98777,0.0945 1.977,0.21496 2.93623,0.46892 0.95923,0.25397 1.89195,0.64617 2.68354,1.2445 1.07581,0.81316 1.84441,1.96665 2.85714,2.85715 1.12208,0.98665 2.5251,1.62626 3.98395,1.94917 1.45886,0.32291 2.97401,0.33843 4.45882,0.17154 2.96964,-0.33378 5.80499,-1.38011 8.70009,-2.12071 0.47201,-0.12074 0.9493,-0.23394 1.43581,-0.25993 0.48651,-0.026 0.98689,0.0394 1.42133,0.25993 0.60675,0.308 1.02646,0.88144 1.42458,1.43326 0.39813,0.55182 0.82211,1.1233 1.43256,1.42388 0.36614,0.18028 0.78086,0.25066 1.18872,0.23615 0.40786,-0.0145 0.8097,-0.11159 1.19296,-0.25186 0.7665,-0.28054 1.45824,-0.72988 2.19394,-1.08339 0.73571,-0.35351 1.55633,-0.6149 2.36129,-0.47974 0.40248,0.0676 0.79208,0.23734 1.09339,0.51261 0.30131,0.27526 0.509,0.65938 0.54113,1.06623 0.0197,0.24965 -0.0252,0.50019 -0.0889,0.74239 -0.0637,0.24219 -0.14624,0.47928 -0.20415,0.72292 -0.0579,0.24364 -0.0909,0.4971 -0.0534,0.74471 0.0375,0.24761 0.15135,0.49018 0.3465,0.64712 0.18962,0.15249 0.43939,0.21309 0.68263,0.21981 0.24324,0.007 0.485,-0.035 0.72441,-0.0785 0.47884,-0.087 0.96343,-0.14128 1.4501,-0.14128 l 2.85715,0 37.14285,0"
+         id="path4347"
+         inkscape:path-effect="#path-effect6272"
+         inkscape:original-d="m 280.95377,873.41247 c 8.41824,8.13974 19.51888,12.75795 28.57143,20 2.10346,1.68276 3.30493,4.5096 5.71429,5.71428 3.5122,1.75611 7.78266,1.39878 11.42857,2.85714 1.25053,0.50022 1.65246,2.25481 2.85714,2.85715 0.84993,0.42496 15.94096,0 17.14286,0 0.95238,0 2.0053,-0.42592 2.85714,0 1.20468,0.60234 1.65247,2.2548 2.85714,2.85714 1.13284,0.56642 7.98733,-0.5841 8.57143,0 0.67344,0.67344 -0.67343,2.18371 0,2.85714 0.67344,0.67344 1.90476,0 2.85714,0 0.95239,0 1.90477,0 2.85715,0 12.38095,0 24.7619,0 37.14285,0"
+         inkscape:connector-curvature="0"
+         inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\soldier_idle.png"
+         inkscape:export-xdpi="41.923172"
+         inkscape:export-ydpi="41.923172" />
+      <path
+         style="fill:#aa4400;fill-opacity:1;stroke:#000000;stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 378.93797,908.25379 c 15.01069,-0.85814 15.23742,-1.00365 13.35571,-8.57143 -2.88279,-11.59385 -17.54967,-40.89588 -25.14139,-50.22836 l -6.70641,-8.24418 -14.10319,10.81285 c -14.16001,10.85641 -39.57631,24.1669 -46.24606,24.21903 -5.39591,0.0422 -4.49679,1.71128 6.86686,12.74751 5.74106,5.57565 12.73661,10.13754 15.54566,10.13754 2.80906,0 5.902,1.28572 6.87319,2.85714 0.9712,1.57143 8.65422,2.85715 17.07339,2.85715 8.41916,0 15.73614,0.96428 16.25995,2.14285 0.52381,1.17858 7.82384,1.75003 16.22229,1.2699 z"
+         id="path4349"
+         inkscape:connector-curvature="0"
+         inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\soldier_idle.png"
+         inkscape:export-xdpi="41.923172"
+         inkscape:export-ydpi="41.923172" />
+      <path
+         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 65.833814,886.92038 c 0.40355,-1.21351 4.58134,-2.9021 9.28398,-3.75244 4.70264,-0.85033 11.20455,-4.03603 14.44869,-7.07934 3.24414,-3.0433 6.96208,-5.53328 8.2621,-5.53328 1.30002,0 6.247026,-4.06356 10.993356,-9.03013 l 8.62967,-9.03013 -9.74892,-8.705 c -5.36191,-4.78775 -14.007636,-13.79891 -19.212736,-20.02479 l -9.46381,-11.31979 -16.41129,17.24659 c -9.02621,9.48562 -21.23046,26.41747 -27.120553,37.62634 -5.8901,11.20888 -10.31773,20.44538 -9.83919,20.52557 8.42599,1.41197 39.640633,0.69443 40.178703,-0.9236 z"
+         id="path4351"
+         inkscape:connector-curvature="0"
+         inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\soldier_idle.png"
+         inkscape:export-xdpi="41.923172"
+         inkscape:export-ydpi="41.923172" />
+      <path
+         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 387.95377,900.66177 c 0,-5.81297 -18.73242,-44.08487 -24.45388,-49.96132 -3.51208,-3.60723 -5.23306,-3.24371 -13.36018,2.82203 -5.13084,3.82944 -18.13545,11.62109 -28.89915,17.31478 l -19.57035,10.35217 9.5527,6.8258 c 13.65214,9.75503 25.48575,13.23298 52.75302,15.50433 21.44233,1.78614 23.97784,1.48394 23.97784,-2.85779 z"
+         id="path4353"
+         inkscape:connector-curvature="0"
+         inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\soldier_idle.png"
+         inkscape:export-xdpi="41.923172"
+         inkscape:export-ydpi="41.923172" />
+      <path
+         style="fill:#803300;fill-opacity:1;stroke:#000000;stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 389.63524,1020.2802 c 24.59156,-55.5311 18.55238,-120.98098 -15.76561,-170.86047 -5.68446,-8.26208 -8.10734,-14.55495 -6.90665,-17.93838 1.27966,-3.60595 -1.1438,-2.47833 -7.86556,3.65978 -55.12323,50.33688 -142.82713,61.48248 -212.72588,27.03364 -25.46684,-12.55105 -44.47281,-27.84398 -56.911686,-45.79332 l -8.19512,-11.82554 -16.80771,16.57114 c -22.67112,22.35201 -36.052723,43.21114 -45.375343,70.73065 -8.89118,26.24587 -13.6426598,54.87478 -8.58915,51.75152 1.74655,-1.07941 3.17552,-6.62377 3.17552,-12.32079 0,-5.69702 2.00474,-17.514 4.45497,-26.25995 l 4.45494,-15.90173 18.384633,0.9573 c 12.75814,0.66433 22.54343,-0.61988 31.9736,-4.19616 16.2184,-6.15064 36.221656,-19.14938 41.863456,-27.2042 4.01328,-5.72976 4.37148,-5.65449 27.89551,5.86242 13.10653,6.41669 31.54433,13.65603 40.9729,16.08743 21.00575,5.41687 67.91563,6.04403 92.32025,1.23427 l 18.03454,-3.55432 10.53689,10.28415 c 5.79529,5.65628 15.71065,12.1083 22.03414,14.33782 16.35463,5.76628 56.43539,8.92733 63.72541,5.02583 5.41212,-2.89648 6.02887,-2.10827 8.17275,10.44485 5.58773,32.71799 0.99567,69.8823 -12.41117,100.44556 -3.72489,8.4915 -6.12968,16.082 -5.34396,16.8677 0.78571,0.7857 4.78996,-6.1619 8.89833,-15.4392 z m -23.7648,-114.30821 c 0.9494,-0.9494 3.41369,-1.05091 5.47619,-0.22557 2.27924,0.91207 1.60222,1.58909 -1.72619,1.72619 -3.01191,0.12406 -4.69941,-0.55122 -3.75,-1.50063 z"
+         id="path4355"
+         inkscape:connector-curvature="0"
+         inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\soldier_idle.png"
+         inkscape:export-xdpi="41.923172"
+         inkscape:export-ydpi="41.923172" />
+      <path
+         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 223.20302,1017.899 c 2.59247,-0.6702 17.918,-15.8271 34.05683,-33.68157 l 29.34328,-32.46258 25.43838,1.9736 25.43834,1.97361 0.0778,-11.85616 0.0778,-11.85614 59.53525,0.39087 c 32.7444,0.21496 92.5799,-0.24238 132.96781,-1.01635 l 73.43259,-1.40715 12.77893,-18.02724 12.77894,-18.02724 -164.90111,-1.02772 c -90.69563,-0.56525 -199.89232,-1.60359 -242.65937,-2.30745 l -77.75822,-1.27977 -21.65466,59.8591 c -11.91006,32.92253 -22.566626,62.10319 -23.681256,64.84599 -1.89447,4.6617 1.950816,4.9913 58.994246,5.0559 33.56147,0.038 63.14191,-0.4793 65.73434,-1.1497 z"
+         id="path4357"
+         inkscape:connector-curvature="0"
+         inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\soldier_idle.png"
+         inkscape:export-xdpi="41.923172"
+         inkscape:export-ydpi="41.923172" />
+      <path
+         style="fill:#a05a2c;fill-opacity:1;stroke:#000000;stroke-width:4.99999857;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 199.44486,986.87211 c 5.90915,-1.21968 8.23435,-27.40704 2.41829,-27.23534 -2.6479,0.0781 -11.87487,-2.09447 -20.50469,-4.82691 -15.26582,-4.83462 -15.64031,-5.37114 -13.84137,-19.83274 1.05125,-8.45103 0.0148,-15.09176 -2.40232,-15.39244 -2.73419,-0.34011 -2.89353,-4.65098 -0.44663,-12.08047 3.14187,-9.53987 2.06964,-13.81567 -6.15512,-24.55028 -8.11919,-10.59631 -11.08951,-12.26355 -16.07335,-9.02194 -3.96305,2.57773 -15.17218,2.31799 -31.8653,-0.73859 l -25.751816,-4.71511 -6.60034,16.46719 c -4.56624,11.3919 -5.5429,17.84707 -3.16951,20.94463 1.8868,2.4625 2.7355,10.06514 1.88596,16.89468 -1.79848,14.45803 1.10722,27.18477 9.31464,40.79779 5.54939,9.20438 8.54356,10.0838 57.558826,16.90492 28.43794,3.95686 53.4726,6.83027 55.63293,6.3842 z"
+         id="path4359"
+         inkscape:connector-curvature="0"
+         inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\soldier_idle.png"
+         inkscape:export-xdpi="41.923172"
+         inkscape:export-ydpi="41.923172" />
+      <path
+         style="fill:#000000;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 559.20992,875.71321 c 0.66382,0.0837 1.33792,0.0947 1.99776,0.059 0.14363,0.0207 0.26659,0.0419 0.39995,0.0631 0.27447,0.0657 0.56697,0.1137 0.87782,0.14082 0.0356,0.006 0.0736,0.0122 0.10851,0.0177 1.33709,0.44144 2.01208,0.807 1.9593,1.00238 0.67004,0 0.92135,8.52894 0.6978,20.47645 -2.01233,0.25747 -4.11166,0.51768 -6.28918,0.78284 0.001,-0.42916 0.003,-0.86105 0.004,-1.2955 0.0308,-8.5789 0.13245,-16.42843 0.24362,-21.24675 z m 0.57404,0.15072 c 0.11585,4.68609 0.22531,12.09481 0.25692,19.91842 10e-4,0.38615 0.002,0.77077 0.004,1.1531 1.30569,-0.26112 2.56144,-0.50732 3.8106,-0.74265 -0.20673,-10.22536 -0.002,-18.21134 0.58439,-19.10952 -0.45728,0.13484 -2.23286,-0.26511 -4.65586,-1.21935 z"
+         id="path4361"
+         inkscape:connector-curvature="0"
+         inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\soldier_idle.png"
+         inkscape:export-xdpi="41.923172"
+         inkscape:export-ydpi="41.923172" />
+      <path
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:5.00000048;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 564.62654,839.61946 a 17.674624,19.073233 0 0 1 17.20957,19.39949 17.674624,19.073233 0 0 1 -17.82601,18.73975 17.674624,19.073233 0 0 1 -17.52077,-19.0725 l 0.41229,0 c 0.0384,0.90266 0.51895,1.80471 1.44888,2.4606 0.14258,0.58797 0.32309,1.15628 0.5765,1.68664 -0.0461,1.04331 0.0986,2.04933 0.55676,2.98892 -0.0817,0.3258 -0.0977,0.62716 0.009,0.86052 1.2059,2.64025 3.03213,3.80693 2.7,3.69298 -0.13737,-0.0933 -0.27733,-0.16916 -0.42164,-0.19192 0.23119,0.1097 0.35965,0.17065 0.42164,0.19192 0.0939,0.0638 0.18596,0.13615 0.27764,0.20704 0.0666,0.0843 0.12998,0.16179 0.1953,0.24304 0.0388,0.0676 0.11922,0.1762 0.35457,0.50484 1.55281,1.69716 0.71746,0.82873 -0.35457,-0.50484 -0.0265,-0.0463 -0.0388,-0.0823 -0.0533,-0.13925 0.24078,0.17572 0.47658,0.30346 0.71459,0.1815 0.35691,-0.18289 -0.52999,-0.44866 -0.92664,-0.75883 -0.091,-0.21776 -0.21033,-0.49078 -0.40834,-0.9106 -0.12033,-0.25516 0.11538,0.58129 0.28949,0.79899 0.0302,0.0378 0.0719,0.075 0.11885,0.11161 0.14156,0.33887 0.19235,0.49929 0.21205,0.57733 -0.0468,-0.0342 -0.0948,-0.0672 -0.14203,-0.10373 -1.48606,-1.88049 -3.16166,-4.38801 0.32746,-2.32239 0.0111,0.0356 0.0224,0.0708 0.033,0.10639 0.15497,0.41609 0.91668,1.1674 1.61803,1.71063 0.52794,1.10171 0.84243,2.43342 1.51694,3.42126 0.1185,0.17355 0.40492,0.009 0.60707,-10e-4 0.0523,-0.002 0.19099,-0.002 0.15239,-0.0401 -0.3254,-0.31506 -0.70652,-0.55863 -1.0598,-0.8381 0.85153,0.37181 1.48293,0.67577 2.01602,0.88504 0.0572,0.0612 0.11592,0.12097 0.17211,0.18306 0.73722,0.13601 -0.26515,-0.074 1.49968,1.08583 1.40524,0.92351 3.10361,1.08643 4.71159,0.99926 0.14362,0.0207 0.26659,0.0419 0.39994,0.0632 0.27448,0.0657 0.56698,0.11368 0.87782,0.14081 1.2971,0.21036 2.18628,0.27724 3.59213,-0.47667 0.12655,-0.0347 0.21905,-0.0626 0.36494,-0.10119 0.25907,-0.22636 0.56767,-0.40424 0.80876,-0.64827 0.0892,-0.0775 0.16936,-0.16105 0.22735,-0.25607 0.20184,-0.1166 0.4027,-0.23514 0.60411,-0.35256 0.0432,-0.0588 0.0714,-0.13462 0.1297,-0.17628 0.19581,-0.13982 0.6168,-0.11003 0.62137,-0.35986 5.1e-4,-0.0342 -0.0116,-0.0529 -0.0291,-0.0662 2.99452,-0.68177 -1.00408,0.49761 3.55712,-3.67734 0.0433,-0.0396 0.07,-0.0526 0.0853,-0.0474 -0.0864,0.15894 -0.16261,0.33036 -0.2022,0.49234 0.0487,-0.0782 0.10138,-0.15398 0.1519,-0.23104 -0.25087,0.6549 -1.13596,2.27598 -0.84922,1.81858 1.20953,-1.92931 1.46812,-2.59422 1.38626,-2.65617 0.0627,-0.10594 0.12361,-0.21286 0.17902,-0.32336 0.0447,-0.0892 0.0407,-0.14482 0.0128,-0.18044 0.77915,-0.41889 1.28407,-0.96912 1.56575,-1.75809 l 0.3181,-0.28633 c 0.36702,-0.50089 0.75397,-0.98609 1.1012,-1.50253 0.0594,-0.0884 -0.31103,0.25217 -0.27222,0.15177 1.14071,-2.95069 1.48203,-2.15633 1.29798,-4.41166 -0.0743,-2.28685 0.76804,-4.45823 -0.50006,-6.60419 -0.20407,-0.25721 -0.2998,-0.76466 -0.60411,-0.7896 -0.21361,-0.53556 -0.47939,-1.1453 -0.72149,-1.64126 -0.0366,-0.21398 -0.0728,-0.41813 -0.0863,-0.5643 -0.15501,-1.67881 -0.86188,-2.97564 -1.74921,-4.29013 -0.20473,-0.79763 -0.52693,-1.74093 -1.03118,-2.0293 -0.0805,-0.0461 -0.0668,0.0346 -0.0143,0.16168 -0.72175,-1.37386 -0.0926,-0.65824 -0.90691,-1.51454 -0.88633,-0.46056 -1.73643,-1.00921 -2.65909,-1.38153 -0.54835,-0.22128 -2.63777,0.1868 -3.37266,0.0453 -1.82016,-0.0921 -3.84832,-0.52557 -5.47451,0.49233 -0.0168,10e-4 -0.0455,0.006 -0.0607,0.007 -1.66529,0.1226 -3.09607,0.94319 -4.54737,1.71898 -0.36299,0.0897 -0.71849,0.23314 -1.06767,0.36872 -0.3064,0.11897 -0.8827,0.16474 -0.85316,0.5085 0.006,0.0708 0.0679,0.0894 0.15486,0.0793 -0.75418,0.33254 -1.0576,0.40179 -1.23733,0.4579 -0.0863,-0.014 -0.17259,-0.0275 -0.25891,-0.0365 -0.57448,0.0484 -1.17292,-0.0348 -1.72357,0.14499 -2.22885,0.72803 -3.42837,2.73413 -3.59312,5.07608 -0.12735,0.23593 -0.25729,0.48609 -0.39599,0.76718 -0.0475,0.0963 0.30339,-0.47061 0.2589,-0.1768 -0.40287,1.06616 -0.79738,2.13551 -1.20873,3.19804 -10e-4,-0.0255 -1.4e-4,-0.0511 -10e-4,-0.0766 -0.002,-0.0408 -0.0299,0.15931 -0.0153,0.12152 0.006,-0.0148 0.0112,-0.03 0.0167,-0.0448 0.0155,0.38761 -0.007,0.77292 -0.0399,1.15728 -0.75226,0.512 -1.20522,1.21237 -1.35025,1.95627 l -0.45074,-0.0171 a 17.674624,19.073233 0 0 1 18.12635,-18.40128 z m 0.96067,10.83799 c 0.01,0.0172 0.0201,0.0346 0.0306,0.0526 -0.02,-0.0146 -0.0402,-0.03 -0.0601,-0.0448 0.01,-0.002 0.0196,-0.006 0.0296,-0.008 z m -15.36125,13.38932 c 0.0249,0.0568 0.0515,0.11231 0.0784,0.16742 -0.1537,0.2766 -0.33702,0.60982 -0.49907,0.95493 0.002,-0.0578 0.004,-0.11579 0.0128,-0.17367 0.0331,-0.23407 0.22123,-0.62414 0.40783,-0.94868 z"
+         id="path4363"
+         inkscape:connector-curvature="0"
+         inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\soldier_idle.png"
+         inkscape:export-xdpi="41.923172"
+         inkscape:export-ydpi="41.923172" />
+      <path
+         sodipodi:type="spiral"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.93417978px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         id="path4365"
+         sodipodi:cx="177.14287"
+         sodipodi:cy="886.64789"
+         sodipodi:expansion="1"
+         sodipodi:revolution="6.9099998"
+         sodipodi:radius="56.928169"
+         sodipodi:argument="-9.4793301"
+         sodipodi:t0="0"
+         d="m 177.14287,886.64789 c -1.23736,0.0676 -0.70155,-1.6346 -0.1123,-2.05657 1.59682,-1.14351 3.63123,0.26628 4.22543,1.83197 1.06288,2.80064 -1.08996,5.66916 -3.77623,6.3943 -3.94221,1.06416 -7.74275,-1.91587 -8.56317,-5.7205 -1.09348,-5.07097 2.7414,-9.83005 7.66476,-10.73203 6.19555,-1.13505 11.92415,3.56646 12.9009,9.60902 1.18299,7.31835 -4.3912,14.02211 -11.55328,15.06977 -8.44027,1.23463 -16.1225,-5.21574 -17.23864,-13.49755 -1.28862,-9.56168 6.04013,-18.22451 15.44182,-19.40751 10.68279,-1.34419 20.32765,6.86444 21.57637,17.38608 1.40087,11.8037 -7.68867,22.43163 -19.33035,23.74524 -12.92447,1.45837 -24.53621,-8.51285 -25.9141,-21.2746 -1.51647,-14.04515 9.337,-26.64128 23.21887,-28.08298 15.16575,-1.57503 28.74672,10.16112 30.25184,25.16314 1.63398,16.28629 -10.98522,30.85245 -27.1074,32.42071 -17.4068,1.69321 -32.95844,-11.8093 -34.58958,-29.05167 -1.75269,-18.52728 12.63337,-35.06462 30.99593,-36.75844 19.64773,-1.81237 37.17098,13.45743 38.92732,32.94019 1.87221,20.76815 -14.28148,39.27747 -34.88446,41.09618 -21.88856,1.93219 -41.38409,-15.10552 -43.26505,-36.82872 -1.9923,-23.00896 15.92955,-43.4908 38.77299,-45.43392 24.12933,-2.0525 45.5976,16.75359 47.60278,40.71726 2.11279,25.2497 -17.57761,47.70448 -42.66152,49.77165 -26.37007,2.17315 -49.81143,-18.40164 -51.94052,-44.60579 -2.23359,-27.49042 19.22566,-51.91844 46.55005,-54.10938 28.61077,-2.29409 54.02551,20.04967 56.27825,48.49431 2.35464,29.73111 -20.87368,56.13262 -50.43857,58.44712 -19.0484,1.49122 -37.92125,-7.17816 -49.36344,-22.44817"
+         transform="matrix(-0.33641843,0,0,0.34526043,625.0132,552.78205)"
+         inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\soldier_idle.png"
+         inkscape:export-xdpi="41.923172"
+         inkscape:export-ydpi="41.923172" />
+      <path
+         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:5.00000048;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 563.26605,889.5847 c -0.0146,-1.25883 -0.17638,-1.68144 -0.3593,-0.93914 -0.18291,0.74232 -0.17087,1.77226 0.0268,2.28879 0.19761,0.51654 0.34726,-0.0908 0.33256,-1.34965 z"
+         id="path4367"
+         inkscape:connector-curvature="0"
+         inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\soldier_idle.png"
+         inkscape:export-xdpi="41.923172"
+         inkscape:export-ydpi="41.923172" />
+      <path
+         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:5.00000048;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 561.79649,889.96617 c 0,-1.46864 -0.14847,-2.06945 -0.32992,-1.33513 -0.18145,0.73432 -0.18145,1.93594 0,2.67026 0.18145,0.73432 0.32992,0.13351 0.32992,-1.33513 z"
+         id="path4369"
+         inkscape:connector-curvature="0"
+         inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\soldier_idle.png"
+         inkscape:export-xdpi="41.923172"
+         inkscape:export-ydpi="41.923172" />
+      <path
+         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:5.00000048;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 564.72204,887.48664 c 0.0857,-5.35003 0.42651,-9.72735 0.75716,-9.72735 0.33065,0 0.60117,-0.51497 0.60117,-1.14439 0,-0.8949 -0.87811,-1.11826 -4.02789,-1.02453 l -4.02789,0.11986 3.60706,0.5232 c 1.98389,0.28777 2.9578,0.58241 2.16425,0.65476 -0.97759,0.0891 -1.1596,0.32186 -0.56449,0.72177 0.59178,0.39767 0.95277,3.69188 1.10649,10.09714 l 0.22815,9.50689 0.15599,-9.72735 z"
+         id="path4371"
+         inkscape:connector-curvature="0"
+         inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\soldier_idle.png"
+         inkscape:export-xdpi="41.923172"
+         inkscape:export-ydpi="41.923172" />
+      <path
+         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:5.00000048;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 563.43519,889.68006 c 0,-8.57127 -0.53286,-11.15784 -2.29862,-11.15784 -1.2633,0 -1.34385,0.34652 -0.84245,3.62392 0.30492,1.99315 0.51283,5.94131 0.46201,8.77369 -0.0826,4.60434 0.0544,5.14977 1.29333,5.14977 1.25639,0 1.38573,-0.59639 1.38573,-6.38954 z"
+         id="path4373"
+         inkscape:connector-curvature="0"
+         inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\soldier_idle.png"
+         inkscape:export-xdpi="41.923172"
+         inkscape:export-ydpi="41.923172" />
+    </g>
+  </g>
+</svg>

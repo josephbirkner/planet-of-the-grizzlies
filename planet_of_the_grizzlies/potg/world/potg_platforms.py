@@ -5,9 +5,11 @@ from PyQt5.QtGui import *
 
 from potg_box import *
 from potg_entity import *
+from potg_object import *
+from potg_misc import *
 
 
-class Platform(QGraphicsPixmapItem):
+class Platform(QGraphicsPixmapItem, SceneObject):
 
     width_blocks = 1
     height_blocks = 1
@@ -15,13 +17,13 @@ class Platform(QGraphicsPixmapItem):
     sprite_height = 0
     logic_pos = (0, 0)
     rect = QRectF()
-    box = Box()
     world = None
     sprite = None
     brush = None
     tiles = []
     buffer = None
     depth_factor = 1.0
+    entities = set()  # all entities that are currently resting above the platform
 
     def __init__(self, pos, world, sprite=None):
         super().__init__(world.root)
@@ -38,6 +40,7 @@ class Platform(QGraphicsPixmapItem):
         self.sprite_width = self.sprite.width()
         self.sprite_height = self.sprite.height()
         self.notify_blocks_changed()
+        self.entities = set()
 
     def make_tiles(self):
         self.buffer = QPixmap(self.rect.width(), self.rect.height())
@@ -95,6 +98,12 @@ class Platform(QGraphicsPixmapItem):
             ent.logic_pos[0] += diff[3]
             ent.velocity[0] = 0
 
+    def entity_for_type(self, ent_type):
+        for ent in self.entities:
+            if ent.entity_type() == ent_type:
+                return ent
+        return None
+
 
 class Water(Platform):
 
@@ -128,11 +137,12 @@ class Lever(Platform):
     activated = False
     sprite_on = None
     sprite_off = None
-    size = (60, 85)
+    size = (40, 80)
+    depth_factor = .5
 
     def __init__(self, pos, world):
-        self.sprite_off = QPixmap("gfx/lever.png").scaled(self.size[0], self.size[1])
-        self.sprite_on = QPixmap("gfx/lever2.png").scaled(self.size[0], self.size[1])
+        self.sprite_off = QPixmap("gfx/lever2.png")
+        self.sprite_on = QPixmap("gfx/lever.png")
         super().__init__(pos, world, self.sprite_off)
         self.box.setWidth(self.size[0])
         self.box.setHeight(self.size[1])
@@ -141,15 +151,21 @@ class Lever(Platform):
         if ent.using:
             ent.using = False
             self.activated = not self.activated
-            ent.jump_strength = -ent.jump_strength
-            self.world.gravity = -self.world.gravity
+            cage = self.world.entity_for_type("C")
             if self.activated:
                 self.setPixmap(self.sprite_on)
+                if cage:
+                    cage.activate_state(Cage.Down)
             else:
                 self.setPixmap(self.sprite_off)
+                if cage:
+                    cage.activate_state(Cage.Up)
 
     def item_type(self):
         return "L"
+
+    def make_tiles(self):
+        self.setPixmap(self.sprite)
 
 
 class SuperwidePlatform(Platform):
@@ -161,3 +177,31 @@ class SuperwidePlatform(Platform):
 
     def item_type(self):
         return "S"
+
+
+class CagePlatform(Platform):
+
+    active = True
+    captives = set()
+
+    def __init__(self, pos, world):
+        super().__init__(pos, world, None)
+        self.captives = set()
+
+    def make_tiles(self):
+        pass
+
+    def collision(self, ent):
+        if self.active and ent.entity_type() == "P":
+            super().collision(ent)
+        elif self.active and ent.entity_type() != "C":
+            ent.activate_state(Entity.Captive)
+            self.captives.add(ent)
+
+    def release_captives(self):
+        for captive in self.captives:
+            captive.deactivate_state(Entity.Captive)
+        self.captives.clear()
+
+    def item_type(self):
+        return "c"

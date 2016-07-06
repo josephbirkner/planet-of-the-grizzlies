@@ -143,7 +143,7 @@ class RemoteServer(IServer):
         super().__init__()
         self.socket = QTcpSocket()
         self.socket.connectToHost(ip, port)
-        if not self.socket.waitForConnected(5000) or not self.socket.isOpen():
+        if not self.socket.waitForConnected(10000) or not self.socket.isOpen():
             print("Failed to connect to",ip,"at port",port)
             raise BaseException
         self.socket.readyRead.connect(self.on_ready_read)

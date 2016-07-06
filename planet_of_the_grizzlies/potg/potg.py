@@ -76,6 +76,9 @@ class PlanetOfTheGrizzlies(QWidget):
         self.resize_widgets()
 
     def set_world(self, world):
+        if self.world and self.world != world:
+            self.world.deleteLater()
+            del self.world
         self.world = world
         self.graphics.setScene(world)
         self.world.signalPlayerStatusChanged.connect(self.onPlayerStatusChanged)
@@ -145,7 +148,7 @@ class PlanetOfTheGrizzlies(QWidget):
         self.server.request_new_player(self.client.id)
 
     def onJoinServer(self):
-        self.server = RemoteServer("127.0.0.1", 27030)
+        self.server = RemoteServer("141.84.214.182", 27030)
         self.client.attach_to_server(self.server)
         self.server.request_new_player(self.client.id)
 
@@ -155,7 +158,8 @@ class PlanetOfTheGrizzlies(QWidget):
                 self.close()
                 self.deleteLater()
             elif e.key() == Qt.Key_Backspace and self.server:
-                self.server.request_new_player(self.client.id)
+                # self.server.request_new_player(self.client.id)
+                self.server.request_level("drevil")
             elif self.server:
                 self.server.notify_input(self.client.id, e.key(), True)
                 # immediate application to the client in order to mitigate the lag of the server
