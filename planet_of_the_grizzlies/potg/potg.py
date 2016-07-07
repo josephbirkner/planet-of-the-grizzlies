@@ -57,7 +57,6 @@ class PlanetOfTheGrizzlies(QWidget):
 
         self.dummy_scene = QGraphicsScene()
         self.dummy_scene.setBackgroundBrush(QBrush(Qt.black))
-        self.graphics.setScene(self.dummy_scene)
 
         self.ingame_menu = IngameMenu(self.graphics)
         self.ingame_menu.hide()
@@ -133,6 +132,12 @@ class PlanetOfTheGrizzlies(QWidget):
             self.world.stop_updates()
             banner.setZValue(10)
             banner.setPos(self.graphics.viewport().width()/2-banner.pixmap().width()/2, self.graphics.viewport().height()/2-banner.pixmap().height()/2)
+            QTimer.singleShot(3000, self.showMainMenu)
+
+    def showMainMenu(self):
+        self.main_menu.show()
+        self.ingame_menu.hide()
+        self.graphics.setScene(self.dummy_scene)
 
     def onClientLevelChanged(self):
         self.set_world(self.client.world)
@@ -143,7 +148,7 @@ class PlanetOfTheGrizzlies(QWidget):
     def onCreateServer(self):
         self.server = LocalServer()
         self.client.attach_to_server(self.server)
-        # self.server.request_level("grizzlycity")
+        #self.server.request_level("grizzlycity")
         self.server.request_level("drevil")
         self.server.request_new_player(self.client.id)
 

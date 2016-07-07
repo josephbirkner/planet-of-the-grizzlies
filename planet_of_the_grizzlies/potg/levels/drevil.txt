@@ -21,7 +21,7 @@
 "              ______           ",
 "                               ",
 "           g                   ",
-"    L     cccc                 ",
+"          cccc                 ",
 "                               ",
 "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
 "                               ",

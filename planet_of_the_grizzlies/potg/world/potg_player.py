@@ -12,6 +12,7 @@ class Player(Entity):
     punch_strength = 5
     kick_strength = 5
     clientid = ""
+    appearance = 1
 
     def __init__(self, pos, world, clientid):
         super().__init__(0, pos, world, "gfx/walk_player.png")
@@ -68,16 +69,30 @@ class Player(Entity):
         return "P"
 
     def load_images(self):
-        self.sprites[Entity.Idle] = [QPixmap("gfx/player_idle.png").scaled(self.size[0], self.size[1])]
-        self.sprites[Entity.Walking] = [QPixmap("gfx/player_step1.png").scaled(self.size[0], self.size[1]), QPixmap("gfx/player_step2.png").scaled(self.size[0], self.size[1])]
-        self.sprites[Entity.Running] = [QPixmap("gfx/player_idle.png").scaled(self.size[0], self.size[1])]
-        self.sprites[Entity.Dodging] = [QPixmap("gfx/player_idle.png").scaled(self.size[0], self.size[1])]
-        self.sprites[Entity.Jumping] = [QPixmap("gfx/player_jump.png").scaled(self.size[0], self.size[1])]
-        self.sprites[Entity.Punching] = [QPixmap("gfx/player_punch.png").scaled(self.size[0], self.size[1])]
-        #self.sprites[Entity.Punched] = [QPixmap("gfx/punch_enemy.png").scaled(self.size[0], self.size[1])]
-        self.sprites[Entity.Kicking] = [QPixmap("gfx/player_kick.png").scaled(self.size[0], self.size[1])]
-        #self.sprites[Entity.Kicked] = [QPixmap("gfx/kick_enemy.png").scaled(self.size[0], self.size[1])]
-        self.sprites[Entity.Dead] = [QPixmap("gfx/evil.png").scaled(self.size[0], self.size[1])]
+        if self.appearance == 0:
+            self.sprites[Entity.Idle] = [QPixmap("gfx/player_idle.png").scaled(self.size[0], self.size[1])]
+            self.sprites[Entity.Walking] = [QPixmap("gfx/player_step1.png").scaled(self.size[0], self.size[1]), QPixmap("gfx/player_step2.png").scaled(self.size[0], self.size[1])]
+            self.sprites[Entity.Running] = [QPixmap("gfx/player_idle.png").scaled(self.size[0], self.size[1])]
+            self.sprites[Entity.Dodging] = [QPixmap("gfx/player_idle.png").scaled(self.size[0], self.size[1])]
+            self.sprites[Entity.Jumping] = [QPixmap("gfx/player_jump.png").scaled(self.size[0], self.size[1])]
+            self.sprites[Entity.Punching] = [QPixmap("gfx/player_punch.png").scaled(self.size[0], self.size[1])]
+            #self.sprites[Entity.Punched] = [QPixmap("gfx/punch_enemy.png").scaled(self.size[0], self.size[1])]
+            self.sprites[Entity.Kicking] = [QPixmap("gfx/player_kick.png").scaled(self.size[0], self.size[1])]
+            #self.sprites[Entity.Kicked] = [QPixmap("gfx/kick_enemy.png").scaled(self.size[0], self.size[1])]
+            self.sprites[Entity.Dead] = [QPixmap("gfx/player_idle.png").scaled(self.size[0], self.size[1])]
+        else:
+            self.sprites[Entity.Idle] = [QPixmap("gfx/brodude_idle.png").scaled(self.size[0], self.size[1])]
+            self.sprites[Entity.Walking] = [QPixmap("gfx/brodude_step1.png").scaled(self.size[0], self.size[1]),
+                                            QPixmap("gfx/brodude_step2.png").scaled(self.size[0], self.size[1])]
+            self.sprites[Entity.Running] = [QPixmap("gfx/brodude_idle.png").scaled(self.size[0], self.size[1])]
+            self.sprites[Entity.Dodging] = [QPixmap("gfx/brodude_idle.png").scaled(self.size[0], self.size[1])]
+            self.sprites[Entity.Jumping] = [QPixmap("gfx/brodude_jump.png").scaled(self.size[0], self.size[1])]
+            self.sprites[Entity.Punching] = [QPixmap("gfx/brodude_attack1.png").scaled(self.size[0], self.size[1])]
+            # self.sprites[Entity.Punched] = [QPixmap("gfx/punch_enemy.png").scaled(self.size[0], self.size[1])]
+            self.sprites[Entity.Kicking] = [QPixmap("gfx/brodude_attack2.png").scaled(self.size[0], self.size[1])]
+            # self.sprites[Entity.Kicked] = [QPixmap("gfx/kick_enemy.png").scaled(self.size[0], self.size[1])]
+            self.sprites[Entity.Dead] = [QPixmap("gfx/brodude_idle.png").scaled(self.size[0], self.size[1])]
+
 
     def on_state_transition(self, old_state, new_state):
         self.world.signalPlayerStatusChanged.emit(self.clientid, new_state)

@@ -239,6 +239,8 @@ class World(QGraphicsScene):
 
         self.update_entity_zorder()
         for clientid, player in self.players.items():
+            if player.logic_pos[1] > self.root.rect().height():
+                player.activate_state(Entity.Dead)
             self.signalPlayerPosChanged.emit(clientid, player.pos())
 
     def update_entity_zorder(self):

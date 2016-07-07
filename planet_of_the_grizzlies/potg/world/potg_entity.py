@@ -34,6 +34,7 @@ class Entity(QGraphicsPixmapItem, SceneObject):
 
     health = 100
 
+    #state constants
     Idle = 0
     Walking = 1
     Flying = 1
