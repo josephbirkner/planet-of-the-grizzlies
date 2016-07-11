@@ -32,6 +32,7 @@ class PlanetOfTheGrizzlies(QWidget):
     client = None
 
     main_menu = None
+    select_character_menu = None
     ingame_menu = None
     dummy_scene = None
 
@@ -148,8 +149,8 @@ class PlanetOfTheGrizzlies(QWidget):
     def onCreateServer(self):
         self.server = LocalServer()
         self.client.attach_to_server(self.server)
-        #self.server.request_level("grizzlycity")
-        self.server.request_level("drevil")
+        self.server.request_level("grizzlycity")
+        #self.server.request_level("drevil")
         self.server.request_new_player(self.client.id)
 
     def onJoinServer(self):

@@ -23,10 +23,9 @@ class Entity(QGraphicsPixmapItem, SceneObject):
     on_ground = False
     using = False
     world = None
-    box = None
     platform = None
 
-    sprites = None
+    sprites = None # dictionary from the state of the entity to the its image
     sprite_cycle_timer_interval = 8  # change image every 8 updates
     current_sprite_list = None
     current_sprite_list_index = 0
@@ -65,14 +64,13 @@ class Entity(QGraphicsPixmapItem, SceneObject):
         super().__init__(QPixmap(filename).scaled(self.size[0], self.size[1]), world.root)
         self.id = id
         self.world = world
+        self.sprites = {}
+
         self.logic_pos = [pos[0], pos[1], 0]
 
         self.states = []
         self.velocity = [0, 0, 0]
         self.update_screen_pos()
-        self.setFlag(QGraphicsItem.ItemIsFocusable)
-        # dictionary from the state of the entity to the its image
-        self.sprites = {}
 
         self.load_images()
         self.activate_state(Entity.Idle)
@@ -115,7 +113,7 @@ class Entity(QGraphicsPixmapItem, SceneObject):
         screen_pos = self.logic_pos[0:]
         screen_pos[0] += self.logic_pos[2]/self.world.depth * self.world.depth_vec[0]
         screen_pos[1] += self.logic_pos[2]/self.world.depth * self.world.depth_vec[1]
-        self.setPos(screen_pos[0], screen_pos[1])
+        self.setPos(screen_pos[0], screen_pos[1])                                                   # Qt?
         self.box = Box(self.logic_pos, self.size)
 
     def update_platform(self):
@@ -124,7 +122,7 @@ class Entity(QGraphicsPixmapItem, SceneObject):
         for platform in self.world.platforms:
             if platform.box.intersectsVerticalRay(self.logic_pos[0], self.logic_pos[2]):
                 delta_y = platform.box.top() - self.box.bottom()
-                if delta_y > 0 and (delta_y < best_delta_y or best_delta_y == -1):
+                if delta_y >= 0 and (delta_y < best_delta_y or best_delta_y == -1):
                     best_delta_y = delta_y
                     best_platform = platform
 
@@ -139,7 +137,7 @@ class Entity(QGraphicsPixmapItem, SceneObject):
     def activate_state(self, state, duration=-1, old_state=None):
         # search state in the current states, remove if necessary
         i = 0
-        for i in range(0, len(self.states)):
+        for i in range(0, len(self.states)):                
             if self.states[i][0] == state:
                 del self.states[i]
                 break
@@ -199,12 +197,12 @@ class Entity(QGraphicsPixmapItem, SceneObject):
         i = 0
         while i < len(self.states):
             self.states[i][2] += 1
-            if self.states[i][2] > self.states[i][1] and self.states[i][1] > 0:
-                old_state = self.states[i][0]
-                del self.states[i]
-                if i == 0:
+            if self.states[i][2] > self.states[i][1] and self.states[i][1] > 0:         # if number of updates bigger than max age of this state
+                old_state = self.states[i][0]                                           # then this state becomes old_state
+                del self.states[i]                                                      # delete from stack
+                if i == 0:                                                              # top of stack
                     if i < len(self.states):
-                        self.activate_state(self.states[i][0], self.states[i][1] - self.states[i][2] if self.states[i][1] > 0 else -1, old_state)
+                        self.activate_state(self.states[i][0], self.states[i][1] - self.states[i][2] if self.states[i][1] > 0 else -1, old_state)       # activate state on top of stack
                     else:
                         print("warning: transitioning to null state!")
             else:

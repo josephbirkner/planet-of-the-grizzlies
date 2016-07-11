@@ -288,8 +288,12 @@ class World(QGraphicsScene):
         elif ent_type == "H":
             self.entities[ent_id] = Soldier(ent_id, ent_position[0:], self, 2)
             self.entities[ent_id].velocity[2] = 2
+        elif ent_type == "N":
+            self.entities[ent_id] = Ninja(ent_id, ent_position[0:], self, 0)
         elif ent_type == "b":
             self.entities[ent_id] = Bullet(ent_id, ent_position[0:], self)
+        elif ent_type == "s":
+            self.entities[ent_id] = Star(ent_id, ent_position[0:], self)
         elif ent_type == "D":
             self.entities[ent_id] = DrEvil(ent_id, ent_position[0:], self)
         elif ent_type == "g":

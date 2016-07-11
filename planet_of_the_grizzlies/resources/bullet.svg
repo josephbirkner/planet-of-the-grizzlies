@@ -22,7 +22,7 @@
        effect="skeletal"
        id="path-effect33710"
        is_visible="true"
-       pattern="M 0,5 C 0,2.24 2.24,0 5,0 7.76,0 10,2.24 10,5 10,7.76 7.76,10 5,10 2.24,10 0,7.76 0,5 Z"
+       pattern="m -2034.2857,-226.42857 c 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 z"
        copytype="single_stretched"
        prop_scale="1"
        scale_y_rel="false"
@@ -72,27 +72,91 @@
        id="rect33706"
        width="331.42856"
        height="182.85715"
-       x="308.57144"
-       y="438.07648"
+       x="-1725.7142"
+       y="206.6479"
        inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\bullet.png"
        inkscape:export-xdpi="41"
        inkscape:export-ydpi="41" />
     <path
-       style="fill:#ff0000;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
-       d="m 305.71429,435.21935 c 1.5577,3.38244 -94.47697,46.94488 -212.627699,98.82502 -0.851612,0.37394 -1.702261,0.74744 -2.551631,1.12037 119.63833,44.72483 216.53781,82.32741 215.17933,85.76889 -1.35308,3.4278 -98.54467,-35.55289 -219.106392,-85.65967 0.848195,-0.40885 1.697743,-0.81833 2.548358,-1.22831 118.753754,-57.23652 215.006384,-102.1956 216.558034,-98.8263 z"
+       style="fill:#ff0000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -1728.5714,203.79078 c 1.5577,3.38244 -94.477,46.94488 -212.6277,98.82502 -0.8517,0.37394 -1.7023,0.74744 -2.5517,1.12037 119.6384,44.72483 216.5379,82.32741 215.1794,85.76889 -1.3531,3.4278 -98.5447,-35.55289 -219.1064,-85.65967 0.8482,-0.40885 1.6977,-0.81833 2.5483,-1.22831 118.7538,-57.23652 215.0064,-102.1956 216.5581,-98.8263 z"
        id="path33708"
        inkscape:path-effect="#path-effect33710"
-       inkscape:original-d="m 305.71429,435.21935 -217.142861,100 217.142861,85.71428"
+       inkscape:original-d="m -1728.5714,203.79078 -217.1429,100 217.1429,85.71428"
        inkscape:connector-curvature="0"
        inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\bullet.png"
        inkscape:export-xdpi="41"
        inkscape:export-ydpi="41" />
     <path
        style="opacity:0.77520004;fill:#ff0000;fill-opacity:1;stroke:#000000;stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 284.64661,609.20375 c -14.27484,-6.57171 -114.77799,-45.94176 -181.42235,-71.06847 -7.976495,-3.00736 -5.565887,-4.39 54.28572,-31.13645 C 239.48717,470.36492 290.03344,446.8458 298,441.62898 l 6.42857,-4.20969 0,90.3286 c 0,49.68073 -0.32143,90.23334 -0.71428,90.11691 -0.39286,-0.11643 -8.97332,-4.0139 -19.06768,-8.66105 z"
+       d="m -1749.6391,377.77518 c -14.2748,-6.57171 -114.778,-45.94176 -181.4224,-71.06847 -7.9764,-3.00736 -5.5658,-4.39 54.2858,-31.13645 81.9772,-36.63391 132.5234,-60.15303 140.49,-65.36985 l 6.4286,-4.20969 0,90.3286 c 0,49.68073 -0.3215,90.23334 -0.7143,90.11691 -0.3929,-0.11643 -8.9733,-4.0139 -19.0677,-8.66105 z"
        id="path33712"
        inkscape:connector-curvature="0"
        inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\bullet.png"
+       inkscape:export-xdpi="41"
+       inkscape:export-ydpi="41" />
+    <path
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 291.04174,632.18099 c -14.2748,-6.57171 -114.778,-45.94176 -181.4224,-71.06847 -7.9764,-3.00736 -5.5658,-4.39 54.2858,-31.13645 81.9772,-36.63391 132.5234,-60.15303 140.49,-65.36985 l 6.4286,-4.20969 0,90.3286 c 0,49.68073 -0.3215,90.23334 -0.7143,90.11691 -0.3929,-0.11643 -8.9733,-4.0139 -19.0677,-8.66105 z"
+       id="path33712-7"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\star.png"
+       inkscape:export-xdpi="41"
+       inkscape:export-ydpi="41" />
+    <path
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 279.41579,544.1695 c -9.48491,-12.52972 -79.51955,-94.66401 -126.42238,-148.26394 -5.61359,-6.4152 -2.83582,-6.4968 62.55438,-1.83749 89.56326,6.38175 145.22627,9.49576 154.71181,8.65526 l 7.6543,-0.67825 -42.62169,79.64075 c -23.44192,43.8024 -42.86019,79.40505 -43.15158,79.11705 -0.29147,-0.28804 -6.0176,-7.77303 -12.72484,-16.63338 z"
+       id="path33712-7-4"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\star.png"
+       inkscape:export-xdpi="41"
+       inkscape:export-ydpi="41" />
+    <path
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 296.35847,456.49828 c 8.02629,-13.51059 57.67513,-109.35363 89.62313,-173.01015 3.82377,-7.61878 4.94716,-5.07699 25.29803,57.24017 27.87406,85.35421 45.98687,138.07985 50.34334,146.54762 l 3.51544,6.83301 -89.83485,-9.43161 c -49.40917,-5.18739 -89.70654,-9.74141 -89.54974,-10.11991 0.15682,-0.37859 4.92891,-8.50514 10.60465,-18.05913 z"
+       id="path33712-7-0"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\star.png"
+       inkscape:export-xdpi="41"
+       inkscape:export-ydpi="41" />
+    <path
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 385.1028,454.12555 c 13.45159,-8.12478 102.44956,-69.20059 160.65384,-110.25044 6.96627,-4.91306 6.75739,-2.14195 -4.70414,62.40431 -15.69857,88.40735 -24.60758,143.44095 -24.7621,152.9624 l -0.12468,7.68328 -74.7551,-50.70436 c -41.1153,-27.88739 -74.49579,-50.91695 -74.17894,-51.17667 0.3169,-0.2598 8.35887,-5.17309 17.87112,-10.91852 z"
+       id="path33712-7-4-1"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\star.png"
+       inkscape:export-xdpi="41"
+       inkscape:export-ydpi="41" />
+    <path
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 473.81747,491.52453 c 12.32708,9.74687 100.74104,71.66507 159.59958,111.77117 7.04452,4.80022 4.37624,5.57663 -60.08905,17.48529 -88.29642,16.31088 -142.95812,27.27292 -151.92875,30.46819 l -7.23879,2.57842 21.25948,-87.79118 c 11.69271,-48.28512 21.54952,-87.62289 21.90389,-87.41731 0.35446,0.2056 7.77653,6.01308 16.49364,12.90542 z"
+       id="path33712-7-9"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\star.png"
+       inkscape:export-xdpi="41"
+       inkscape:export-ydpi="41" />
+    <path
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 464.4027,579.79995 c 6.26949,14.41016 55.00591,110.72033 87.97607,173.85346 3.94603,7.5562 1.22709,6.9818 -61.22963,-12.9367 -85.54535,-27.28184 -138.91183,-43.40906 -148.32872,-44.82466 l -7.59892,-1.1423 60.16842,-67.37224 c 33.09262,-37.05473 60.34474,-67.08699 60.56016,-66.7385 0.2155,0.34851 4.01913,8.97094 8.45262,19.16094 z"
+       id="path33712-7-4-9"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\star.png"
+       inkscape:export-xdpi="41"
+       inkscape:export-ydpi="41" />
+    <path
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 427.3019,661.02085 c -10.98063,11.24202 -81.79212,92.70756 -127.82468,147.05666 -5.50949,6.5048 -6.0031,3.77 -11.11551,-61.5863 -7.00233,-89.51687 -12.19697,-145.02437 -14.43812,-154.2796 l -1.80849,-7.46845 85.0915,30.30994 c 46.80033,16.67047 84.89388,30.58084 84.6524,30.9118 -0.24152,0.33105 -6.79219,7.10617 -14.5571,15.05595 z"
+       id="path33712-7-0-7"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\star.png"
+       inkscape:export-xdpi="41"
+       inkscape:export-ydpi="41" />
+    <path
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 340.49205,642.44032 c -14.98594,4.73062 -115.85849,43.14444 -182.08912,69.34236 -7.92691,3.13553 -7.07169,0.49138 19.25929,-59.54415 36.06488,-82.22912 57.67617,-133.61994 60.0673,-142.83761 l 1.9295,-7.43812 60.72151,66.8742 c 33.39683,36.78079 60.41945,67.01976 60.05038,67.19761 -0.36915,0.17792 -9.34159,3.06045 -19.93886,6.40571 z"
+       id="path33712-7-4-1-8"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\matthias\Desktop\pi\repository\planet_of_the_grizzlies\potg\gfx\star.png"
        inkscape:export-xdpi="41"
        inkscape:export-ydpi="41" />
   </g>
