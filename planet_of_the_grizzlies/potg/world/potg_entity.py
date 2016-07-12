@@ -113,7 +113,7 @@ class Entity(QGraphicsPixmapItem, SceneObject):
         screen_pos = self.logic_pos[0:]
         screen_pos[0] += self.logic_pos[2]/self.world.depth * self.world.depth_vec[0]
         screen_pos[1] += self.logic_pos[2]/self.world.depth * self.world.depth_vec[1]
-        self.setPos(screen_pos[0], screen_pos[1])                                                   # Qt?
+        self.setPos(screen_pos[0], screen_pos[1])
         self.box = Box(self.logic_pos, self.size)
 
     def update_platform(self):
@@ -200,8 +200,8 @@ class Entity(QGraphicsPixmapItem, SceneObject):
             if self.states[i][2] > self.states[i][1] and self.states[i][1] > 0:         # if number of updates bigger than max age of this state
                 old_state = self.states[i][0]                                           # then this state becomes old_state
                 del self.states[i]                                                      # delete from stack
-                if i == 0:                                                              # top of stack
-                    if i < len(self.states):
+                if i == 0:                                                              #  if top of stack
+                    if i < len(self.states):                                            # if more than one state on stack
                         self.activate_state(self.states[i][0], self.states[i][1] - self.states[i][2] if self.states[i][1] > 0 else -1, old_state)       # activate state on top of stack
                     else:
                         print("warning: transitioning to null state!")

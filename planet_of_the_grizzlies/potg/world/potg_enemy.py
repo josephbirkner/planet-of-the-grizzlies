@@ -261,7 +261,7 @@ class Bullet(Entity):
 
     def load_images(self):
         self.sprites[Entity.Idle] = [QPixmap("gfx/bullet.png").scaled(self.size[0], self.size[1])]
-        self.sprites[Entity.Walking] = [QPixmap("gfx/bullet.png").scaled(self.size[0], self.size[1])]
+        self.sprites[Entity.Flying] = [QPixmap("gfx/bullet.png").scaled(self.size[0], self.size[1])]
         self.sprites[Entity.Dead] = [QPixmap("gfx/bullet.png").scaled(self.size[0], self.size[1])]
 
     def on_state_transition(self, old_state, new_state):
@@ -281,7 +281,7 @@ class Star(Bullet):
 
     def load_images(self):
         self.sprites[Entity.Idle] = [QPixmap("gfx/star.png").scaled(self.size[0], self.size[1])]
-        self.sprites[Entity.Walking] = [QPixmap("gfx/star.png").scaled(self.size[0], self.size[1]),
+        self.sprites[Entity.Flying] = [QPixmap("gfx/star.png").scaled(self.size[0], self.size[1]),
                                         QPixmap("gfx/star1.png").scaled(self.size[0], self.size[1]),
                                         QPixmap("gfx/star2.png").scaled(self.size[0], self.size[1])]
         self.sprites[Entity.Dead] = [QPixmap("gfx/star.png").scaled(self.size[0], self.size[1])]
