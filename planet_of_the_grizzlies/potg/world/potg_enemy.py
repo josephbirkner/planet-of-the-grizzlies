@@ -301,3 +301,17 @@ class DrEvil(Enemy):
     def load_images(self):
         self.sprites[Entity.Idle] = [QPixmap("gfx/doc_idle.png").scaled(self.size[0], self.size[1])]
 
+
+class Samurai(Enemy):
+
+    size = [328/3, 375/3, 20]
+
+    def __init__(self, id, pos, world):
+        super().__init__(id, pos, world, "gfx/samurai_idle.png")
+        #self.logic_pos[2] += self.world.depth * .5
+
+    def entity_type(self):
+        return "x"
+
+    def load_images(self):
+        self.sprites[Entity.Idle] = [QPixmap("gfx/samurai_idle.png").scaled(self.size[0], self.size[1])]

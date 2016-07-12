@@ -1,0 +1,33 @@
+{
+"level": [
+"                                                                                                                                                                                                            T",
+"                                                                                                                                                                                                            T",
+"                                                                                                                                                                                                            T",
+"                                                                                                                                                                                                            T",
+"                                                                                                                                                                                                            T",
+"                                                                                                                                                                                                            T",
+"                                                                                                                                                                                                            T",
+"                                                                                                                                                                                                            T",
+" P                                                                                                                                                                                                          T",
+"                                                                                                                                                                                                            T",
+"                                                                                                                                                                                                            T",
+"                                                                                                                                                                                                            T",
+"             x                    _______________             _____                                                                                                                                         T",
+"                                                   N                                     N     N     N                                                                                                      T",
+"                                                                                                                                                                                                            T",
+"                                                                                                                                                                                                            T",
+"                                                 ______                  ______        SSSSSSSSSSSSSSSSS                                                                                                    T",
+"                                                                                                                                                                                                            T",
+"                                                                                                                                                                                                            T",
+"                                  N            N            ___                                                                     N                                                                       T",
+"                                                                                                                                                                 N    N          SSSSSSSSSSSSSSSSSSSSSSSSSSST",
+"                                                                                                                                                                                                            T",
+"_________________________     ___________SSSSSSSSSS_________________                                              ___              _____          ____         SSSSSSSSSSSS                                 T",
+"                         WWWWW                                      WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW            WWWWWWW                          T",
+"                                                                                                                                                                                                             "
+],
+"background-gradient": [[255, 0, 0], [0, 0, 0], [189, 227, 255], [60, 149, 214], [255, 243, 3], [245, 70, 2]],
+"background": "gfx/ninja_level_background.png",
+"background-size": [2521, 1188],
+"margin": 500
+}
