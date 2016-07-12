@@ -6,7 +6,6 @@ import math
 
 class Enemy(Entity):
 
-    # two dimensional image but depth of 10
     size = [300/2.5, 300/2.5, 40]
 
     def __init__(self, id, pos, world, image):
@@ -272,7 +271,7 @@ class Bullet(Entity):
 class Star(Bullet):
 
     # two dimensional image but depth of 10
-    size = [60/2, 60/2, 10]
+    size = [70/2, 70/2, 10]
     damage = 10
     speed = 15
     weight = .1
@@ -282,7 +281,9 @@ class Star(Bullet):
 
     def load_images(self):
         self.sprites[Entity.Idle] = [QPixmap("gfx/star.png").scaled(self.size[0], self.size[1])]
-        self.sprites[Entity.Walking] = [QPixmap("gfx/star.png").scaled(self.size[0], self.size[1])]
+        self.sprites[Entity.Walking] = [QPixmap("gfx/star.png").scaled(self.size[0], self.size[1]),
+                                        QPixmap("gfx/star1.png").scaled(self.size[0], self.size[1]),
+                                        QPixmap("gfx/star2.png").scaled(self.size[0], self.size[1])]
         self.sprites[Entity.Dead] = [QPixmap("gfx/star.png").scaled(self.size[0], self.size[1])]
 
 

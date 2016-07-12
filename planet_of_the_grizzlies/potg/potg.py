@@ -140,6 +140,11 @@ class PlanetOfTheGrizzlies(QWidget):
         self.ingame_menu.hide()
         self.graphics.setScene(self.dummy_scene)
 
+    #def showCharacterMenu(self):
+    #    self.select_character.show()
+    #    self.main_menu.hide()
+    #   self.graphics.setScene(self.dummy_scene)
+
     def onClientLevelChanged(self):
         self.set_world(self.client.world)
         self.ingame_menu.show()
