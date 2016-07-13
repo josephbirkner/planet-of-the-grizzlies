@@ -191,7 +191,7 @@ class PlanetOfTheGrizzlies(QWidget):
         self.resize_widgets()
 
     def onConnectWithIp(self, ip):
-        self.server = RemoteServer("10.181.21.131", 27030)
+        self.server = RemoteServer(ip, 27030)
         self.client.attach_to_server(self.server)
 
     def onCancelMenu(self):

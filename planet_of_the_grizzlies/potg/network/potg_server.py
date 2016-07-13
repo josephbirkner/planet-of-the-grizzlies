@@ -134,19 +134,21 @@ class LocalServer(IServer):
         data = data.data() # get the raw bytes from the QByteArray object
         self.sender().flush()
         try:
-            msg = Message.Parse(data)
+            messages = data.split(b"}{")
+            for data in messages:
+                msg = Message.Parse(data)
 
-            if msg.mtype == "add_client":
-                self.remote_servers[self.sender()].append(msg.value("clientid"))
-                if self.world:
-                    self.sender().write(Message("level", {"name": self.world.name}).to_bytes())
-                    self.sender().flush()
+                if msg.mtype == "add_client":
+                    self.remote_servers[self.sender()].append(msg.value("clientid"))
+                    if self.world:
+                        self.sender().write(Message("level", {"name": self.world.name}).to_bytes())
+                        self.sender().flush()
 
-            elif msg.mtype == "request_player":
-                self.request_new_player(msg.value("clientid"))
+                elif msg.mtype == "request_player":
+                    self.request_new_player(msg.value("clientid"), msg.value("appearance"))
 
-            elif msg.mtype == "input":
-                self.notify_input(msg.value("clientid"), msg.value("key"), msg.value("status"))
+                elif msg.mtype == "input":
+                    self.notify_input(msg.value("clientid"), msg.value("key"), msg.value("status"))
 
         except json.JSONDecodeError as e:
             print(e.msg)
@@ -209,13 +211,15 @@ class RemoteServer(IServer):
         data = data.data() # get the raw bytes from the QByteArray object
         self.sender().flush()
         try:
-            msg = Message.Parse(data)
+            messages = data.split(b"}{")
+            for data in messages:
+                msg = Message.Parse(data)
 
-            if msg.mtype == "level":
-                self.broadcast_level(msg.value("name"))
+                if msg.mtype == "level":
+                    self.broadcast_level(msg.value("name"))
 
-            elif msg.mtype == "update":
-                self.broadcast_update(msg.value("entities"), msg.value("level"))
+                elif msg.mtype == "update":
+                    self.broadcast_update(msg.value("entities"), msg.value("level"))
 
         except json.JSONDecodeError as e:
             print(e.msg)

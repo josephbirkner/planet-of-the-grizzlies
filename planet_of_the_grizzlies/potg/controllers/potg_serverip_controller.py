@@ -19,5 +19,5 @@ class ServerIpMenu(QWidget, potg_serverip.Ui_potg_serverip):
         self.connect_button.mouseReleaseEvent = lambda e: self.onConnectButtonClicked()
         self.cancel_button.mouseReleaseEvent = lambda e: self.signalCancel.emit()
 
-    def onConnectButtonClicked(self, e):
+    def onConnectButtonClicked(self):
         self.signalConnect.emit(self.lineEdit.text())
