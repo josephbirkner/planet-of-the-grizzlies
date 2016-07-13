@@ -134,7 +134,7 @@ class LocalServer(IServer):
         data = data.data() # get the raw bytes from the QByteArray object
         self.sender().flush()
         try:
-            data = data[0:-1]
+            data = data[1:-1]
             messages = data.split(b"}{")
             for data in messages:
                 msg = Message.Parse(b"{%s}" % data)
@@ -212,7 +212,7 @@ class RemoteServer(IServer):
         data = data.data() # get the raw bytes from the QByteArray object
         self.sender().flush()
         try:
-            data = data[0:-1]
+            data = data[1:-1]
             messages = data.split(b"}{")
             for data in messages:
                 msg = Message.Parse(b"{%s}" % data)
