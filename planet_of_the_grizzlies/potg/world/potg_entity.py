@@ -135,6 +135,9 @@ class Entity(QGraphicsPixmapItem, SceneObject):
 
     # state of the movement
     def activate_state(self, state, duration=-1, old_state=None):
+        if not old_state and self.state == state:
+            old_state = state
+
         # search state in the current states, remove if necessary
         i = 0
         for i in range(0, len(self.states)):                

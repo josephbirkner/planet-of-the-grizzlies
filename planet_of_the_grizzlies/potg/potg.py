@@ -95,13 +95,13 @@ class PlanetOfTheGrizzlies(QWidget):
         self.resize_widgets()
 
     def set_world(self, world):
-        if self.world and self.world != world:
-            self.world.deleteLater()
-            del self.world
         self.world = world
-        self.graphics.setScene(world)
-        self.world.signalPlayerStatusChanged.connect(self.onPlayerStatusChanged)
-        self.world.signalPlayerPosChanged.connect(self.onPlayerPosChanged)
+        if world:
+            self.graphics.setScene(world)
+            self.world.signalPlayerStatusChanged.connect(self.onPlayerStatusChanged)
+            self.world.signalPlayerPosChanged.connect(self.onPlayerPosChanged)
+        else:
+            self.showMainMenu()
 
     def onPlayerPosChanged(self, clientid, pos: QPointF):
         if clientid != self.client.id:
@@ -153,7 +153,6 @@ class PlanetOfTheGrizzlies(QWidget):
         if banner:
             banner.setZValue(1000)
             banner.setPos(self.graphics.viewport().width()/2-banner.pixmap().width()/2, self.graphics.viewport().height()/2-banner.pixmap().height()/2)
-            QTimer.singleShot(3000, self.showMainMenu)
 
     def showMainMenu(self):
         self.main_menu.show()
@@ -202,8 +201,8 @@ class PlanetOfTheGrizzlies(QWidget):
             if type(self.server) != LocalServer:
                 self.server = LocalServer()
                 self.client.attach_to_server(self.server)
-            # self.server.request_level("grizzlycity")
-            self.server.request_level("ninja_level")
+            self.server.request_level("grizzlycity")
+            # self.server.request_level("ninja_level")
             # self.server.request_level("drevil")
         else:
             self.character_menu.hide()

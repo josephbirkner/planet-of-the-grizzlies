@@ -22,9 +22,13 @@ class Client(QObject):
         self.world.update_entities_from_list(updated_objects)
 
     def notify_level(self, level):
-        if self.world and self.world.name == level:
-            return
-        self.world = World(level)
+        if self.world:
+            self.world.disconnect()
+            self.world.deleteLater()
+            del self.world
+            self.world = None
+        if level:
+            self.world = World(level)
         self.signalLevelChanged.emit()
 
     def attach_to_server(self, server):
