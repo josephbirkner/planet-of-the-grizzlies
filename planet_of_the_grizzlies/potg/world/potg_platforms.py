@@ -192,11 +192,14 @@ class CagePlatform(Platform):
         pass
 
     def collision(self, ent):
-        if self.active and ent.entity_type() == "P":
+        if self.active:
+            if ent.entity_type() not in ["C", "P"]:
+                cage = self.world.entity_for_type("C")
+                if cage and cage.box.bottom() < self.box.top():
+                    ent.activate_state(Entity.Captive)
+                    self.captives.add(ent)
+                    return
             super().collision(ent)
-        elif self.active and ent.entity_type() != "C":
-            ent.activate_state(Entity.Captive)
-            self.captives.add(ent)
 
     def release_captives(self):
         for captive in self.captives:

@@ -6,7 +6,7 @@ from potg_world import *
 class Berry(Entity):
 
     size = [293/4, 390/4, 20]
-    speed = 3
+    speed = 6
 
     def __init__(self, id, pos, world):
         super().__init__(id, pos, world, "gfx/berry.png")

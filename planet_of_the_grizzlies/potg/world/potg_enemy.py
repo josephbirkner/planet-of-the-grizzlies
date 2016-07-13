@@ -231,6 +231,13 @@ class DrEvil(Enemy):
     size = [328/3, 375/3, 20]
     Drinking = Entity.__HighestState__ + 3
 
+    speed = 2.5
+    direction = 0
+    health = 999999999
+    range_x = 300
+    range_y = 200
+    current_target = None
+
     def __init__(self, id, pos, world):
         super().__init__(id, pos, world, "gfx/doc_idle.png")
         self.logic_pos[2] += self.world.depth * .5
@@ -252,6 +259,8 @@ class DrEvil(Enemy):
                 self.activate_state(Entity.Using, 70)
         if self.state == Entity.Walking:
             player = self.platform.entity_for_type("P")
+            if not player:
+                player = [p for cid, p in self.world.players.items()][0]
             if player:
                 vel = self.vector_to(player.logic_pos, self.speed)
                 self.velocity[0] = vel[0]
@@ -264,7 +273,10 @@ class DrEvil(Enemy):
             self.activate_state(DrEvil.Drinking, 70)
         if old_state == DrEvil.Drinking:
             self.activate_state(DrEvil.Walking)
-
+        if new_state == Entity.Captive:
+            self.velocity[0] = 0
+            self.velocity[2] = 0
+            [p for cid, p in self.world.players.items()][0].activate_state(Entity.Won)
 
 
 class Samurai(Enemy):
@@ -306,6 +318,10 @@ class Samurai(Enemy):
         self.sprites[Entity.Idle] = [QPixmap("gfx/samurai_idle.png").scaled(self.size[0], self.size[1])]
         self.sprites[Entity.Dead] = [QPixmap("gfx/samurai_dead.png").scaled(self.size[0], self.size[1])]
         self.sprites[Entity.Using] = [QPixmap("gfx/samurai_hit.png").scaled(self.size[0], self.size[1])]
+
+    def on_state_transition(self, old_state, new_state):
+        if new_state == Entity.Dead:
+            [p for cid, p in self.world.players.items()][0].activate_state(Entity.Won)
 
 
 class General(Enemy):
@@ -368,3 +384,7 @@ class General(Enemy):
         self.sprites[Entity.Idle] = [QPixmap("gfx/general.png").scaled(self.size[0], self.size[1])]
         self.sprites[Entity.Dead] = [QPixmap("gfx/general_dead.png").scaled(self.size[0], self.size[1])]
         self.sprites[General.Shouting] = [QPixmap("gfx/general_hit.png").scaled(self.size[0], self.size[1])]
+
+    def on_state_transition(self, old_state, new_state):
+        if new_state == Entity.Dead:
+            [p for cid, p in self.world.players.items()][0].activate_state(Entity.Won)

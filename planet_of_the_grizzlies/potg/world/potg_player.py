@@ -74,8 +74,8 @@ class Player(Entity):
         if self.appearance == 0:
             self.sprites[Entity.Idle] = [QPixmap("gfx/player_idle.png").scaled(self.size[0], self.size[1])]
             self.sprites[Entity.Walking] = [QPixmap("gfx/player_step1.png").scaled(self.size[0], self.size[1]), QPixmap("gfx/player_step2.png").scaled(self.size[0], self.size[1])]
-            self.sprites[Entity.Running] = [QPixmap("gfx/player_idle.png").scaled(self.size[0], self.size[1])]
             self.sprites[Entity.Punching] = [QPixmap("gfx/player_punch.png").scaled(self.size[0], self.size[1])]
+            self.sprites[Entity.Jumping] = [QPixmap("gfx/player_jump.png").scaled(self.size[0], self.size[1])]
             #self.sprites[Entity.Punched] = [QPixmap("gfx/punch_enemy.png").scaled(self.size[0], self.size[1])]
             self.sprites[Entity.Kicking] = [QPixmap("gfx/player_kick.png").scaled(self.size[0], self.size[1])]
             #self.sprites[Entity.Kicked] = [QPixmap("gfx/kick_enemy.png").scaled(self.size[0], self.size[1])]
