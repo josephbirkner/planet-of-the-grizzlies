@@ -13,6 +13,9 @@ sys.path.append(os.path.abspath(os.curdir+"/controllers/"))
 from potg_world import *
 from potg_main_controller import *
 from potg_ingame_controller import *
+from potg_characterselect_controller import *
+from potg_serverip_controller import *
+
 from potg_server import *
 from potg_client import *
 
@@ -28,12 +31,17 @@ class PlanetOfTheGrizzlies(QWidget):
 
     world = None
 
+    server_type = False # False for RemoteServer, True fro LocalServer
     server = None
     client = None
 
+    selected_player_appearance = 0
+
     main_menu = None
-    select_character_menu = None
+    character_menu = None
+    serverip_menu = None
     ingame_menu = None
+
     dummy_scene = None
 
     def __init__(self):
@@ -58,6 +66,7 @@ class PlanetOfTheGrizzlies(QWidget):
 
         self.dummy_scene = QGraphicsScene()
         self.dummy_scene.setBackgroundBrush(QBrush(Qt.black))
+        self.graphics.setScene(self.dummy_scene)
 
         self.ingame_menu = IngameMenu(self.graphics)
         self.ingame_menu.hide()
@@ -68,6 +77,16 @@ class PlanetOfTheGrizzlies(QWidget):
         self.main_menu.signalJoinServer.connect(self.onJoinServer)
         self.main_menu.show()
 
+        self.serverip_menu = ServerIpMenu(self.graphics)
+        self.serverip_menu.signalCancel.connect(self.onCancelMenu)
+        self.serverip_menu.signalConnect.connect(self.onConnectWithIp)
+        self.serverip_menu.hide()
+
+        self.character_menu = CharacterselectMenu(self.graphics)
+        self.character_menu.signalCancel.connect(self.onCancelMenu)
+        self.character_menu.signalAccept.connect(self.onSelectAppearance)
+        self.character_menu.hide()
+
         self.setLayout(layout)
         self.setGeometry(300, 300, 1024, 768)
         self.setWindowTitle('Planet Of The Grizzlies')
@@ -76,15 +95,13 @@ class PlanetOfTheGrizzlies(QWidget):
         self.resize_widgets()
 
     def set_world(self, world):
-        if self.world and self.world != world:
-            self.world.deleteLater()
-            del self.world
         self.world = world
-        self.graphics.setScene(world)
-        self.world.signalPlayerStatusChanged.connect(self.onPlayerStatusChanged)
-        self.world.signalPlayerPosChanged.connect(self.onPlayerPosChanged)
-        if not self.world.player_for_client(self.client.id):
-            self.server.request_new_player(self.client.id)
+        if world:
+            self.graphics.setScene(world)
+            self.world.signalPlayerStatusChanged.connect(self.onPlayerStatusChanged)
+            self.world.signalPlayerPosChanged.connect(self.onPlayerPosChanged)
+        else:
+            self.showMainMenu()
 
     def onPlayerPosChanged(self, clientid, pos: QPointF):
         if clientid != self.client.id:
@@ -121,6 +138,10 @@ class PlanetOfTheGrizzlies(QWidget):
             self.world.root.moveBy(-dCx, -dCy)
             self.world.scroll_background(self.world.player_for_client(self.client.id))
 
+        player = self.world.player_for_client(self.client.id)
+        if player:
+            self.ingame_menu.setCurrentHealth(player.health, player.max_health)
+
     def onPlayerStatusChanged(self, clientid, status):
         banner = None
 
@@ -130,10 +151,8 @@ class PlanetOfTheGrizzlies(QWidget):
             banner = self.world.addPixmap(QPixmap("gfx/dead.png"))
 
         if banner:
-            self.world.stop_updates()
-            banner.setZValue(10)
+            banner.setZValue(1000)
             banner.setPos(self.graphics.viewport().width()/2-banner.pixmap().width()/2, self.graphics.viewport().height()/2-banner.pixmap().height()/2)
-            QTimer.singleShot(3000, self.showMainMenu)
 
     def showMainMenu(self):
         self.main_menu.show()
@@ -149,23 +168,49 @@ class PlanetOfTheGrizzlies(QWidget):
         self.set_world(self.client.world)
         self.ingame_menu.show()
         self.main_menu.hide()
+        self.serverip_menu.hide()
+        self.character_menu.hide()
         self.resize_widgets()
+        self.server.request_new_player(self.client.id, self.selected_player_appearance)
 
     def onCreateServer(self):
-        self.server = LocalServer()
-        self.client.attach_to_server(self.server)
-        #self.server.request_level("grizzlycity")
-        self.server.request_level("ninja_level")
-        #self.server.request_level("drevil")
-        self.server.request_new_player(self.client.id)
+        self.server_type = True
+        self.main_menu.hide()
+        self.character_menu.show()
+        self.resize_widgets()
 
     def onJoinServer(self):
-        self.server = RemoteServer("141.84.214.182", 27030)
+        self.server_type = False
+        self.main_menu.hide()
+        self.character_menu.show()
+        self.resize_widgets()
+
+    def onConnectWithIp(self, ip):
+        self.server = RemoteServer("10.181.21.131", 27030)
         self.client.attach_to_server(self.server)
-        self.server.request_new_player(self.client.id)
+
+    def onCancelMenu(self):
+        self.serverip_menu.hide()
+        self.character_menu.hide()
+        self.main_menu.show()
+        self.resize_widgets()
+
+    def onSelectAppearance(self, appearance):
+        self.selected_player_appearance = appearance
+        if self.server_type:
+            if type(self.server) != LocalServer:
+                self.server = LocalServer()
+                self.client.attach_to_server(self.server)
+            self.server.request_level("grizzlycity")
+            # self.server.request_level("ninja_level")
+            # self.server.request_level("drevil")
+        else:
+            self.character_menu.hide()
+            self.serverip_menu.show()
+            self.resize_widgets()
 
     def eventFilter(self, obj, e):
-        if e.type() == QEvent.KeyPress:
+        if e.type() == QEvent.KeyPress and self.server:
             if e.key() == Qt.Key_Escape:
                 self.close()
                 self.deleteLater()
@@ -179,7 +224,7 @@ class PlanetOfTheGrizzlies(QWidget):
                 if player:
                     player.process_input(e.key, True)
             return True
-        elif e.type() == QEvent.KeyRelease:
+        elif e.type() == QEvent.KeyRelease and self.server:
             self.server.notify_input(self.client.id, e.key(), False)
             # immediate application to the client in order to mitigate the lag of the server
             player = self.world.player_for_client(self.client.id)
@@ -195,6 +240,12 @@ class PlanetOfTheGrizzlies(QWidget):
     def resize_widgets(self):
         if self.ingame_menu.isVisible():
             self.ingame_menu.resize(self.graphics.size())
+
+        if self.serverip_menu.isVisible():
+            self.serverip_menu.resize(self.graphics.size())
+
+        if self.character_menu.isVisible():
+            self.character_menu.resize(self.graphics.size())
 
         if self.main_menu.isVisible():
             menu_size = self.main_menu.size()

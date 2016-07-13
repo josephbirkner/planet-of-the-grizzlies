@@ -11,6 +11,7 @@ from potg_player import *
 from potg_enemy import *
 from potg_misc import *
 
+
 class World(QGraphicsScene):
 
     name = ""
@@ -32,18 +33,21 @@ class World(QGraphicsScene):
     block_size = (41, 40)
     margin = 0
     background_image = None
+    nextlevel = ""
+    nogfx = False
 
     # signals
     signalPlayerPosChanged = pyqtSignal(str, QPointF)
     signalPlayerStatusChanged = pyqtSignal(str, int)
 
-    def __init__(self, level, depth_vec=[122, 72], depth=10):
+    def __init__(self, level, nogfx=False, depth_vec=[122, 72], depth=10):
         super().__init__()
         self.name = level
         self.players = {}
         self.platforms = []
         self.entities = {}
         self.grid = []
+        self.nogfx = nogfx
 
         # normalize depth vector
         self.depth = math.sqrt(depth_vec[0]*depth_vec[0] + depth_vec[1]*depth_vec[1]) # *float(self.block_size[0)
@@ -106,21 +110,27 @@ class World(QGraphicsScene):
                 pos[0] += self.block_size[0]
             pos[1] += self.block_size[1]
 
-        # background gradient
         children_rect = self.root.childrenBoundingRect()
-        self.root.setRect(QRectF(0, 0, children_rect.width() + self.margin*2, children_rect.height() + self.margin*2))
-        background_gradient = QLinearGradient(QPointF(0, 0), QPointF(0, self.root.rect().height()))
-        background_gradient.setColorAt(0, QColor(level_json["background-gradient"][0][0], level_json["background-gradient"][0][1], level_json["background-gradient"][0][2])),
-        background_gradient.setColorAt(1, QColor(level_json["background-gradient"][1][0], level_json["background-gradient"][1][1], level_json["background-gradient"][1][2]))
-        self.root.setBrush(QBrush(background_gradient))
+        self.root.setRect(
+            QRectF(0, 0, children_rect.width() + self.margin * 2, children_rect.height() + self.margin * 2))
+        self.root.setBrush(QBrush(Qt.black))
 
-        # background image
-        self.background_image = QGraphicsPixmapItem(QPixmap(level_json["background"]).scaled(
-            level_json["background-size"][0],
-            level_json["background-size"][1],
-        ), self.root)
-        self.addItem(self.background_image)
-        self.background_image.setZValue(-1)
+        if not nogfx:
+            # background gradient
+            background_gradient = QLinearGradient(QPointF(0, 0), QPointF(0, self.root.rect().height()))
+            background_gradient.setColorAt(0, QColor(level_json["background-gradient"][0][0], level_json["background-gradient"][0][1], level_json["background-gradient"][0][2])),
+            background_gradient.setColorAt(1, QColor(level_json["background-gradient"][1][0], level_json["background-gradient"][1][1], level_json["background-gradient"][1][2]))
+            self.root.setBrush(QBrush(background_gradient))
+
+            # background image
+            self.background_image = QGraphicsPixmapItem(QPixmap(level_json["background"]).scaled(
+                level_json["background-size"][0],
+                level_json["background-size"][1],
+            ), self.root)
+            self.addItem(self.background_image)
+            self.background_image.setZValue(-1)
+
+        self.nextlevel = level_json["nextlevel"]
 
         # sort platforms by distance from camera
         # self.platforms.sort(key=lambda block: (block.logic_pos[1], block.logic_pos[0]), reverse=True)
@@ -256,8 +266,8 @@ class World(QGraphicsScene):
 
     # these are used for sever-client interaction
 
-    def add_player(self, clientid):
-        self.players[clientid] = Player(self.spawnlocation[0:], self, clientid)
+    def add_player(self, clientid, appearance):
+        self.players[clientid] = Player(self.spawnlocation[0:], self, clientid, appearance)
         return self.players[clientid]
 
     def player_for_client(self, clientid):
@@ -326,21 +336,21 @@ class World(QGraphicsScene):
                 if entity_info["clientid"] in self.players.keys():
                     player = self.players[entity_info["clientid"]]
                 else:
-                    player = self.add_player(entity_info["clientid"])
+                    player = self.add_player(entity_info["clientid"], entity_info["appearance"])
                 player.deserialize(entity_info)
 
     # scrolling of the background
     def scroll_background(self, player):
+        if self.background_image:
+            # difference
+            background_dx = self.root.rect().width() - self.background_image.boundingRect().width()
+            background_dy = self.root.rect().height() - self.background_image.boundingRect().height()
 
-        # difference
-        background_dx = self.root.rect().width() - self.background_image.boundingRect().width()
-        background_dy = self.root.rect().height() - self.background_image.boundingRect().height()
-
-        # proportion
-        self.background_image.setPos(
-            player.logic_pos[0] / self.root.rect().width() * background_dx,
-            player.logic_pos[1] / self.root.rect().height() * background_dy
-        )
+            # proportion
+            self.background_image.setPos(
+                player.logic_pos[0] / self.root.rect().width() * background_dx,
+                player.logic_pos[1] / self.root.rect().height() * background_dy
+            )
 
     def entity_for_type(self, ent_type):
         for entid, ent in self.entities.items():

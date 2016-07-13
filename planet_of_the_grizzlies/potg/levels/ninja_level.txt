@@ -29,5 +29,6 @@
 "background-gradient": [[255, 0, 0], [0, 0, 0], [189, 227, 255], [60, 149, 214], [255, 243, 3], [245, 70, 2]],
 "background": "gfx/ninja_level_background.png",
 "background-size": [4500, 1600],
-"margin": 500
+"margin": 500,
+"nextlevel": "drevil"
 }

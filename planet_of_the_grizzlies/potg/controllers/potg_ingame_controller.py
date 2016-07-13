@@ -12,5 +12,6 @@ class IngameMenu(QWidget, Ui_potg_ingame):
         Ui_potg_ingame.__init__(self)
         self.setupUi(self)
 
-    def onExitButtonClicked(self, e):
-        self.signalExit.emit()
+    def setCurrentHealth(self, value, max):
+        self.health_bar.setMaximum(max)
+        self.health_bar.setValue(value)

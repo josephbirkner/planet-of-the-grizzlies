@@ -27,7 +27,7 @@ class IServer(QObject):
     def request_level(self, level):
         pass
 
-    def request_new_player(self, clientid):
+    def request_new_player(self, clientid, appearance):
         pass
 
     def notify_input(self, clientid, key, status):
@@ -68,12 +68,21 @@ class LocalServer(IServer):
         self.remote_servers = {}
 
     def request_level(self, level):
-        self.world = World(level)
+        if self.world:
+            self.world.disconnect()
+            self.world.deleteLater()
+            del self.world
+            self.world = None
+
+        if level:
+            self.world = World(level, True)
+            self.world.signalPlayerStatusChanged.connect(self.on_player_status_changed)
+
         self.broadcast_level(level)
 
-    def request_new_player(self, clientid):
+    def request_new_player(self, clientid, appearance):
         if self.world:
-            self.world.add_player(clientid)
+            self.world.add_player(clientid, appearance)
 
     def notify_input(self, clientid, key, status):
         if self.world:
@@ -88,6 +97,20 @@ class LocalServer(IServer):
             changed_objects = self.world.changed_entities()
             self.world.reset_changed_entities()
             self.broadcast_update(changed_objects, self.world.name)
+
+    def on_player_status_changed(self, clientid, status):
+        if status == Entity.Won:
+            QTimer.singleShot(3000, self.transition_level)
+        elif status == Entity.Dead:
+            print("x")
+            QTimer.singleShot(3000, self.leave_level)
+
+    def transition_level(self):
+        if self.world:
+            self.request_level(self.world.nextlevel)
+
+    def leave_level(self):
+        self.request_level(self.world.name)
 
     def on_new_connection(self):
         print("new connection!")
@@ -162,8 +185,8 @@ class RemoteServer(IServer):
     def request_level(self, level):
         pass
 
-    def request_new_player(self, clientid):
-        self.socket.write(ClientMessage("request_player", clientid).to_bytes())
+    def request_new_player(self, clientid, appearance):
+        self.socket.write(ClientMessage("request_player", clientid, {"appearance": appearance}).to_bytes())
         #self.socket.flush()
 
     def notify_input(self, clientid, key, status):

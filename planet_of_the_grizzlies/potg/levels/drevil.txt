@@ -43,5 +43,7 @@
 "background-gradient": [[0, 255, 0], [0, 0, 0], [189, 227, 255], [60, 149, 214], [255, 243, 3], [245, 70, 2]],
 "background": "gfx/cave.png",
 "background-size": [2521, 2000],
-"margin": 500
+"margin": 500,
+"nextlevel": "",
+"splashscreen": "gfx/drevil.png"
 }
