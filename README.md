@@ -20,9 +20,9 @@ B E T A
 2. How to play
 --------------
 
-- cd planet_of_the_grizzlies/potg
+`cd planet_of_the_grizzlies/potg`
 
-  `python3 potg.py`
+`python3 potg.py`
 
 - Move with W A S D
 - Jump with Space
