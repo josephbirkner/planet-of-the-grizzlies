@@ -202,9 +202,9 @@ class PlanetOfTheGrizzlies(QWidget):
             if type(self.server) != LocalServer:
                 self.server = LocalServer()
                 self.client.attach_to_server(self.server)
-            #self.server.request_level("grizzlycity")
+            self.server.request_level("grizzlycity")
             #self.server.request_level("ninja_level")
-            self.server.request_level("drevil")
+            #self.server.request_level("drevil")
         else:
             self.character_menu.hide()
             self.serverip_menu.show()
