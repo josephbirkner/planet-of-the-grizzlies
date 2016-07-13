@@ -134,9 +134,10 @@ class LocalServer(IServer):
         data = data.data() # get the raw bytes from the QByteArray object
         self.sender().flush()
         try:
+            data = data[0:-1]
             messages = data.split(b"}{")
             for data in messages:
-                msg = Message.Parse(data)
+                msg = Message.Parse(b"{%s}" % data)
 
                 if msg.mtype == "add_client":
                     self.remote_servers[self.sender()].append(msg.value("clientid"))
@@ -211,9 +212,10 @@ class RemoteServer(IServer):
         data = data.data() # get the raw bytes from the QByteArray object
         self.sender().flush()
         try:
+            data = data[0:-1]
             messages = data.split(b"}{")
             for data in messages:
-                msg = Message.Parse(data)
+                msg = Message.Parse(b"{%s}" % data)
 
                 if msg.mtype == "level":
                     self.broadcast_level(msg.value("name"))
