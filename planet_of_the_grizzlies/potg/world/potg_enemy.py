@@ -76,11 +76,17 @@ class Soldier(Enemy):
             if self.current_target:
                 self.bullet_burst_count = 0
                 self.activate_state(Soldier.Aiming, 70)
+            #comment
             elif self.platform:
                 self_pos = self.box.position[self.direction]
                 platform_pos = self.platform.box.position[self.direction]
 
-                # distances
+                ###############################
+                #              |              #
+                # -------------#--------------#
+                #              |              #
+                ###############################
+
                 distances = [
                     self_pos - platform_pos,
                     platform_pos + self.platform.box.size[self.direction] - self_pos - self.box.size[self.direction]
