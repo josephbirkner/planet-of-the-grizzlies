@@ -8,23 +8,21 @@ B E T A
 
 - Install PyQt5 (>= Version 5.4)
 
-  sudo apt-get install python3-pyqt5
+  `sudo apt-get install python3-pyqt5`
 
 - Install qdarkstyle
 
-  pip3 install qdarkstyle
+  `pip3 install qdarkstyle`
 
-  Upon execution, two error messages will be
-  displayed that "PyQt4" has not been found.
-  Just change those imports from "PyQt4" to
-  "PyQt5", and you're good to go!
+- Upon execution, two error messages will be displayed that "PyQt4" has not been found. Just change those imports from `PyQt4` to `PyQt5`, and you're good to go!
 
 
 2. How to play
 --------------
 
 - cd planet_of_the_grizzlies/potg
-  python3 potg.py
+
+  `python3 potg.py`
 
 - Move with W A S D
 - Jump with Space
@@ -36,4 +34,4 @@ B E T A
 ---------------------------
 
 - Open planet_of_the_grizzlies/potg/world/potg_player.py
-- Change Player.max_health to 66666666
+- Change `Player.max_health` to 66666666
