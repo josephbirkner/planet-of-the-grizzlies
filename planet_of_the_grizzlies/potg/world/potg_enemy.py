@@ -83,7 +83,7 @@ class Soldier(Enemy):
 
                 ###############################
                 #              |              #
-                # -------------#--------------#
+                #------------<-#->------------#
                 #              |              #
                 ###############################
 
@@ -91,6 +91,12 @@ class Soldier(Enemy):
                     self_pos - platform_pos,
                     platform_pos + self.platform.box.size[self.direction] - self_pos - self.box.size[self.direction]
                 ]
+
+                ###############################
+                #              |              #
+                #->------------#--------------#
+                #              |              #
+                ###############################
 
                 if distances[1-sgn(self.velocity[self.direction])] < abs(self.velocity[self.direction]):
                     self.velocity[self.direction] *= -1
