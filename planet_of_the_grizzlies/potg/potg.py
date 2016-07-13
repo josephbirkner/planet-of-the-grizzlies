@@ -96,17 +96,6 @@ class PlanetOfTheGrizzlies(QWidget):
 
         self.resize_widgets()
 
-    def set_world(self, world):
-        self.world = world
-        self.banner = None
-        print("w")
-        if world:
-            self.graphics.setScene(world)
-            self.world.signalPlayerStatusChanged.connect(self.onPlayerStatusChanged)
-            self.world.signalPlayerPosChanged.connect(self.onPlayerPosChanged)
-        else:
-            self.showMainMenu()
-
     def onPlayerPosChanged(self, clientid, pos: QPointF):
         if clientid != self.client.id:
             return
@@ -170,13 +159,20 @@ class PlanetOfTheGrizzlies(QWidget):
     #   self.graphics.setScene(self.dummy_scene)
 
     def onClientLevelChanged(self):
-        self.set_world(self.client.world)
-        self.ingame_menu.show()
-        self.main_menu.hide()
-        self.serverip_menu.hide()
-        self.character_menu.hide()
-        self.resize_widgets()
-        self.server.request_new_player(self.client.id, self.selected_player_appearance)
+        self.world = self.client.world
+        self.banner = None
+        if self.world:
+            self.world.signalPlayerStatusChanged.connect(self.onPlayerStatusChanged)
+            self.world.signalPlayerPosChanged.connect(self.onPlayerPosChanged)
+            self.graphics.setScene(self.client.world)
+            self.ingame_menu.show()
+            self.main_menu.hide()
+            self.serverip_menu.hide()
+            self.character_menu.hide()
+            self.resize_widgets()
+            self.server.request_new_player(self.client.id, self.selected_player_appearance)
+        else:
+            self.showMainMenu()
 
     def onCreateServer(self):
         self.server_type = True
@@ -206,29 +202,31 @@ class PlanetOfTheGrizzlies(QWidget):
             if type(self.server) != LocalServer:
                 self.server = LocalServer()
                 self.client.attach_to_server(self.server)
-            self.server.request_level("grizzlycity")
+            #self.server.request_level("grizzlycity")
             #self.server.request_level("ninja_level")
-            #self.server.request_level("drevil")
+            self.server.request_level("drevil")
         else:
             self.character_menu.hide()
             self.serverip_menu.show()
             self.resize_widgets()
 
     def eventFilter(self, obj, e):
-        if e.type() == QEvent.KeyPress and self.server:
+        if e.type() == QEvent.KeyPress:
             if e.key() == Qt.Key_Escape:
                 self.close()
                 self.deleteLater()
+                return True
             elif e.key() == Qt.Key_Backspace and self.server:
                 # self.server.request_new_player(self.client.id)
                 self.server.request_level("drevil")
+                return True
             elif self.server:
                 self.server.notify_input(self.client.id, e.key(), True)
                 # immediate application to the client in order to mitigate the lag of the server
                 player = self.world.player_for_client(self.client.id)
                 if player:
                     player.process_input(e.key, True)
-            return True
+                return True
         elif e.type() == QEvent.KeyRelease and self.server:
             self.server.notify_input(self.client.id, e.key(), False)
             # immediate application to the client in order to mitigate the lag of the server
