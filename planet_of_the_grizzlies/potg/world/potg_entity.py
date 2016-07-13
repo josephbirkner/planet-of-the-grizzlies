@@ -37,7 +37,7 @@ class Entity(QGraphicsPixmapItem, SceneObject):
     Idle = 0
     Walking = 1
     Flying = 1
-    Running = 2
+    Using = 2
     Dodging = 3
     Jumping = 4
     Punching = 5

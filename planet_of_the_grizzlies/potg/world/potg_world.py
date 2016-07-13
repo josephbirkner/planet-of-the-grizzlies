@@ -295,6 +295,8 @@ class World(QGraphicsScene):
             self.entities[ent_id] = Bullet(ent_id, ent_position[0:], self)
         elif ent_type == "s":
             self.entities[ent_id] = Star(ent_id, ent_position[0:], self)
+        elif ent_type == "z":
+            self.entities[ent_id] = Shout(ent_id, ent_position[0:], self)
         elif ent_type == "D":
             self.entities[ent_id] = DrEvil(ent_id, ent_position[0:], self)
         elif ent_type == "x":

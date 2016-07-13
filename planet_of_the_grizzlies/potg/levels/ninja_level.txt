@@ -16,7 +16,7 @@
 "                                                   N                                     N    N    N                                                                                                        T",
 "                                                                                                                                                                                                x           T",
 "                                                                                                                                                                                                            T",
-"                                                 ______                  ______        SSSSSSSSSSSSSSSSS                                                                                                    T",
+"                                                 ______                  ______        __SSSSSSSSSSSSSSSSS                                                                                                  T",
 "                                                                                                                                                                                                            T",
 "                                                                                                                                                                                                            T",
 "                                  N            N            ___                                                                     N                                                                       T",

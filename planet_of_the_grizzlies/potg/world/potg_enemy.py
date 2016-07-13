@@ -18,6 +18,17 @@ class Enemy(Entity):
                 if not self.killed():
                     self.activate_state(Entity.Punched, 12)
 
+    def update_target(self):
+        self.current_target = None
+        # check if any of the players is within range
+        for clientid, player in self.world.players.items():
+            dx = abs(player.logic_pos[0] - self.logic_pos[0])
+            dy = abs(player.logic_pos[1] - self.logic_pos[1])
+            if dx < self.range_x and dy < self.range_y:
+                self.current_target = player
+                break
+
+
     def entity_type(self):
         return "E"
 
@@ -50,8 +61,6 @@ class Soldier(Enemy):
         self.sprites[Entity.Idle] = [QPixmap("gfx/soldier_idle.png").scaled(self.size[0], self.size[1])]
         self.sprites[Entity.Walking] = [QPixmap("gfx/soldier_step1.png").scaled(self.size[0], self.size[1]),
                                         QPixmap("gfx/soldier_step2.png").scaled(self.size[0], self.size[1])]
-        self.sprites[Entity.Running] = [QPixmap("gfx/soldier_idle.png").scaled(self.size[0], self.size[1])]
-        self.sprites[Entity.Dodging] = [QPixmap("gfx/soldier_idle.png").scaled(self.size[0], self.size[1])]
         self.sprites[Entity.Jumping] = [QPixmap("gfx/soldier_idle.png").scaled(self.size[0], self.size[1])]
         # self.sprites[Entity.Punching] = [QPixmap("gfx/punch_player.png").scaled(self.size[0], self.size[1])]
         self.sprites[Entity.Punched] = [QPixmap("gfx/soldier_hit.png").scaled(self.size[0], self.size[1])]
@@ -82,15 +91,6 @@ class Soldier(Enemy):
 
         super().update()
 
-    def update_target(self):
-        self.current_target = None
-        # check if any of the players is within range
-        for clientid, player in self.world.players.items():
-            dx = abs(player.logic_pos[0] - self.logic_pos[0])
-            dy = abs(player.logic_pos[1] - self.logic_pos[1])
-            if dx < self.range_x and dy < self.range_y:
-                self.current_target = player
-                break
 
     def update_orientation(self):
         if self.current_target:
@@ -157,8 +157,6 @@ class Ninja(Enemy):
         self.sprites[Entity.Idle] = [QPixmap("gfx/ninja.png").scaled(self.size[0], self.size[1])]
         self.sprites[Entity.Walking] = [QPixmap("gfx/ninja_step.png").scaled(self.size[0], self.size[1]),
                                         QPixmap("gfx/ninja.png").scaled(self.size[0], self.size[1])]
-        self.sprites[Entity.Running] = [QPixmap("gfx/ninja.png").scaled(self.size[0], self.size[1])]
-        self.sprites[Entity.Dodging] = [QPixmap("gfx/ninja.png").scaled(self.size[0], self.size[1])]
         self.sprites[Entity.Jumping] = [QPixmap("gfx/ninja.png").scaled(self.size[0], self.size[1])]
         # self.sprites[Entity.Punching] = [QPixmap("gfx/punch_player.png").scaled(self.size[0], self.size[1])]
         self.sprites[Entity.Punched] = [QPixmap("gfx/ninja_hit.png").scaled(self.size[0], self.size[1])]
@@ -189,15 +187,6 @@ class Ninja(Enemy):
 
         super().update()
 
-    def update_target(self):
-        self.current_target = None
-        # check if any of the players is within range
-        for clientid, player in self.world.players.items():
-            dx = abs(player.logic_pos[0] - self.logic_pos[0])
-            dy = abs(player.logic_pos[1] - self.logic_pos[1])
-            if dx < self.range_x and dy < self.range_y:
-                self.current_target = player
-                break
 
     def update_orientation(self):
         if self.current_target:
@@ -237,59 +226,10 @@ class Ninja(Enemy):
         bullet.velocity = bullet_velocity
 
 
-
-class Bullet(Entity):
-
-    # two dimensional image but depth of 10
-    size = [50/2, 17/2, 10]
-    damage = 10
-    speed = 10
-    weight = .0
-
-    def __init__(self, id, pos, world):
-        super().__init__(id, pos, world, QPixmap("gfx/bullet.png").scaled(self.size[0], self.size[1]))
-        self.activate_state(Entity.Flying, 100)
-
-    # if collide with player, kill player
-    def collision(self, colliding_entity):
-        if colliding_entity.entity_type() == "P":
-            colliding_entity.hurt(self.damage)
-            self.activate_state(Entity.Dead)
-
-    def entity_type(self):
-        return "b"
-
-    def load_images(self):
-        self.sprites[Entity.Idle] = [QPixmap("gfx/bullet.png").scaled(self.size[0], self.size[1])]
-        self.sprites[Entity.Flying] = [QPixmap("gfx/bullet.png").scaled(self.size[0], self.size[1])]
-        self.sprites[Entity.Dead] = [QPixmap("gfx/bullet.png").scaled(self.size[0], self.size[1])]
-
-    def on_state_transition(self, old_state, new_state):
-        if new_state == Entity.Dead or (new_state == Entity.Idle and old_state == Bullet.Flying):
-            self.world.remove_entity(self)
-
-class Star(Bullet):
-
-    # two dimensional image but depth of 10
-    size = [70/2, 70/2, 10]
-    damage = 10
-    speed = 15
-    weight = .1
-
-    def entity_type(self):
-        return "s"
-
-    def load_images(self):
-        self.sprites[Entity.Idle] = [QPixmap("gfx/star.png").scaled(self.size[0], self.size[1])]
-        self.sprites[Entity.Flying] = [QPixmap("gfx/star.png").scaled(self.size[0], self.size[1]),
-                                        QPixmap("gfx/star1.png").scaled(self.size[0], self.size[1]),
-                                        QPixmap("gfx/star2.png").scaled(self.size[0], self.size[1])]
-        self.sprites[Entity.Dead] = [QPixmap("gfx/star.png").scaled(self.size[0], self.size[1])]
-
-
 class DrEvil(Enemy):
 
     size = [328/3, 375/3, 20]
+    Drinking = Entity.__HighestState__ + 3
 
     def __init__(self, id, pos, world):
         super().__init__(id, pos, world, "gfx/doc_idle.png")
@@ -300,35 +240,131 @@ class DrEvil(Enemy):
 
     def load_images(self):
         self.sprites[Entity.Idle] = [QPixmap("gfx/doc_idle.png").scaled(self.size[0], self.size[1])]
+        self.sprites[Entity.Using] = [QPixmap("gfx/doc_use.png").scaled(self.size[0], self.size[1])]
+        self.sprites[DrEvil.Drinking] = [QPixmap("gfx/doc_drink.png").scaled(self.size[0], self.size[1])]
+        self.sprites[Entity.Walking] = [QPixmap("gfx/doc_fly1.png").scaled(self.size[0], self.size[1]),
+                                        QPixmap("gfx/doc_fly2.png").scaled(self.size[0], self.size[1])]
+
+    def update(self):
+        if self.state == Entity.Idle:
+            self.update_target()
+            if self.current_target:
+                self.activate_state(Entity.Using, 70)
+        if self.state == Entity.Walking:
+            player = self.platform.entity_for_type("P")
+            if player:
+                vel = self.vector_to(player.logic_pos, self.speed)
+                self.velocity[0] = vel[0]
+                self.velocity[2] = vel[2]
+
+        super().update()
+
+    def on_state_transition(self, old_state, new_state):
+        if old_state == Entity.Using:
+            self.activate_state(DrEvil.Drinking, 70)
+        if old_state == DrEvil.Drinking:
+            self.activate_state(DrEvil.Walking)
+
 
 
 class Samurai(Enemy):
 
     size = [700/3, 700/3, 20]
+    speed = 0
+    direction = 0
+    health = 50
+    range_x = 500
+    range_y = 200
+    current_target = None
 
     def __init__(self, id, pos, world):
         super().__init__(id, pos, world, "gfx/samurai_idle.png")
         self.activate_state(Entity.Idle)
         self.logic_pos[2] += self.world.depth * .5
 
+    def update(self):
+        if self.state == Entity.Idle:
+            self.update_target()
+            if self.current_target:
+                self.activate_state(Entity.Using, 70)
+
+        super().update()
+
+    def update_orientation(self):
+        if self.current_target:
+            if (self.current_target.logic_pos[0] - self.logic_pos[0]) < 0:
+                self.orientation = -1
+            else:
+                self.orientation = 1
+        else:
+            super().update_orientation()
+
     def entity_type(self):
         return "x"
 
     def load_images(self):
         self.sprites[Entity.Idle] = [QPixmap("gfx/samurai_idle.png").scaled(self.size[0], self.size[1])]
+        self.sprites[Entity.Dead] = [QPixmap("gfx/samurai_dead.png").scaled(self.size[0], self.size[1])]
+        self.sprites[Entity.Using] = [QPixmap("gfx/samurai_hit.png").scaled(self.size[0], self.size[1])]
 
 
 class General(Enemy):
 
     size = [700/3, 700/3, 20]
+    Shouting = Entity.__HighestState__ + 4
+
+    speed = 0
+    direction = 0
+    health = 50
+    range_x = 300
+    range_y = 200
+    current_target = None
+
+    bullet_burst_count = 0
+    bullet_max_burst_count = 1
 
     def __init__(self, id, pos, world):
         super().__init__(id, pos, world, "gfx/general.png")
         self.activate_state(Entity.Idle)
         self.logic_pos[2] += self.world.depth * .5
 
+    def update(self):
+        if self.state == Entity.Idle:
+            self.update_target()
+            if self.current_target:
+                self.activate_state(General.Shouting, 70)
+
+        super().update()
+
+    def on_state_transition(self, old_state, new_state):
+        if old_state == General.Shouting and self.current_target:
+            self.fire()
+
+    def fire(self):
+        self.update_orientation()
+        nozzle_pos = [self.box.right(), (self.box.top() + self.box.bottom()) / 2,
+                      (self.box.back() + self.box.front()) / 2]
+        if self.orientation < 0:
+            nozzle_pos[0] = self.box.left()
+        bullet = self.world.add_entity("z", nozzle_pos)
+        bullet_velocity = bullet.vector_to(self.current_target.logic_pos, bullet.speed)
+
+        self.bullet_burst_count += 1
+        bullet.velocity = bullet_velocity
+
+    def update_orientation(self):
+        if self.current_target:
+            if (self.current_target.logic_pos[0] - self.logic_pos[0]) < 0:
+                self.orientation = -1
+            else:
+                self.orientation = 1
+        else:
+            super().update_orientation()
+
     def entity_type(self):
         return "y"
 
     def load_images(self):
         self.sprites[Entity.Idle] = [QPixmap("gfx/general.png").scaled(self.size[0], self.size[1])]
+        self.sprites[Entity.Dead] = [QPixmap("gfx/general_dead.png").scaled(self.size[0], self.size[1])]
+        self.sprites[General.Shouting] = [QPixmap("gfx/general_hit.png").scaled(self.size[0], self.size[1])]

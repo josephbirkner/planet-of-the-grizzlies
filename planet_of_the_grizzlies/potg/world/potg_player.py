@@ -73,8 +73,6 @@ class Player(Entity):
             self.sprites[Entity.Idle] = [QPixmap("gfx/player_idle.png").scaled(self.size[0], self.size[1])]
             self.sprites[Entity.Walking] = [QPixmap("gfx/player_step1.png").scaled(self.size[0], self.size[1]), QPixmap("gfx/player_step2.png").scaled(self.size[0], self.size[1])]
             self.sprites[Entity.Running] = [QPixmap("gfx/player_idle.png").scaled(self.size[0], self.size[1])]
-            self.sprites[Entity.Dodging] = [QPixmap("gfx/player_idle.png").scaled(self.size[0], self.size[1])]
-            self.sprites[Entity.Jumping] = [QPixmap("gfx/player_jump.png").scaled(self.size[0], self.size[1])]
             self.sprites[Entity.Punching] = [QPixmap("gfx/player_punch.png").scaled(self.size[0], self.size[1])]
             #self.sprites[Entity.Punched] = [QPixmap("gfx/punch_enemy.png").scaled(self.size[0], self.size[1])]
             self.sprites[Entity.Kicking] = [QPixmap("gfx/player_kick.png").scaled(self.size[0], self.size[1])]
@@ -84,8 +82,6 @@ class Player(Entity):
             self.sprites[Entity.Idle] = [QPixmap("gfx/brodude_idle.png").scaled(self.size[0], self.size[1])]
             self.sprites[Entity.Walking] = [QPixmap("gfx/brodude_step1.png").scaled(self.size[0], self.size[1]),
                                             QPixmap("gfx/brodude_step2.png").scaled(self.size[0], self.size[1])]
-            self.sprites[Entity.Running] = [QPixmap("gfx/brodude_idle.png").scaled(self.size[0], self.size[1])]
-            self.sprites[Entity.Dodging] = [QPixmap("gfx/brodude_idle.png").scaled(self.size[0], self.size[1])]
             self.sprites[Entity.Jumping] = [QPixmap("gfx/brodude_jump.png").scaled(self.size[0], self.size[1])]
             self.sprites[Entity.Punching] = [QPixmap("gfx/brodude_attack1.png").scaled(self.size[0], self.size[1])]
             # self.sprites[Entity.Punched] = [QPixmap("gfx/punch_enemy.png").scaled(self.size[0], self.size[1])]
