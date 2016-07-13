@@ -116,6 +116,12 @@ class Soldier(Enemy):
     def entity_type(self):
         return "F"
 
+    #comment
+
+    #  o  x
+    #  |  |
+    # /\ /\
+
     def on_state_transition(self, old_state, new_state):
         if new_state == Entity.Walking:
             self.update_target()
@@ -140,9 +146,6 @@ class Soldier(Enemy):
 
         self.bullet_burst_count += 1
         bullet.velocity = bullet_velocity
-
-
-
 
 
 class Ninja(Enemy):
