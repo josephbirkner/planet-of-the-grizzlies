@@ -256,8 +256,8 @@ class World(QGraphicsScene):
 
     # these are used for sever-client interaction
 
-    def add_player(self, clientid):
-        self.players[clientid] = Player(self.spawnlocation[0:], self, clientid)
+    def add_player(self, clientid, appearance):
+        self.players[clientid] = Player(self.spawnlocation[0:], self, clientid, appearance)
         return self.players[clientid]
 
     def player_for_client(self, clientid):
@@ -324,7 +324,7 @@ class World(QGraphicsScene):
                 if entity_info["clientid"] in self.players.keys():
                     player = self.players[entity_info["clientid"]]
                 else:
-                    player = self.add_player(entity_info["clientid"])
+                    player = self.add_player(entity_info["clientid"], entity_info["appearance"])
                 player.deserialize(entity_info)
 
     # scrolling of the background

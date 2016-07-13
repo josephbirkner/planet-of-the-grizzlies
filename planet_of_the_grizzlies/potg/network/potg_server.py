@@ -27,7 +27,7 @@ class IServer(QObject):
     def request_level(self, level):
         pass
 
-    def request_new_player(self, clientid):
+    def request_new_player(self, clientid, appearance):
         pass
 
     def notify_input(self, clientid, key, status):
@@ -71,9 +71,9 @@ class LocalServer(IServer):
         self.world = World(level)
         self.broadcast_level(level)
 
-    def request_new_player(self, clientid):
+    def request_new_player(self, clientid, appearance):
         if self.world:
-            self.world.add_player(clientid)
+            self.world.add_player(clientid, appearance)
 
     def notify_input(self, clientid, key, status):
         if self.world:
@@ -162,8 +162,8 @@ class RemoteServer(IServer):
     def request_level(self, level):
         pass
 
-    def request_new_player(self, clientid):
-        self.socket.write(ClientMessage("request_player", clientid).to_bytes())
+    def request_new_player(self, clientid, appearance):
+        self.socket.write(ClientMessage("request_player", clientid, {"appearance": appearance}).to_bytes())
         #self.socket.flush()
 
     def notify_input(self, clientid, key, status):

@@ -13,10 +13,12 @@ class Player(Entity):
     kick_strength = 5
     clientid = ""
     appearance = 1
+    max_health = 100
 
-    def __init__(self, pos, world, clientid):
-        super().__init__(0, pos, world, "gfx/walk_player.png")
+    def __init__(self, pos, world, clientid, appearance):
+        self.appearance = appearance
         self.clientid = clientid
+        super().__init__(0, pos, world, "gfx/walk_player.png")
 
     def process_input(self, key, key_status):
         if key_status:
@@ -100,4 +102,5 @@ class Player(Entity):
     def serialize(self):
         result = super().serialize()
         result["clientid"] = self.clientid
+        result["appearance"] = self.appearance
         return result
