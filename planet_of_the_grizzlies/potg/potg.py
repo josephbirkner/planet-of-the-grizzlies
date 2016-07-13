@@ -43,6 +43,7 @@ class PlanetOfTheGrizzlies(QWidget):
     ingame_menu = None
 
     dummy_scene = None
+    banner = None
 
     def __init__(self):
         super().__init__()
@@ -59,6 +60,7 @@ class PlanetOfTheGrizzlies(QWidget):
         self.graphics.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.graphics.setStyleSheet("QGraphicsView { border-style: none; }")
         self.graphics.setViewport(QOpenGLWidget())
+        self.graphics.setBackgroundBrush(QBrush(Qt.black))
 
         layout = QGridLayout()
         layout.setContentsMargins(0, 0, 0, 0)
@@ -96,6 +98,8 @@ class PlanetOfTheGrizzlies(QWidget):
 
     def set_world(self, world):
         self.world = world
+        self.banner = None
+        print("w")
         if world:
             self.graphics.setScene(world)
             self.world.signalPlayerStatusChanged.connect(self.onPlayerStatusChanged)
@@ -143,16 +147,17 @@ class PlanetOfTheGrizzlies(QWidget):
             self.ingame_menu.setCurrentHealth(player.health, player.max_health)
 
     def onPlayerStatusChanged(self, clientid, status):
-        banner = None
+        if self.banner is not None:
+            return
 
         if status == Entity.Won:
-            banner = self.world.addPixmap(QPixmap("gfx/win.png"))
+            self.banner = self.world.addPixmap(QPixmap("gfx/win.png"))
         elif status == Entity.Dead:
-            banner = self.world.addPixmap(QPixmap("gfx/dead.png"))
+            self.banner = self.world.addPixmap(QPixmap("gfx/dead.png"))
 
-        if banner:
-            banner.setZValue(1000)
-            banner.setPos(self.graphics.viewport().width()/2-banner.pixmap().width()/2, self.graphics.viewport().height()/2-banner.pixmap().height()/2)
+        if self.banner:
+            self.banner.setZValue(1000)
+            self.banner.setPos(self.graphics.viewport().width()/2-self.banner.pixmap().width()/2, self.graphics.viewport().height()/2-self.banner.pixmap().height()/2)
 
     def showMainMenu(self):
         self.main_menu.show()

@@ -199,7 +199,9 @@ class CagePlatform(Platform):
                     ent.activate_state(Entity.Captive)
                     self.captives.add(ent)
                     return
-            super().collision(ent)
+
+            if ent.entity_type != "C":
+                super().collision(ent)
 
     def release_captives(self):
         for captive in self.captives:

@@ -53,6 +53,8 @@ class LocalServer(IServer):
     world = None
     server = None
 
+    transition_active = False
+
     # map from QTcpSocket to list of client ids
     remote_servers = None
 
@@ -99,18 +101,25 @@ class LocalServer(IServer):
             self.broadcast_update(changed_objects, self.world.name)
 
     def on_player_status_changed(self, clientid, status):
+        if self.transition_active:
+            return
+
         if status == Entity.Won:
             QTimer.singleShot(3000, self.transition_level)
+            self.transition_active = True
         elif status == Entity.Dead:
-            print("x")
             QTimer.singleShot(3000, self.leave_level)
+            self.transition_active = False
 
     def transition_level(self):
+        self.transition_active = False
         if self.world:
             self.request_level(self.world.nextlevel)
 
     def leave_level(self):
-        self.request_level(self.world.name)
+        self.transition_active = False
+        if self.world:
+            self.request_level(self.world.name)
 
     def on_new_connection(self):
         print("new connection!")

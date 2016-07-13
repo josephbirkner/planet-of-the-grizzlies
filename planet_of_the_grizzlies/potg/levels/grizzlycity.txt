@@ -22,8 +22,7 @@
 "                                                ___                                                                                                                                                         T",
 "                                                                                                                    ___                                                    SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSST",
 "                                                                                                                                                                                                             ",
-"SSSSSSSSSSST     ____SSSSSSSSSS___  _____                                                                     ___                                                                                            ",
-"            WWWWW                 WW     WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW ",
+"SSSSSSSSSSSS     ____SSSSSSSSSS___  _____                                                                     ___                                                                                            ",
 "                                                                                                                                                                                                             "
 ],
 "background-gradient": [[255, 0, 0], [0, 0, 0], [189, 227, 255], [60, 149, 214], [255, 243, 3], [245, 70, 2]],
