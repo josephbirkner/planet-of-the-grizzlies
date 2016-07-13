@@ -34,4 +34,4 @@ P L A N E T   O F   T H E   G R I Z Z L I E S
 ------- 3. How to become invincible --------
 
 - Open planet_of_the_grizzlies/potg/world/potg_player.py
-- Change player.max_health to 66666666
+- Change Player.max_health to 66666666
