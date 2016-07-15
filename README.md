@@ -15,7 +15,7 @@ Install qdarkstyle
 
     pip3 install qdarkstyle
 
-*Upon execution, two error messages will be displayed that "PyQt4" has not been found. Just change those imports from `PyQt4` to `PyQt5`, and you're good to go!*
+_*Upon execution, two error messages will be displayed that "PyQt4" has not been found. Just change those imports from `PyQt4` to `PyQt5`, and you're good to go!*_
 
 1.2 Installing PyQt5 with EGL support on Raspbian Jessy to enable hardware acceleration
 ---------------------------------------------------------------------------------------
@@ -58,6 +58,8 @@ It might be necessary to tune down the ingame graphics
 
     cd planet_of_the_grizzlies/potg
     python3 potg.py
+
+_*Upon execution, two error messages will be displayed that "PyQt4" has not been found. Just change those imports from `PyQt4` to `PyQt5`, and you're good to go!*_
 
 - Move with W A S D
 - Jump with Space
