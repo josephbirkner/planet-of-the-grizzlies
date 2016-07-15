@@ -40,6 +40,9 @@ class World(QGraphicsScene):
     signalPlayerPosChanged = pyqtSignal(str, QPointF)
     signalPlayerStatusChanged = pyqtSignal(str, int)
 
+    DisableBackgrounds = 1
+    DisablePlatformGraphics = 2
+
     def __init__(self, level, nogfx=False, depth_vec=[122, 72], depth=10):
         super().__init__()
         self.name = level
