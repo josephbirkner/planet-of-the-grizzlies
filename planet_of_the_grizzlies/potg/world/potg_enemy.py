@@ -332,7 +332,7 @@ class Samurai(Enemy):
     def load_images(self):
         self.sprites[Entity.Idle] = [QPixmap("gfx/samurai_idle.png").scaled(self.size[0], self.size[1])]
         self.sprites[Entity.Dead] = [QPixmap("gfx/samurai_dead.png").scaled(self.size[0], self.size[1])]
-        self.sprites[Entity.Using] = [QPixmap("gfx/samurai_hit.png").scaled(self.size[0], self.size[1])]
+        self.sprites[Entity.Using] = [QPixmap("gfx/samurai_idle.png").scaled(self.size[0], self.size[1])]
 
     def on_state_transition(self, old_state, new_state):
         if new_state == Entity.Dead:
@@ -363,13 +363,15 @@ class General(Enemy):
         if self.state == Entity.Idle:
             self.update_target()
             if self.current_target:
-                self.activate_state(General.Shouting, 70)
+                self.activate_state(General.Shouting, 40)
 
         super().update()
 
     def on_state_transition(self, old_state, new_state):
         if old_state == General.Shouting and self.current_target:
             self.fire()
+        if new_state == Entity.Dead:
+            [p for cid, p in self.world.players.items()][0].activate_state(Entity.Won)
 
     def fire(self):
         self.update_orientation()
@@ -399,7 +401,3 @@ class General(Enemy):
         self.sprites[Entity.Idle] = [QPixmap("gfx/general.png").scaled(self.size[0], self.size[1])]
         self.sprites[Entity.Dead] = [QPixmap("gfx/general_dead.png").scaled(self.size[0], self.size[1])]
         self.sprites[General.Shouting] = [QPixmap("gfx/general_hit.png").scaled(self.size[0], self.size[1])]
-
-    def on_state_transition(self, old_state, new_state):
-        if new_state == Entity.Dead:
-            [p for cid, p in self.world.players.items()][0].activate_state(Entity.Won)
