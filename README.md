@@ -8,7 +8,7 @@ B E T A
 
 Install PyQt5 (>= Version 5.4)
 
-    \# Only works in Ubuntu/Debian >= 14.04
+    # Only works in Ubuntu >= 14.04. Use your favorite package manager.
     sudo apt-get install python3-pyqt5
 
 Install qdarkstyle
@@ -50,8 +50,8 @@ Increase the Raspberrie's video memory
 
 It might be necessary to tune down the ingame graphics
 
-    To do so, first open planet_of_the_grizzlies/potg/network/potg_client.py
-    Change `Client.gfxmode` from `0` to `World.DisableBackgrounds`
+- To do so, first open planet_of_the_grizzlies/potg/network/potg_client.py
+- Change `Client.gfxmode` from `0` to `World.DisableBackgrounds`
 
 2. How to play
 --------------
