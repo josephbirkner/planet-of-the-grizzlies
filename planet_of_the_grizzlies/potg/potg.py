@@ -27,7 +27,7 @@ from PyQt5.QtOpenGL import QGLWidget
 import qdarkstyle
 
 
-class PlanetOfTheGrizzlies(QWidget):
+class PlanetOfTheGrizzlies(QOpenGLWidget):
 
     world = None
 

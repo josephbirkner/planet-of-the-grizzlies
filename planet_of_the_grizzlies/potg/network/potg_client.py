@@ -8,6 +8,7 @@ class Client(QObject):
     world = None
     server = None
     id = 0
+    gfxmode = 0 # World.DisableBackgrounds
 
     signalLevelChanged = pyqtSignal()
 
@@ -28,7 +29,7 @@ class Client(QObject):
             del self.world
             self.world = None
         if level:
-            self.world = World(level)
+            self.world = World(level, self.gfxmode)
         self.signalLevelChanged.emit()
 
     def attach_to_server(self, server):

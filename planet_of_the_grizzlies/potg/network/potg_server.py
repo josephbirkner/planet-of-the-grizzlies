@@ -77,7 +77,7 @@ class LocalServer(IServer):
             self.world = None
 
         if level:
-            self.world = World(level, True)
+            self.world = World(level, World.DisableBackgrounds|World.DisablePlatformGraphics)
             self.world.signalPlayerStatusChanged.connect(self.on_player_status_changed)
 
         self.broadcast_level(level)

@@ -43,16 +43,17 @@ class Platform(QGraphicsPixmapItem, SceneObject):
         self.entities = set()
 
     def make_tiles(self):
-        self.buffer = QPixmap(self.rect.width(), self.rect.height())
-        self.buffer.fill(Qt.transparent)
-        painter = QPainter(self.buffer)
-        for i in range(self.height_blocks, 0, -1):
-            for j in range(self.width_blocks, 0, -1):
-                # tile = QGraphicsPixmapItem(self.sprite, self)
-                # tile.setPos(self.world.block_size[0]*(j-1), self.world.block_size[1]*(i-1))
-                painter.drawPixmap(self.world.block_size[0]*(j-1), self.world.block_size[1]*(i-1), self.sprite)
-        painter.end()
-        self.setPixmap(self.buffer)
+        if self.world.nogfx < 2:
+            self.buffer = QPixmap(self.rect.width(), self.rect.height())
+            self.buffer.fill(Qt.transparent)
+            painter = QPainter(self.buffer)
+            for i in range(self.height_blocks, 0, -1):
+                for j in range(self.width_blocks, 0, -1):
+                    # tile = QGraphicsPixmapItem(self.sprite, self)
+                    # tile.setPos(self.world.block_size[0]*(j-1), self.world.block_size[1]*(i-1))
+                    painter.drawPixmap(self.world.block_size[0]*(j-1), self.world.block_size[1]*(i-1), self.sprite)
+            painter.end()
+            self.setPixmap(self.buffer)
 
     def notify_blocks_changed(self):
         self.rect = QRectF(0, 0, (self.width_blocks-1)*self.world.block_size[0], (self.height_blocks-1)*self.world.block_size[1])
