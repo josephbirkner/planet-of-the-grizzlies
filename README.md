@@ -20,23 +20,28 @@ B E T A
 ---------------------------------------------------------------------------------------
 
 - Link GPU eglfs binaries so Qt can get to them in system path
+
 `sudo mv /usr/lib/arm-linux-gnueabihf/libEGL.so.1.0.0.bak`
 `sudo mv /usr/lib/arm-linux-gnueabihf/libGLESv2.so.2.0.0.bak`
 `sudo ln -s /opt/vc/lib/libEGL.so /usr/lib/arm-linux-gnueabihf/libEGL.so.1.0.0`
 `sudo ln -s /opt/vc/lib/libGLESv2.so /usr/lib/arm-linux-gnueabihf/libGLESv2.so.2.0.0`
 
 - Install the leandog apt server in your sources
+
 `echo "deb http://apt.leandog.com/ jessie main" | sudo tee --append /etc/apt/sources.list`
 `sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BDCBFB15`
 
 - Install packages
+
 `sudo apt-get update`
 `sudo apt-get install -y qt5 sip pyqt5`
 
 - Install qdarkstyle
+
 `sudo pip3 install qdarkstyle`
 
 - Increase the Raspberrie's video memory
+
 `sudo raspi-config`
     > *Memory Split*
     > Enter 256
