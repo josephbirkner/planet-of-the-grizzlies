@@ -8,7 +8,7 @@ class Client(QObject):
     world = None
     server = None
     id = 0
-    gfxmode = 0 # World.DisableBackgrounds
+    gfxmode = World.DisableBackgrounds
 
     signalLevelChanged = pyqtSignal()
 

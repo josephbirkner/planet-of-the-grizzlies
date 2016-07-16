@@ -202,8 +202,8 @@ class PlanetOfTheGrizzlies(QOpenGLWidget):
             if type(self.server) != LocalServer:
                 self.server = LocalServer()
                 self.client.attach_to_server(self.server)
-            #self.server.request_level("grizzlycity")
-            self.server.request_level("ninja_level")
+            self.server.request_level("grizzlycity")
+            #self.server.request_level("ninja_level")
             #self.server.request_level("drevil")
         else:
             self.character_menu.hide()
@@ -220,14 +220,14 @@ class PlanetOfTheGrizzlies(QOpenGLWidget):
                 # self.server.request_new_player(self.client.id)
                 self.server.request_level("drevil")
                 return True
-            elif self.server:
+            elif self.server and self.world:
                 self.server.notify_input(self.client.id, e.key(), True)
                 # immediate application to the client in order to mitigate the lag of the server
                 player = self.world.player_for_client(self.client.id)
                 if player:
                     player.process_input(e.key, True)
                 return True
-        elif e.type() == QEvent.KeyRelease and self.server:
+        elif e.type() == QEvent.KeyRelease and self.server and self.world:
             self.server.notify_input(self.client.id, e.key(), False)
             # immediate application to the client in order to mitigate the lag of the server
             player = self.world.player_for_client(self.client.id)
