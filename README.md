@@ -10,6 +10,9 @@ Install PyQt5 (>= Version 5.4)
 
     # Only works in Ubuntu >= 14.04. Use your favorite package manager.
     sudo apt-get install python3-pyqt5
+    
+    # On Fedora you can use dnf:
+    dnf install python-qt5
 
 Install qdarkstyle
 
